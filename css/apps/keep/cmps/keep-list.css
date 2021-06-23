@@ -5,9 +5,9 @@ button {
 	border: none;
 	cursor: pointer;
 }
-
+/* 
 button .btnColor {
-}
+} */
 
 .circle {
 	border-radius: 50%;

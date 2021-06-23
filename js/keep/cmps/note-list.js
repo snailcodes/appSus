@@ -9,8 +9,8 @@ export default {
 	template: `
     <section>
         <div class="add-section">
-            <label> <input type="text" @click="addNote" placeholder="Write to add Note">
-            <button @click="addNote('noteImg')"> <img src="../../../img/apps/keep/image.png" alt="addImg"> </button>
+            <label> <input v-model="input" type="text" @click="addNote" placeholder="Write to add Note">
+            <button  @click="addNote('noteImg')"> <img src="../../../img/apps/keep/image.png" alt="addImg"> </button>
             <button @click="addNote('noteTxt')"> <img src="../../../img/apps/keep/text.png" alt="addTxt"> </button>
             <button @click="addNote('noteTodos')"> <img src="../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
             
@@ -43,6 +43,7 @@ export default {
 	data() {
 		return {
 			bcg: 'lightblue',
+			// input: {},
 		};
 	},
 
@@ -52,8 +53,22 @@ export default {
 			this.bcg = color;
 		},
 
-		addNote() {
+		addNote(type) {
 			console.log('sanity adding');
+			switch (type) {
+				case 'noteImg':
+					console.log('img');
+					break;
+				case 'noteTxt':
+					console.log('txt');
+					break;
+				case 'noteTodos':
+					console.log('todos');
+					break;
+
+				default:
+					break;
+			}
 		},
 
 		onDelNote(note) {
