@@ -1,9 +1,14 @@
 @import url('./note-todos.css');
 
-button {
+button.button-keep {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+}
+
+input.input-keep {
+	background-color: whitesmoke;
+	border-radius: 8px;
 }
 /* 
 button .btnColor {
