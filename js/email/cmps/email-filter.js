@@ -5,7 +5,7 @@ export default {
             <input v-model="filterBy.txt" @search="onFilter" type="search" placeholder="Enter text...">
             Read:<input v-model="filterBy.isRead" type="checkbox">
             Unread:<input v-model="filterBy.isUnread" type="checkbox">
-            <button>Filter</button>
+            <button class="btn-email-filter">Filter</button>
         </form>
     </section>
     `,

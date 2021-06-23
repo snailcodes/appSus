@@ -22,7 +22,7 @@ textarea {
     padding: 3px;
 }
 
-button {
+[class*=btn-email] {
     cursor: pointer;
     background-image: linear-gradient(to right, #1a73e8 0%, #1a73e8 51%, #1a73e8 100%);
     padding: 5px 15px;
@@ -35,7 +35,7 @@ button {
     border-radius: 10px;
 }
 
-button:hover {
+[class*=btn-email]:hover {
     background-position: right center;
     color: #fff;
     text-decoration: none;
