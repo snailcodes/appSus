@@ -9,15 +9,8 @@ export const storageService = {
 }
 
 function query(entityType) {
-    // var entities = JSON.parse(localStorage.getItem(entityType)) || fetch('../../json/books.json').then(response => response.json()).then(data => data)
-    if (!JSON.parse(localStorage.getItem(entityType)))
-        return Promise.resolve(fetch('../../json/books.json')
-            .then(response => response.json())
-            .then(data => {
-                _save(entityType, data);
-                return data
-            }))
-    else return Promise.resolve(JSON.parse(localStorage.getItem(entityType)));
+    var entities = JSON.parse(localStorage.getItem(entityType)) || []
+    return Promise.resolve(entities);
 }
 
 function get(entityType, entityId) {

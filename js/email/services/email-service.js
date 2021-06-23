@@ -1,4 +1,4 @@
-import { storageService } from '../../async-storage-service.js';
+import { storageService } from '../../services/async-storage-service.js';
 
 const EMAILS_KEY = 'emailsDB';
 
@@ -9,6 +9,8 @@ export const emailService = {
     save,
     createEmail
 }
+
+createEmail()
 
 function query() {
     return storageService.query(EMAILS_KEY);
