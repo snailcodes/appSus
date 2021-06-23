@@ -1,10 +1,10 @@
-import { eventBus } from '../../services/event-bus-service.js';
 import { i18nService } from '../../services/i18n-service.js';
+import { emailService } from '../services/email-service.js';
 
 export default {
     props: ['email'],
     template: `
-        <section v-if="isEmailSelected" class="email-details">
+        <section v-if="email" class="email-details">
             <div class="email-subject">
                 <span>{{email.subject}}</span>
                 <span @click="onDeleteEmail" class="email-delete">🗑️</span>
@@ -17,21 +17,28 @@ export default {
     `,
     data() {
         return {
-            isEmailSelected: false
+            paramEmail: null,
         }
     },
-    created() {
-        this.isEmailSelected = true;
-    },
+    created() {},
+    mounted() {},
     methods: {
-        closeDetails() {
-            this.isEmailSelected = false;
-        },
         onDeleteEmail() {
             this.$emit('deleted', this.email.id);
-            this.closeDetails();
+        }
+    },
+    watch: {
+        '$route.params.emailId': {
+            immediate: true,
+            handler() {
+                const { emailId } = this.$route.params;
+                emailService.getById(emailId)
+                    .then(email => this.paramEmail = email);
+            }
         }
     },
     computed: {},
-    components: {}
+    components: {
+        emailService
+    }
 }

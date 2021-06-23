@@ -3,10 +3,13 @@ import longText from '../../cmps/long-text.js';
 
 export default {
     props: ['email'],
+    components: {
+        longText
+    },
     template: `
         <div class="email-preview">
-            <div class="email-preview-subject">Subject: {{email.subject}}</div>
-            <div class="email-preview-body">{{email.body}}</div>
+            <long-text class="email-preview-subject" :txt="email.subject" :length="40"></long-text>
+            <long-text class="email-preview-body" :txt="email.body" :length="30"></long-text>
             <div class="email-preview-send-date">{{showSentTime}}</div>
             <div class="email-preview-read-state" :class="showReadState">✉️</div>
         </div>

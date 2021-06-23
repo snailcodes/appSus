@@ -2,7 +2,7 @@ import emailApp from './email/pages/email-app.js';
 import keepApp from './keep/pages/keep-app.js';
 
 const routes = [{
-        path: '/email',
+        path: '/email/:emailId?',
         component: emailApp,
     },
     {

@@ -5,18 +5,63 @@ const EMAILS_KEY = 'emailsDB';
 export const emailService = {
     query,
     getById,
+    getAdjcntEmails,
     remove,
     save
 }
 
-createEmails();
-
 function query() {
-    return storageService.query(EMAILS_KEY);
+    if (localStorage.getItem(EMAILS_KEY) && JSON.parse(localStorage.getItem(EMAILS_KEY)).length > 0) {
+        return Promise.resolve(JSON.parse(localStorage.getItem(EMAILS_KEY)))
+    } else {
+        const emails = [{
+            id: '45jfw3',
+            subject: 'Wassap? Lorem, ipsum dolor sit amet consectetur',
+            body: 'Pick up! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
+            isRead: false,
+            sentAt: Date.now()
+        }, {
+            id: 'fsd34hd',
+            subject: 'Hey there!!! Lorem, ipsum dolor',
+            body: 'How are you doing?! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
+            isRead: false,
+            sentAt: Date.now()
+        }, {
+            id: '5jhdsa2',
+            subject: 'You won $1,000,000 dollars!!! Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
+            body: 'OMG can you believe it??? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
+            isRead: false,
+            sentAt: Date.now()
+        }, {
+            id: 'fds3asfg56',
+            subject: 'We\'re glad to inform you!!!',
+            body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
+            isRead: false,
+            sentAt: Date.now()
+        }];
+        localStorage.setItem(EMAILS_KEY, JSON.stringify(emails))
+        return Promise.resolve(JSON.parse(localStorage.getItem(EMAILS_KEY)))
+    }
 }
+
+// function query() {
+//     createEmails();
+//     return storageService.query(EMAILS_KEY);
+// }
 
 function getById(emailID) {
     return storageService.get(EMAILS_KEY, emailID);
+}
+
+function getAdjcntEmails(emailId) {
+    return query()
+        .then(emails => {
+            const idx = emails.findIndex(email => email.id === emailId)
+            return {
+                prevEmail: (idx === 0) ? emails[1] : emails[idx - 1],
+                nextEmail: (idx + 1 > emails.length - 1) ? emails[0] : emails[idx + 1],
+            }
+        })
 }
 
 function remove(emailID) {
@@ -29,29 +74,4 @@ function save(email) {
     } else {
         return storageService.post(EMAILS_KEY, email);
     }
-}
-
-function createEmails() {
-    const emails = [{
-        subject: 'Wassap?',
-        body: 'Pick up!',
-        isRead: false,
-        sentAt: Date.now()
-    }, {
-        subject: 'Hey there!!!',
-        body: 'How are you doing?!',
-        isRead: false,
-        sentAt: Date.now()
-    }, {
-        subject: 'You won $1,000,000 dollars!!!',
-        body: 'OMG can you believe it???',
-        isRead: false,
-        sentAt: Date.now()
-    }, {
-        subject: 'We\'re glad to inform you!!!',
-        body: 'You have been accepeted!',
-        isRead: false,
-        sentAt: Date.now()
-    }];
-    storageService.postMany(EMAILS_KEY, emails);
 }
