@@ -6,11 +6,10 @@ export const emailService = {
     query,
     getById,
     remove,
-    save,
-    createEmail
+    save
 }
 
-createEmail()
+createEmails();
 
 function query() {
     return storageService.query(EMAILS_KEY);
@@ -32,12 +31,27 @@ function save(email) {
     }
 }
 
-function createEmail() {
-    const email = {
+function createEmails() {
+    const emails = [{
         subject: 'Wassap?',
         body: 'Pick up!',
         isRead: false,
         sentAt: Date.now()
-    }
-    save(email);
+    }, {
+        subject: 'Hey there!!!',
+        body: 'How are you doing?!',
+        isRead: false,
+        sentAt: Date.now()
+    }, {
+        subject: 'You won $1,000,000 dollars!!!',
+        body: 'OMG can you believe it???',
+        isRead: false,
+        sentAt: Date.now()
+    }, {
+        subject: 'We\'re glad to inform you!!!',
+        body: 'You have been accepeted!',
+        isRead: false,
+        sentAt: Date.now()
+    }];
+    storageService.postMany(EMAILS_KEY, emails);
 }

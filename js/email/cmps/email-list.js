@@ -3,15 +3,15 @@ import emailPreview from './email-preview.js';
 export default {
     props: ['emails'],
     template: `
-    <ul class="emails-list">
+    <ul class="email-list">
         <li v-for="email in emails" :key="email.id">
-            <email-preview :email="email" @click.native="select(email.id)"/>
+            <email-preview :email="email" @click.native="selectEmail(email.id)"/>
         </li>
     </ul>
     `,
     methods: {
-        select(emailId) {
-            this.$router.push(`/email/${emailId}`)
+        selectEmail(emailId) {
+            this.$emit('selected', emailId);
         }
     },
     components: {

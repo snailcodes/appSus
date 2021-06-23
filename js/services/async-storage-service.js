@@ -29,6 +29,9 @@ function post(entityType, newEntity) {
 }
 
 function postMany(entityType, newEntities) {
+    for (const newEntity of newEntities) {
+        newEntity.id = makeId();
+    }
     return query(entityType)
         .then(entities => {
             entities.push(...newEntities);
@@ -53,6 +56,7 @@ function remove(entityType, entityId) {
             const idx = entities.findIndex(entity => entity.id === entityId);
             entities.splice(idx, 1)
             _save(entityType, entities)
+            return entities
         })
 }
 
