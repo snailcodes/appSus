@@ -6,6 +6,26 @@ button {
 	cursor: pointer;
 }
 
+button .btnColor {
+}
+
+.circle {
+	border-radius: 50%;
+	height: 15px;
+	width: 15px;
+	display: inline-block;
+}
+
+.circle-yellow {
+	background-color: yellow;
+}
+.circle-gray {
+	background-color: gray;
+}
+.circle-lightblue {
+	background-color: lightblue;
+}
+
 .notesList {
 	/* height: 100vh; */
 	margin: 10px;

@@ -10,7 +10,7 @@ export default {
 		<ul>
     <li class="todos" v-for="todo in note.info.todos"> 
         <label > 
-        <input  @change="checked(todo)" type="checkbox" :name="todo.txt" :id="todo.txt">
+        <input  @change="complete(todo)" type="checkbox" :name="todo.txt" :id="todo.txt">
 				{{todo.txt}}
 				{{todo.doneAt}}
     	</label>
@@ -21,11 +21,18 @@ export default {
 	</section>
     `,
 	methods: {
-		updateTodo() {
-			console.log('sanity');
+		// updateTodo() {
+		// 	console.log('sanity');
+		// 	console.log(this.note);
+		// 	// eventBus.$emit('updated');
+		// 	// eventBus.$emit('updated', this.note);
+		// },
+
+		complete(todo) {
+			todo.doneAt = Date.now();
 			console.log(this.note);
-			eventBus.$emit('updated');
-			// eventBus.$emit('updated', this.note);
+			// console.log(todo);
+			eventBus.$emit('checked', this.note);
 		},
 	},
 	mounted() {},

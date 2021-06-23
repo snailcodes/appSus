@@ -29,31 +29,31 @@ export default {
 			});
 		},
 
-		deleteNote(val) {
-			console.log('sanity app');
-			keepService.removeNote(val).then(() => {
-				console.log('deleting note', val);
+		deleteNote(note) {
+			console.log('delete note', note);
+			keepService.removeNote(note).then(() => {
 				this.loadNotes();
 			});
 		},
 
-		// updateNote(note){
-		//     switch (note.type) {
-		//         case txt
-		//             keepService.updateTxtNote();
-		//             break;
-
-		//         default:
-		//             break;
-		//     }
-		// }
+		updateNote(note) {
+			console.log('sanity update');
+			console.log(note);
+			keepService
+				.updateNote(note)
+				.then(() => console.log('updating note', note.id));
+		},
 	},
 
 	computed: {},
 
 	created() {
 		console.log('sanity app');
+		eventBus.$on('checked', this.updateNote);
 		this.loadNotes();
-		eventBus.$on('checked');
+	},
+
+	destroyed() {
+		eventBus.$off('checked');
 	},
 };

@@ -68,8 +68,16 @@ function _createNotes() {
 			info: {
 				label: 'How    was   it:',
 				todos: [
-					{ txt: 'Do   that', doneAt: null },
-					{ txt: 'Do   this', doneAt: 187111111 },
+					{
+						id: storageService.makeId(),
+						txt: 'Do   that',
+						doneAt: null,
+					},
+					{
+						id: storageService.makeId(),
+						txt: 'Do   this',
+						doneAt: 187111111,
+					},
 				],
 			},
 		},
