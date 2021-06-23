@@ -1,0 +1,17 @@
+.email-details {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding-inline: 20px;
+    padding-block: 20px;
+}
+
+.email-subject {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 10%;
+}
+
+.email-delete {
+    cursor: pointer;
+}
