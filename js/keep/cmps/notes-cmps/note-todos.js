@@ -1,22 +1,36 @@
-import notePreviewTodos from './note-preview-todos.js';
+// import notePreviewTodos from './note-preview-todos.js';
+import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
-	props: ['info'],
+	props: ['note'],
 	template: `
-	<section>
-	<label >{{info.label}}</label>
+	<section class="note ">
+	<label >{{note.info.label}}</label>
+		<!-- <note-preview-todos @updated="updateTodo" :todos="note.info.todos" />  -->
+		<ul>
+    <li class="todos" v-for="todo in note.info.todos"> 
+        <label > 
+        <input  @change="checked(todo)" type="checkbox" :name="todo.txt" :id="todo.txt">
+				{{todo.txt}}
+				{{todo.doneAt}}
+    	</label>
+</li>
+    </ul>
 		
-		<note-preview-todos :todos="this.info.todos" /> 
-		
-
 	</div>
 	</section>
     `,
-	components: { notePreviewTodos },
-
-	created() {
-		console.log('sanity from noteTodos');
+	methods: {
+		updateTodo() {
+			console.log('sanity');
+			console.log(this.note);
+			eventBus.$emit('updated');
+			// eventBus.$emit('updated', this.note);
+		},
 	},
+	mounted() {},
+
+	created() {},
 };
 
 // {        type: "NoteTodos",
