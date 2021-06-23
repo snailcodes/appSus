@@ -1,8 +1,18 @@
+import { keepService } from '../services/keep-service.js';
+import noteList from '../cmps/note-list.js';
+
 export default {
 	template: `
-    <h3>Welcome Keep</h3>`,
+    <section v-if="notes.length" class="keepApp" >
+        <note-list  :notes="notes" /> 
+    
+    </section>
+   
+    `,
 
-	components: {},
+	components: {
+		noteList,
+	},
 
 	data() {
 		return {
@@ -10,9 +20,18 @@ export default {
 		};
 	},
 
-	methods: {},
+	methods: {
+		loadNotes() {
+			keepService.query().then((notes) => {
+				this.notes = notes;
+				console.log(this.notes);
+			});
+		},
+	},
 
 	computed: {},
 
-	created: {},
+	created() {
+		this.loadNotes();
+	},
 };
