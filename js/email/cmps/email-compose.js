@@ -6,11 +6,11 @@ export default {
             <form @submit.prevent="composeEmail" class="email-compose">
                 <div class="email-compose-from">
                     To
-                    <input v-model="email.to" type="email">
+                    <input class="input-email" v-model="email.to" type="email">
                 </div>
                 <div class="email-compose-subject">
                     Subject
-                    <input ref="subject" v-model="email.subject" type="text" maxlength="50">
+                    <input class="input-email" ref="subject" v-model="email.subject" type="text" maxlength="50">
                 </div>
                 <textarea v-model="email.body"></textarea>
                 <button>Send</button>

@@ -6,8 +6,8 @@
 
 /***********************/
 
-input,
-input:focus {
+.input-email,
+.input-email:focus {
     outline: none;
     border: none;
     background: transparent;
