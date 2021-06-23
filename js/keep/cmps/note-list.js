@@ -10,9 +10,9 @@ export default {
     <section>
         <div class="add-section">
             <label> <input v-model="input" type="text" @click="addNote" placeholder="Write to add Note">
-            <button  @click="addNote('noteImg')"> <img src="../../../img/apps/keep/image.png" alt="addImg"> </button>
-            <button @click="addNote('noteTxt')"> <img src="../../../img/apps/keep/text.png" alt="addTxt"> </button>
-            <button @click="addNote('noteTodos')"> <img src="../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
+            <button class="button-keep" @click="addNote('noteImg')"> <img src="../../../img/apps/keep/image.png" alt="addImg"> </button>
+            <button class="button-keep" @click="addNote('noteTxt')"> <img src="../../../img/apps/keep/text.png" alt="addTxt"> </button>
+            <button class="button-keep" @click="addNote('noteTodos')"> <img src="../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
             
         </label>
     </div>
@@ -21,9 +21,9 @@ export default {
             <li v-for="note in notes" :key="note.id" class="note-container"> 
 			<!-- add variable note object to make each note's style change? -->
                 <component :style="noteBcg" :is="note.type" :note="note" > </component>
-				<button class="btnColor" @click="changeBcg('yellow')"> <span class="circle circle-yellow"> </span> </button>
-				<button class="btnColor" @click="changeBcg('gray')"> <span  class="circle circle-gray"></span> </button>
-				<button class="btnColor" @click="changeBcg('lightblue')"> <span  class="circle circle-lightblue"></span> </button>
+				<button class="button-keep" @click="changeBcg('yellow')"> <span class="circle circle-yellow"> </span> </button>
+				<button class="button-keep" @click="changeBcg('gray')"> <span  class="circle circle-gray"></span> </button>
+				<button class="button-keep" @click="changeBcg('lightblue')"> <span  class="circle circle-lightblue"></span> </button>
                 <button @click="onDelNote(note)"> Remove </button>
                 <button> Edit  </button>
                 <!-- <notePreview :note="note" /> -->

@@ -1,6 +1,6 @@
 @import url('./note-todos.css');
 
-button {
+button.button-keep {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
