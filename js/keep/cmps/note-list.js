@@ -9,7 +9,7 @@ export default {
 	template: `
     <section>
         <div class="add-section">
-            <label> <input v-model="input" type="text" @click="addNote" placeholder="Write to add Note">
+            <label> <input class="input-keep"  type="text" @click="addNote" placeholder="Write to add Note">
             <button class="button-keep" @click="addNote('noteImg')"> <img src="../../../img/apps/keep/image.png" alt="addImg"> </button>
             <button class="button-keep" @click="addNote('noteTxt')"> <img src="../../../img/apps/keep/text.png" alt="addTxt"> </button>
             <button class="button-keep" @click="addNote('noteTodos')"> <img src="../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
@@ -48,6 +48,9 @@ export default {
 	},
 
 	methods: {
+		addInput() {
+			console.log('sanity');
+		},
 		changeBcg(color) {
 			console.log('sanity color');
 			this.bcg = color;

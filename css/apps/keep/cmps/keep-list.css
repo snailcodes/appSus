@@ -5,6 +5,11 @@ button.button-keep {
 	border: none;
 	cursor: pointer;
 }
+
+input.input-keep {
+	background-color: whitesmoke;
+	border-radius: 8px;
+}
 /* 
 button .btnColor {
 } */
