@@ -1,7 +1,7 @@
 export default {
     template: `
         <form @submit.prevent="onSearch" class="form-email-search">
-            <img src="../../img/apps/email/search.svg"><input v-model="searchBy.txt" @search="onSearch" type="search" placeholder="Search..." class="input-email-search">
+            <img src="img/apps/email/search.svg"><input v-model="searchBy.txt" @search="onSearch" type="search" placeholder="Search..." class="input-email-search">
             <span class="tooltip">
                 <input v-model="searchBy.isRead" type="checkbox" id="email-read-state" class="input-email-search">
                 <label class="email-read-state" for="email-read-state"></label>
