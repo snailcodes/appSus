@@ -4,9 +4,9 @@ import userMsg from './cmps/user-msg.js';
 import { router } from './router.js';
 
 const options = {
-    el: '#apps',
-    router,
-    template: `
+	el: '#apps',
+	router,
+	template: `
     <section>
         <!-- TODO: HEADER-->
         <!-- <app-header />  -->
@@ -20,13 +20,11 @@ const options = {
 
     </section>`,
 
-    components: {
-        // appHeader,
-        // bookApp,
-        emailApp,
-        keepApp,
-        userMsg
-    },
+	components: {
+		emailApp,
+		keepApp,
+		userMsg,
+	},
 };
 
 const app = new Vue(options);

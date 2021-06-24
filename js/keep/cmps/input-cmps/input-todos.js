@@ -1,9 +1,10 @@
-// <!-- TODO: figure how to correctly display todo fields in edit -->
-// <!-- TODO: figure out how to submit enter -->
+// TODO: figure how to correctly display todo fields in edit -->
+// TODO: figure out how to submit enter -->
+// TODO: DELETE CHECKBOXES
 export default {
 	props: ['editedNote'],
 	template: `  
-    <form v-on:keyup.enter.stop="submit" >
+    <form  >
         <input v-model="info.label" class="input-keep" type="text" placeholder="Todo Title">
         <section v-for="todo in info.todos"> 
             <input v-model="todo.txt" @change="makeIdx(todo)" class="input-keep" type="text" placeholder="Add Task">
@@ -11,7 +12,8 @@ export default {
             <!-- <input class="input-keep" type="text" placeholder="Add Task">
             <input class="input-keep" type="text" placeholder="Add Task"> -->
             </section>
-            <button class="button-keep" @click.stop="addLine">➕</button>
+            <button class="button-keep" @keyup.prevent="addLine" @click.stop="addLine">➕</button>
+            <button class="button-keep" @click="submit">Submit </button>
     </form>`,
 
 	data() {
@@ -35,10 +37,10 @@ export default {
 			// console.log('submitting txt');
 			const newInfo = { ...this.info };
 			this.$emit('submitting', newInfo, 'noteTodos');
-			this.info.label = '';
-			this.info.todos.forEach((todo) => {
-				todo.txt = '';
-			});
+			// this.info.label = '';
+			// this.info.todos.forEach((todo) => {
+			// 	todo.txt = '';
+			// });
 		},
 
 		makeIdx(todo) {

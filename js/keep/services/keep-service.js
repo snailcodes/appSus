@@ -61,7 +61,7 @@ function _createNotes() {
 			type: 'noteImg',
 			info: {
 				url: 'https://img.vcomments.com/en/funny/47.jpg',
-				title: 'Me   playing Mi',
+				title: 'Smile ;)',
 			},
 		},
 		{
@@ -70,7 +70,7 @@ function _createNotes() {
 			type: 'noteImg',
 			info: {
 				url: 'https://www.icegif.com/wp-content/uploads/funny.gif',
-				title: 'Me   playing Mi',
+				title: 'Do NOT PANIC',
 			},
 		},
 		{

@@ -5,27 +5,24 @@ import inputImg from '../cmps/input-cmps/input-img.js';
 import inputVideo from '../cmps/input-cmps/input-video.js';
 import inputTxt from '../cmps/input-cmps/input-txt.js';
 import inputTodos from '../cmps/input-cmps/input-todos.js';
+import noteFilter from '../cmps/note-filter.js';
 
 export default {
 	template: `
     <section v-if="notes.length" class="keepApp" >
-	<div class="add-section">
-		<!-- //BUG PHOTO WONT APPEAR ON GIT - CHECK -->
-		<label>
-			<component @submitting="renderNote" :is="inputType" :info="newInfo" :editedNote="editedNote" > </component>
-            <button class="button-keep" @click="setType('noteImg')"> <img src="'/../../../img/apps/keep/image.png" alt="addImg"> </button>
-            <button class="button-keep" @click="setType('noteTxt')"> <img src="/../../../img/apps/keep/text.png" alt="addTxt"> </button>
-            <button class="button-keep" @click="setType('noteTodos')"> <img src="/../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
-            <button class="button-keep" @click="setType('noteVideo')"> <img src="/../../../img/apps/keep/video.png" alt="addChkBox"> </button>          
-            
-        </label>
-    </div>
-    
-
-		<!-- <div @edited="editNote"> test </div>   -->
-		<!-- <div  @editedNote="editNote" ></div> -->
-
-        <note-list @deleted="deleteNote" :notes="notes" /> 
+		<note-filter @filtered="setFilter" class="note-search-bar"   />
+		<div class="add-section">
+			<!-- //BUG PHOTO WONT APPEAR ON GIT - CHECK -->
+			<label>
+				<component @submitting="renderNote" :is="inputType" :info="newInfo" :editedNote="editedNote" > </component>
+				<button class="button-keep" @click="setType('noteImg')"> <img src="'/../../../img/apps/keep/image.png" alt="addImg"> </button>
+				<button class="button-keep" @click="setType('noteTxt')"> <img src="/../../../img/apps/keep/text.png" alt="addTxt"> </button>
+				<button class="button-keep" @click="setType('noteTodos')"> <img src="/../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
+				<button class="button-keep" @click="setType('noteVideo')"> <img src="/../../../img/apps/keep/video.png" alt="addChkBox"> </button>          
+				
+			</label>
+		</div>
+        <note-list  :notes="notesToShow" @deleted="deleteNote" /> 
     </section>
     `,
 
@@ -37,6 +34,7 @@ export default {
 		inputTxt,
 		inputTodos,
 		inputVideo,
+		noteFilter,
 	},
 
 	data() {
@@ -46,10 +44,15 @@ export default {
 			newInfo: {},
 			isEdit: false,
 			editedNote: {},
+			filterBy: null,
 		};
 	},
 
 	methods: {
+		setFilter(filterBy) {
+			this.filterBy = filterBy.txt;
+		},
+
 		renderNote(info, type) {
 			if (!this.isEdit) {
 				console.log('adding');
@@ -107,7 +110,7 @@ export default {
 		},
 
 		onUpdateNote(note) {
-			console.log('sanity update');
+			console.log('updated note');
 			console.log(note);
 			keepService
 				.updateNote(note)
@@ -116,9 +119,39 @@ export default {
 					this.loadNotes();
 				});
 		},
+
+		pinned(note) {
+			this.onUpdateNote(note);
+		},
 	},
 
-	computed: {},
+	computed: {
+		notesToShow() {
+			if (!this.filterBy) {
+				return this.notes;
+			}
+			console.log(this.filterBy);
+			const searchStr = this.filterBy.toLowerCase();
+			const notesToShow = this.notes.filter((note) => {
+				console.log(note);
+				if (note.type === 'noteTxt')
+					return note.info.txt.toLowerCase().includes(searchStr);
+				if (note.type === 'noteImg')
+					return note.info.title.toLowerCase().includes(searchStr);
+				// if (note.type === 'noteVideo')
+				// 	return note.info.txt.toLowerCase().includes(searchStr);
+				// TODO: search fakes??? try 'what'
+				if (note.type === 'noteTodos')
+					return (
+						note.info.label.toLowerCase().includes(searchStr) ||
+						note.info.todos.filter((todo) => {
+							todo.txt.toLowerCase().includes(searchStr);
+						})
+					);
+			});
+			return notesToShow;
+		},
+	},
 
 	// TODO FIGURE OUT WHY ONLY BUS WORKS ON EDITNOTE (DIRECT EMIT DID NOT WORK)
 	created() {
