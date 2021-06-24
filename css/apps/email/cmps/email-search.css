@@ -51,12 +51,12 @@ input[type="checkbox"].input-email-search:checked+label.email-unread-state::befo
 }
 
 input[type="checkbox"].input-email-search:checked+label.email-read-state::before {
-    background-image: url('/img/apps/email/read.png');
+    background-image: url('../../../../img/apps/email/read.png');
     opacity: 0.8;
 }
 
 input[type="checkbox"].input-email-search:checked+label.email-unread-state::before {
-    background-image: url('/img/apps/email/unread.png');
+    background-image: url('../../../../img/apps/email/unread.png');
     opacity: 0.8;
 }
 
@@ -75,11 +75,11 @@ label.email-unread-state::before {
 }
 
 label.email-read-state::before {
-    background-image: url('/img/apps/email/read.png');
+    background-image: url('../../../../img/apps/email/read.png');
     opacity: 0.3;
 }
 
 label.email-unread-state::before {
-    background-image: url('/img/apps/email/unread.png');
+    background-image: url('../../../../img/apps/email/unread.png');
     opacity: 0.3;
 }
