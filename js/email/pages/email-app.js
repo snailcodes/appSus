@@ -10,7 +10,7 @@ export default {
     template: `
         <section class="email-app">
             <email-nav @compose="isComposingEmail = true" :emails="emails"/>
-            <email-list v-if="emailsToShow" :emails="emailsToShow" @searched="setSearch" @selected="showEmail" @starred="toggleStarred"/>
+            <email-list v-if="emailsToShow" :emails="emailsToShow" @searched="setSearch" @selected="showEmail" @starred="toggleStarred" @toggleread="toggleRead"/>
             <email-details :email="selectedEmail" @emailDeleted="deleteEmail" @emailReplied="loadEmails()" @replyDeleted="deleteReply"/>
             <div v-if="isComposingEmail" class="modal-container" @click.self="isComposingEmail = false">
                 <email-compose class="modal-content" @emailComposed="composeEmail"/></email-compose>
@@ -95,6 +95,11 @@ export default {
         },
         markRead(email) {
             email.isRead = true;
+            emailService.save(email)
+                .then(() => this.loadEmails())
+        },
+        toggleRead(email) {
+            email.isRead = !email.isRead;
             emailService.save(email)
                 .then(() => this.loadEmails())
         },

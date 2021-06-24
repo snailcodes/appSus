@@ -11,6 +11,7 @@ export default {
             <div class="email-preview-top">
                 <span v-bind:class="classStarredState" @click="onToggleStarred"></span>
                 <long-text class="email-preview-subject" :txt="email.subject" :length="50" :class="showReadState"></long-text>
+                <div class="email-preview-read-state" v-bind:class="showReadState" @click.stop="onToggleRead"></div>
                 <div class="email-preview-send-date" :class="showReadState">{{showFormattedTime}}</div>
             </div>
             <long-text class="email-preview-body" :txt="email.body" :length="60" :class="showReadState"></long-text>
@@ -19,6 +20,9 @@ export default {
     methods: {
         onToggleStarred() {
             this.$emit('starred', this.email)
+        },
+        onToggleRead() {
+            this.$emit('toggleread', this.email)
         }
     },
     computed: {
