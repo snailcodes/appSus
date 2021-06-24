@@ -4,7 +4,7 @@
 export default {
 	props: ['editedNote'],
 	template: `  
-    <form  >
+    <form class="keep-form" >
         <input v-model="info.label" class="input-keep" type="text" placeholder="Todo Title">
         <section v-for="todo in info.todos"> 
             <input v-model="todo.txt" @change="makeIdx(todo)" class="input-keep" type="text" placeholder="Add Task">

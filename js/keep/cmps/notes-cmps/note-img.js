@@ -3,12 +3,11 @@ import { eventBus } from '../../../services/event-bus-service.js';
 export default {
 	props: ['note'],
 	template: `
-    <section class="note">
-		<!-- <img  @click="onPin" class="pin" src="../../../../img/apps/keep/pin.png" >  -->
+    <section class="note note-img">
 		{{note.info.title}}
 		<img class="keep-img" :src="note.info.url" >
 		
-</section>
+	</section>
 
     `,
 	methods: {

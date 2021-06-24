@@ -15,14 +15,17 @@ export default {
             <li v-for="note in notes" :key="note.id" class="note-container"> 
 			<!-- add variable note object to make each note's style change? -->
                 <component :style="noteBcg" :is="note.type" :note="note" > </component>
-				<button class="button-keep" @click="changeBcg('yellow')"> <span class="circle circle-yellow"> </span> </button>
-				<button class="button-keep" @click="changeBcg('gray')"> <span  class="circle circle-gray"></span> </button>
-				<button class="button-keep" @click="changeBcg('lightblue')"> <span  class="circle circle-lightblue"></span> </button>
-                <img class="pin" @click="onPin(note)"  src="../../../../img/apps/keep/pin.png" > 
-			
-				<button class="button-keep" @click="onDelNote(note)"> Remove </button>
-                <button class="button-keep" @click="onEditNote(note)"> Edit </button>
-                <button class="button-keep" @click="email(note)"> Email </button>
+					<div class="note-control-panel">
+					<button class="button-keep" @click="changeBcg('yellow')"> <span class="circle circle-yellow"> </span> </button>
+					<button class="button-keep" @click="changeBcg('gray')"> <span  class="circle circle-gray"></span> </button>
+					<button class="button-keep" @click="changeBcg('lightblue')"> <span  class="circle circle-lightblue"></span> </button>
+					<img class="keep-button-img" @click="onPin(note)"  src="../../../../img/apps/keep/pin.png" > 
+				
+					<button class="button-keep" @click="onDelNote(note)"> <img class="keep-button-img" src="../../../../img/apps/keep/delete.png" alt="Delete"> </button>
+					<button class="button-keep" @click="onEditNote(note)"> <img class="keep-button-img" src="../../../../img/apps/keep/edit.png" alt="Edit"> </button>
+					<button class="button-keep" @click="email(note)"> <img class="keep-button-img" src="../../../../img/apps/keep/email.png" alt="Email"> </button>
+					</div>
+					
                 <!-- <notePreview :note="note" /> -->
             </li>
         </ul>

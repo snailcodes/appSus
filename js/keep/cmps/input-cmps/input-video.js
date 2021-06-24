@@ -3,11 +3,11 @@ export default {
 	props: ['editedNote'],
 	template: `  
     
-        <form v-on:keyup.enter="submit">
-            <input v-model="info.title" class="input-keep" type="text" placeholder="Title">
-            <label> URL:  </label>
-            <input type="url" v-model="info.url" placeholder="Enter URL" >
-                
+        <form class="keep-form" v-on:keyup.enter="submit">
+            <input class="input-keep" v-model="info.title"  type="text" placeholder="Title">
+         
+            <input class="input-keep" type="url" v-model="info.url" placeholder="Enter URL" >
+			
     </form> 
     `,
 

@@ -10,18 +10,22 @@ import noteFilter from '../cmps/note-filter.js';
 export default {
 	template: `
     <section v-if="notes.length" class="keepApp" >
-		<note-filter @filtered="setFilter" class="note-search-bar"   />
+		
+		<section class="keepApp-header">
+			<div class="header-control">
+		<note-filter class="note-search-bar" @filtered="setFilter"    />
 		<div class="add-section">
-			<!-- //BUG PHOTO WONT APPEAR ON GIT - CHECK -->
+			<!-- //TODO: BUG PHOTO WONT APPEAR ON GIT - CHECK -->
 			<label>
 				<component @submitting="renderNote" :is="inputType" :info="newInfo" :editedNote="editedNote" > </component>
-				<button class="button-keep" @click="setType('noteImg')"> <img src="'/../../../img/apps/keep/image.png" alt="addImg"> </button>
 				<button class="button-keep" @click="setType('noteTxt')"> <img src="/../../../img/apps/keep/text.png" alt="addTxt"> </button>
+				<button class="button-keep" @click="setType('noteImg')"> <img src="'/../../../img/apps/keep/image.png" alt="addImg"> </button>
 				<button class="button-keep" @click="setType('noteTodos')"> <img src="/../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
 				<button class="button-keep" @click="setType('noteVideo')"> <img src="/../../../img/apps/keep/video.png" alt="addChkBox"> </button>          
-				
 			</label>
+			</div>
 		</div>
+		</section>
         <note-list  :notes="notesToShow" @deleted="deleteNote" /> 
     </section>
     `,

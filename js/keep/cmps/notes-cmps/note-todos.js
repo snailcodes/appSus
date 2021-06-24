@@ -4,7 +4,7 @@ import { eventBus } from '../../../services/event-bus-service.js';
 export default {
 	props: ['note'],
 	template: `
-	<section class="note ">
+	<section class="note note-todos ">
 		<!-- <img @click="onPin" class="pin" src="../../../../img/apps/keep/pin.png" > -->
 		<label >{{note.info.label}}</label>
 		<!-- <note-preview-todos @updated="updateTodo" :todos="note.info.todos" />  -->

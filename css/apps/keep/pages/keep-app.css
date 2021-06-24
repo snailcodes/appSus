@@ -1,0 +1,83 @@
+/* ALL INPUTS */
+input.input-keep {
+	background-color: whitesmoke;
+	border-radius: 8px;
+	width: 70%;
+	/* outline: none; */
+}
+
+/* ALL FORMS */
+.keep-form {
+	background-color: whitesmoke;
+	max-width: 300px;
+	border-radius: 8px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+/* ALL IMGS */
+.keep-img {
+	padding-top: 5px;
+	object-fit: contain;
+	max-width: 90%;
+	border-radius: 10px;
+}
+
+.keepApp-header {
+	display: flex;
+	/* max-width: 900px; */
+	flex-direction: column;
+	align-items: center;
+	/* border: 1px solid red; */
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.header-control {
+	width: 400px;
+	background-color: #f1f3f4;
+	margin-bottom: 5px;
+	border-radius: 8px;
+}
+
+/* SEARCH FILTER */
+.note-search-bar {
+	/* background-color: yellow; */
+	text-align: center;
+	padding: 10px;
+	position: relative;
+	border-radius: 10px;
+	background-color: #f1f3f4;
+	margin-bottom: 5px;
+}
+
+.note-search-bar input {
+	border: none;
+}
+
+.img-note-filter {
+	position: absolute;
+	top: 12px;
+	left: 98px;
+}
+
+.search-bar-container {
+	width: 200px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* ADD NOTE SECTION */
+
+.add-section {
+	/* width: 200px; */
+	margin-bottom: 5px;
+	text-align: center;
+	/* background-color: whitesmoke; */
+}
+
+@media (max-width: 400px) {
+}
+
+@media (max-width: 400px) {
+}

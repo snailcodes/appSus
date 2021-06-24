@@ -1,3 +1,4 @@
-.todos {
+.note-todos {
 	text-align: left;
+	display: inline-block;
 }
