@@ -47,7 +47,10 @@ export default {
             this.$emit('compose');
         },
         handleClick(route) {
-            this.$emit('navigate', route);
+            const searchBy = {
+                route
+            }
+            this.$emit('navigate', searchBy);
             for (const li of this.$el.children) {
                 if (li.children[0].className.includes(route))
                     li.children[0].classList.add('active')

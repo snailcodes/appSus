@@ -132,6 +132,7 @@ textarea:focus {
 .tooltip {
     position: relative;
     display: flex;
+    justify-content: center;
 }
 
 .tooltip [class*=tip] {

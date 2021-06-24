@@ -59,7 +59,10 @@ export default {
                 this.email.isSent = true;
                 this.parentEmail.replies.push(this.email);
                 this.$emit('emailReplied', this.parentEmail)
-            } else this.$emit('emailComposed', this.email)
+            } else {
+                this.email.isSent = true;
+                this.$emit('emailComposed', this.email)
+            }
         }
     },
     computed: {}

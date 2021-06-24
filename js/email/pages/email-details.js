@@ -39,7 +39,7 @@ export default {
                     </li>
                 </ul>
             </section>
-            <section v-else>
+            <section class="email-details" v-else>
                 <div class="email-body no-content"><span>No selected email</span></div>
             </section>
     `,

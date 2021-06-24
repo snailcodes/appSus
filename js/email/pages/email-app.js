@@ -8,8 +8,8 @@ import emailCompose from '../cmps/email-compose.js';
 
 export default {
     template: `
-        <section class="email-app">
-            <email-nav @compose="isComposingEmail = true" :emails="emails"/>
+        <section v-if="emails" class="email-app">
+            <email-nav @compose="isComposingEmail = true" :emails="emails" @navigate="setSearch"/>
             <email-list v-if="emailsToShow" :emails="emailsToShow" @searched="setSearch" @selected="showEmail" @starred="toggleStarred" @toggleread="toggleRead"/>
             <email-details :email="selectedEmail" @emailDeleted="deleteEmail" @emailReplied="loadEmails()" @replyDeleted="deleteReply"/>
             <div v-if="isComposingEmail" class="modal-container" @click.self="isComposingEmail = false">
@@ -21,7 +21,9 @@ export default {
         return {
             emails: null,
             selectedEmail: null,
-            searchBy: null,
+            searchBy: {
+                route: 'inbox'
+            },
             isComposingEmail: false
         };
     },
@@ -113,33 +115,51 @@ export default {
     },
     computed: {
         emailsToShow() {
-            if (!this.searchBy ||
-                (!this.searchBy.txt &&
-                    ((!this.searchBy.isRead && !this.searchBy.isUnread) ||
-                        (this.searchBy.isRead && this.searchBy.isUnread)))) return this.emails;
+            if (!this.searchBy.route || this.searchBy.route === 'inbox') {
+                if (!this.searchBy ||
+                    (!this.searchBy.txt &&
+                        ((!this.searchBy.isRead && !this.searchBy.isUnread) ||
+                            (this.searchBy.isRead && this.searchBy.isUnread))))
+                    return this.emails.filter(email => {
+                        return !email.isDeleted
+                    })
 
-            if (this.searchBy.txt) {
-                const searchStr = this.searchBy.txt.toLowerCase();
-                return this.emails.filter(email => {
-                    if (email.subject.toLowerCase().includes(searchStr) ||
-                        email.body.toLowerCase().includes(searchStr)) {
-                        if (this.searchBy.isRead) {
-                            return email.isRead
-                        } else if (this.searchBy.isUnread) {
-                            return !email.isRead
-                        } else {
-                            return email
+                if (this.searchBy.txt) {
+                    const searchStr = this.searchBy.txt.toLowerCase();
+                    return this.emails.filter(email => {
+                        if (email.subject.toLowerCase().includes(searchStr) ||
+                            email.body.toLowerCase().includes(searchStr)) {
+                            if (this.searchBy.isRead) {
+                                return email.isRead
+                            } else if (this.searchBy.isUnread) {
+                                return !email.isRead
+                            } else {
+                                return email
+                            }
                         }
-                    }
-                })
-            } else if (this.searchBy.isRead) {
-                return this.emails.filter(email => {
-                    return email.isRead
-                })
-            } else {
-                return this.emails.filter(email => {
-                    return !email.isRead
-                })
+                    })
+                } else if (this.searchBy.isRead) {
+                    return this.emails.filter(email => {
+                        return email.isRead
+                    })
+                } else {
+                    return this.emails.filter(email => {
+                        return !email.isRead
+                    })
+                }
+            } else switch (this.searchBy.route) {
+                case 'starred':
+                    return this.emails.filter(email => {
+                        return email.isStarred
+                    });
+                case 'sent':
+                    return this.emails.filter(email => {
+                        return email.isSent || email.replies
+                    });
+                case 'deleted':
+                    return this.emails.filter(email => {
+                        return email.isDeleted
+                    });
             }
         }
     },
