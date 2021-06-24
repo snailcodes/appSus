@@ -8,15 +8,7 @@ export default {
 	props: ['notes'],
 	template: `
     <section>
-        <div class="add-section">
-            <label> <input class="input-keep"  type="text" @click="addNote" placeholder="Write to add Note">
-            <button class="button-keep" @click="addNote('noteImg')"> <img src="../../../img/apps/keep/image.png" alt="addImg"> </button>
-            <button class="button-keep" @click="addNote('noteTxt')"> <img src="../../../img/apps/keep/text.png" alt="addTxt"> </button>
-            <button class="button-keep" @click="addNote('noteTodos')"> <img src="../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
-            
-        </label>
-    </div>
-    
+      
     <ul class="notesList">
             <li v-for="note in notes" :key="note.id" class="note-container"> 
 			<!-- add variable note object to make each note's style change? -->
@@ -24,8 +16,8 @@ export default {
 				<button class="button-keep" @click="changeBcg('yellow')"> <span class="circle circle-yellow"> </span> </button>
 				<button class="button-keep" @click="changeBcg('gray')"> <span  class="circle circle-gray"></span> </button>
 				<button class="button-keep" @click="changeBcg('lightblue')"> <span  class="circle circle-lightblue"></span> </button>
-                <button @click="onDelNote(note)"> Remove </button>
-                <button> Edit  </button>
+                <button class="button-keep" @click="onDelNote(note)"> Remove </button>
+                <button class="button-keep"> Edit  </button>
                 <!-- <notePreview :note="note" /> -->
             </li>
         </ul>
@@ -54,24 +46,6 @@ export default {
 		changeBcg(color) {
 			console.log('sanity color');
 			this.bcg = color;
-		},
-
-		addNote(type) {
-			console.log('sanity adding');
-			switch (type) {
-				case 'noteImg':
-					console.log('img');
-					break;
-				case 'noteTxt':
-					console.log('txt');
-					break;
-				case 'noteTodos':
-					console.log('todos');
-					break;
-
-				default:
-					break;
-			}
 		},
 
 		onDelNote(note) {

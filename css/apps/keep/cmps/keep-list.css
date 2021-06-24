@@ -62,3 +62,11 @@ button .btnColor {
 .note img {
 	object-fit: contain;
 }
+
+img.pin {
+	width: 15px;
+	height: 15px;
+	position: relative;
+	left: 0;
+	cursor: pointer;
+}
