@@ -2,6 +2,7 @@ import { keepService } from '../services/keep-service.js';
 import noteList from '../cmps/note-list.js';
 import { eventBus } from '../../services/event-bus-service.js';
 import inputImg from '../cmps/input-cmps/input-img.js';
+import inputVideo from '../cmps/input-cmps/input-video.js';
 import inputTxt from '../cmps/input-cmps/input-txt.js';
 import inputTodos from '../cmps/input-cmps/input-todos.js';
 
@@ -16,6 +17,7 @@ export default {
             <button class="button-keep" @click="setType('noteImg')"> <img src="'/../../../img/apps/keep/image.png" alt="addImg"> </button>
             <button class="button-keep" @click="setType('noteTxt')"> <img src="/../../../img/apps/keep/text.png" alt="addTxt"> </button>
             <button class="button-keep" @click="setType('noteTodos')"> <img src="/../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
+            <button class="button-keep" @click="setType('noteVideo')"> <img src="/../../../img/apps/keep/video.png" alt="addChkBox"> </button>          
             
         </label>
     </div>
@@ -32,6 +34,7 @@ export default {
 		inputImg,
 		inputTxt,
 		inputTodos,
+		inputVideo,
 	},
 
 	data() {
@@ -62,6 +65,10 @@ export default {
 				case 'noteTodos':
 					console.log('todos');
 					this.inputType = 'inputTodos';
+					break;
+				case 'noteVideo':
+					console.log('video');
+					this.inputType = 'inputVideo';
 					break;
 
 				default:

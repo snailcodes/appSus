@@ -5,9 +5,7 @@ export default {
         <form v-on:keyup.enter="submit">
             <input v-model="info.title" class="input-keep" type="text" placeholder="Title">
             <label> URL:  </label>
-            <button class="button-keep" @click.stop="isFromFile"> <img  src="../../../../img/apps/keep/upload.png" alt="uploadFile"> </button>
-            <input  type="url" v-model="info.url" placeholder="Enter URL" >
-            <!-- <input v-else type="file"> -->
+            <input type="url" v-model="info.url" placeholder="Enter URL" >
                 
     </form> 
     `,
@@ -18,7 +16,6 @@ export default {
 				url: null,
 				title: null,
 			},
-			fromFile: false,
 		};
 	},
 
@@ -27,7 +24,7 @@ export default {
 			// console.log('submitting txt');
 			const newInfo = { ...this.info };
 			console.log(this.info.url);
-			this.$emit('submitting', newInfo, 'noteImg');
+			this.$emit('submitting', newInfo, 'noteVideo');
 			this.info.url = '';
 			this.info.title = '';
 		},

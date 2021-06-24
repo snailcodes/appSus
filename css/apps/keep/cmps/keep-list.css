@@ -6,6 +6,11 @@ button.button-keep {
 	cursor: pointer;
 }
 
+.keep-video {
+	object-fit: fit;
+	width: 180px;
+}
+
 input.input-keep {
 	background-color: whitesmoke;
 	border-radius: 8px;

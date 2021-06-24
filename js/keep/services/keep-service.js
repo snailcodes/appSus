@@ -66,6 +66,15 @@ function _createNotes() {
 		},
 		{
 			id: storageService.makeId(),
+			style: { backgroundColor: 'lightblue' },
+			type: 'noteImg',
+			info: {
+				url: 'https://www.icegif.com/wp-content/uploads/funny.gif',
+				title: 'Me   playing Mi',
+			},
+		},
+		{
+			id: storageService.makeId(),
 			type: 'noteTodos',
 			style: { backgroundColor: '#00d' },
 			info: {
@@ -107,13 +116,17 @@ function _createNotes() {
 			isPinned: true,
 			info: { txt: 'Fullstack Me  Baby!' },
 		},
+
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: '#00d' },
-			type: 'noteTxt',
-			isPinned: true,
-			info: { txt: 'Fullstack Me  Baby!' },
+			style: { backgroundColor: 'lightblue' },
+			type: 'noteVideo',
+			info: {
+				url: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
+				title: 'Me   playing Mi',
+			},
 		},
 	];
 	return notes;
 }
+//
