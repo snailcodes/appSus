@@ -1,4 +1,7 @@
 @import url('/css/apps/email/cmps/email-list.css');
+@import url('/css/apps/email/cmps/email-nav.css');
+@import url('/css/apps/email/cmps/email-status.css');
+@import url('/css/apps/email/cmps/email-search.css');
 @import url('/css/apps/email/cmps/email-preview.css');
 @import url('/css/apps/email/cmps/email-compose.css');
 @import url('/css/apps/email/pages/email-details.css');
@@ -6,8 +9,8 @@
 
 /***********************/
 
-.input-email,
-.input-email:focus {
+[class*=input-email],
+[class*=input-email]:focus {
     outline: none;
     border: none;
     background: transparent;
@@ -23,22 +26,34 @@ textarea {
 }
 
 [class*=btn-email] {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    outline: none;
+    position: relative;
+    z-index: 0;
+    font-size: .875rem;
+    letter-spacing: .25px;
+    background: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #5f6368;
     cursor: pointer;
-    background-image: linear-gradient(to right, #1a73e8 0%, #1a73e8 51%, #1a73e8 100%);
-    padding: 5px 15px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
+    font-weight: 500;
+    height: 36px;
+    min-width: 80px;
+    outline: none;
+    padding: 0 16px;
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
 }
 
 [class*=btn-email]:hover {
-    background-position: right center;
-    color: #fff;
-    text-decoration: none;
+    box-shadow: 0 1px 2px 0 rgba(26, 115, 232, 0.451), 0 1px 3px 1px rgba(26, 115, 232, 0.302);
+    background-color: #297be6;
+    outline: 1px solid transparent;
+    border: none;
 }
 
 .user-msg {
@@ -110,4 +125,31 @@ textarea {
 
 .user-msg.error>span {
     background-color: rgb(224, 70, 70);
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip [class*=tip] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    background-color: #eee;
+    text-align: center;
+    padding: 0px 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    right: -15px;
+    font-size: 1rem;
+    cursor: default;
+}
+
+.tooltip:hover [class*=tip] {
+    visibility: visible;
 }

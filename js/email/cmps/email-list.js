@@ -1,20 +1,34 @@
 import emailPreview from './email-preview.js';
+import emailSearch from '../cmps/email-search.js';
 
 export default {
     props: ['emails'],
     template: `
-    <ul class="email-list">
-        <li v-for="email in emails" :key="email.id">
-            <email-preview :email="email" @click.native="selectEmail(email.id)"/>
-        </li>
-    </ul>
+    <section class="email-list">
+        <div class="email-search">
+            <email-search @searched="onSearch"/>
+        </div>
+        <ul v-if="emails.length>0" class="email-previews">
+            <li v-for="email in emails" :key="email.id">
+            <email-preview :email="email" @starred="onToggleStarred" @click.native="onSelectEmail(email.id)"/>
+            </li>
+        </ul>
+        <div v-else class="email-empty-list">Yay! You have no emails...</div>
+    </section>
     `,
     methods: {
-        selectEmail(emailId) {
+        onToggleStarred(email) {
+            this.$emit('starred', email)
+        },
+        onSelectEmail(emailId) {
             this.$emit('selected', emailId);
+        },
+        onSearch(searchBy) {
+            this.$emit('searched', searchBy);
         }
     },
     components: {
-        emailPreview
+        emailPreview,
+        emailSearch
     }
 };

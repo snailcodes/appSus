@@ -1,0 +1,36 @@
+.email-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 240px;
+    max-width: 240px;
+}
+
+.email-nav li:first-of-type {
+    align-self: center;
+    padding-block-start: 5px;
+}
+
+.email-nav li {
+    padding-block-end: 20px;
+    cursor: pointer;
+}
+
+[class^=nav] {
+    padding-block: 10px;
+    padding-inline: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+[class^=nav]:hover {
+    border-radius: 0 16px 16px 0;
+    width: 80%;
+    background-color: #e8eaed;
+}
+
+[class^=nav].active {
+    border-radius: 0 16px 16px 0;
+    width: 80%;
+    background-color: #e8eaed;
+}

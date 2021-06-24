@@ -2,7 +2,7 @@ export default {
     props: ['txt', 'length'],
     template: `
                 <p>
-                    {{txtForDisplay}}<br><br>
+                    {{txtForDisplay}}
                 </p>
             `,
     computed: {
