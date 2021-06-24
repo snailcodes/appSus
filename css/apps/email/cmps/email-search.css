@@ -31,7 +31,7 @@ label.email-unread-state {
 
 input[type="checkbox"].input-email-search:checked+label.email-read-state::before,
 input[type="checkbox"].input-email-search:checked+label.email-unread-state::before {
-    background-image: url('/img/apps/email/checkbox-checked.png');
+    background-image: url('../../../../img/apps/email/checkbox-checked.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -39,7 +39,7 @@ input[type="checkbox"].input-email-search:checked+label.email-unread-state::befo
 
 label.email-read-state::before,
 label.email-unread-state::before {
-    background-image: url('/img/apps/email/checkbox.png');
+    background-image: url('../../../../img/apps/email/checkbox.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
