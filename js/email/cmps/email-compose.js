@@ -6,7 +6,8 @@ export default {
     template: `
             <form @submit.prevent="composeEmail" class="email-compose">
                 <div class="email-compose-header">
-                    <span>New Email</span>
+                    <span v-if="!parentEmail">New Email</span>
+                    <span v-else>Reply</span>
                 </div>
                 <div class="email-compose-from">
                     To

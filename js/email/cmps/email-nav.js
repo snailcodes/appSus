@@ -11,7 +11,9 @@ export default {
             <div class="nav-inbox" @click="handleClick('inbox')">
                 <img src="img/apps/email/inbox.png"/>
                 Inbox
+                <span>{{showUnreadCount}}</span>
             </div>
+            
         </li>
         <li>
             <div class="nav-starred" @click="handleClick('starred',$event)">
@@ -32,14 +34,22 @@ export default {
             </div>
         </li>
         <li>
-            <email-status :emails="emails"/>
+            <email-status :emails="emails" @unread="updateUnreadCount"/>
         </li>
     </ul>
     `,
     components: {
         emailStatus
     },
+    data() {
+        return {
+            unreadCount: null
+        }
+    },
     methods: {
+        updateUnreadCount(unreadCount) {
+            this.unreadCount = unreadCount;
+        },
         onSelectNav(page) {
             this.$emit('navigate', page);
         },
@@ -56,6 +66,11 @@ export default {
                     li.children[0].classList.add('active')
                 else li.children[0].classList.remove('active')
             }
+        }
+    },
+    computed: {
+        showUnreadCount() {
+            return this.unreadCount || ''
         }
     }
 };

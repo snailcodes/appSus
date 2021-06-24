@@ -24,6 +24,7 @@ export default {
             searchBy: {
                 route: 'inbox'
             },
+            sortBy: 'date',
             isComposingEmail: false
         };
     },
@@ -39,7 +40,13 @@ export default {
         loadEmails() {
             return emailService.query()
                 .then(emails => {
-                    this.emails = emails;
+                    if (this.sortBy === 'date') this.emails = emails.sort((a, b) => {
+                        console.log(a.sentAt, b.sentAt)
+                        return a.sentAt - b.sentAt
+                    });
+                    else if (this.sortBy === 'subject') this.emails = emails.sort((a, b) => {
+                        return a.subject > b.subject ? 1 : a.subject < b.subject ? -1 : 0
+                    });
                 });
         },
         showEmail(emailId) {
@@ -111,6 +118,10 @@ export default {
         },
         setSearch(searchBy) {
             this.searchBy = {...searchBy }
+        },
+        setSort(sortBy) {
+            this.sortBy = sortBy;
+            this.loadEmails();
         }
     },
     computed: {

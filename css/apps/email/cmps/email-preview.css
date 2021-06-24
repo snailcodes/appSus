@@ -27,21 +27,21 @@
 }
 
 .email-preview-star-state.white {
-    background-image: url('/img/apps/email/starwhite.png');
+    background-image: url('../../../../img/apps/email/starwhite.png');
     opacity: 0.16;
 }
 
 .email-preview-star-state.white:hover {
-    background-image: url('/img/apps/email/staryellow.png');
+    background-image: url('../../../../img/apps/email/staryellow.png');
     opacity: 1;
 }
 
 .email-preview-star-state.yellow {
-    background-image: url('/img/apps/email/staryellow.png');
+    background-image: url('../../../../img/apps/email/staryellow.png');
 }
 
 .email-preview-star-state.yellow:hover {
-    background-image: url('/img/apps/email/starwhite.png');
+    background-image: url('../../../../img/apps/email/starwhite.png');
     opacity: 0.16;
 }
 
@@ -75,7 +75,7 @@
 }
 
 .email-preview-read-state {
-    background-image: url('/img/apps/email/read.png');
+    background-image: url('../../../../img/apps/email/read.png');
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
@@ -84,8 +84,13 @@
     opacity: 0.3;
 }
 
+.email-preview-read-state:hover {
+    background-image: url('../../../../img/apps/email/unread.png');
+    opacity: 0.6
+}
+
 .email-preview-read-state.unread {
-    background-image: url('/img/apps/email/unread.png');
+    background-image: url('../../../../img/apps/email/unread.png');
     opacity: 0.6;
 }
 

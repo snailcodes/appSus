@@ -34,3 +34,8 @@
     width: 80%;
     background-color: #e8eaed;
 }
+
+.nav-inbox>span {
+    margin-left: auto;
+    font-weight: bold;
+}

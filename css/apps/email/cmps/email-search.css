@@ -5,6 +5,19 @@
     border-radius: 20px;
     padding: 5px;
     margin-bottom: 15px;
+    max-width: 560px;
+    min-width: 380px;
+}
+
+.form-email-search {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+button.btn-email-search {
+    border-radius: 25px;
 }
 
 .email-search img {
@@ -31,15 +44,25 @@ label.email-unread-state {
 
 input[type="checkbox"].input-email-search:checked+label.email-read-state::before,
 input[type="checkbox"].input-email-search:checked+label.email-unread-state::before {
-    background-image: url('/img/apps/email/checkbox-checked.png');
+    /* background-image: url('/img/apps/email/checkbox-checked.png'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
 }
 
+input[type="checkbox"].input-email-search:checked+label.email-read-state::before {
+    background-image: url('/img/apps/email/read.png');
+    opacity: 0.8;
+}
+
+input[type="checkbox"].input-email-search:checked+label.email-unread-state::before {
+    background-image: url('/img/apps/email/unread.png');
+    opacity: 0.8;
+}
+
 label.email-read-state::before,
 label.email-unread-state::before {
-    background-image: url('/img/apps/email/checkbox.png');
+    /* background-image: url('/img/apps/email/checkbox.png'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -51,9 +74,12 @@ label.email-unread-state::before {
     width: 20px;
 }
 
-.form-email-search {
-    width: 95%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+label.email-read-state::before {
+    background-image: url('/img/apps/email/read.png');
+    opacity: 0.3;
+}
+
+label.email-unread-state::before {
+    background-image: url('/img/apps/email/unread.png');
+    opacity: 0.3;
 }
