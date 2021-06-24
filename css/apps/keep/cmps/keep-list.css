@@ -1,19 +1,21 @@
 @import url('./note-todos.css');
 
+/* LIST */
 button.button-keep {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
 }
 
-input.input-keep {
-	background-color: whitesmoke;
-	border-radius: 8px;
+img.pin {
+	width: 15px;
+	height: 15px;
+	position: relative;
+	left: 0;
+	cursor: pointer;
 }
-/* 
-button .btnColor {
-} */
 
+/* COLOR CIRCLES */
 .circle {
 	border-radius: 50%;
 	height: 15px;
@@ -29,6 +31,20 @@ button .btnColor {
 }
 .circle-lightblue {
 	background-color: lightblue;
+}
+
+/* ALL INPUTS */
+input.input-keep {
+	background-color: whitesmoke;
+	border-radius: 8px;
+}
+
+/* VIDEO - CMP */
+.keep-video {
+	padding-top: 10px;
+	object-fit: fit;
+	max-width: 90%;
+	border-radius: 8px;
 }
 
 .notesList {
@@ -50,15 +66,28 @@ button .btnColor {
 	height: 100px;
 	background-color: green;
 } */
+
 .note {
 	width: 200px;
-	height: 200px;
+	min-height: 200px;
 	background-color: lightblue;
 	align-items: center;
 	border-radius: 10px;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	text-align: justify;
+	padding: 10px;
 }
 
-.note img {
+/* .note img {
 	object-fit: contain;
+} */
+
+.keep-img {
+	padding-top: 5px;
+	object-fit: contain;
+	max-width: 90%;
+	border-radius: 10px;
 }

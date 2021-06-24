@@ -4,19 +4,13 @@ import noteImg from './notes-cmps/note-img.js';
 import noteTodos from './notes-cmps/note-todos.js';
 import noteVideo from './notes-cmps/note-video.js';
 
+import { eventBus } from '../../services/event-bus-service.js';
+
 export default {
 	props: ['notes'],
 	template: `
     <section>
-        <div class="add-section">
-            <label> <input class="input-keep"  type="text" @click="addNote" placeholder="Write to add Note">
-            <button class="button-keep" @click="addNote('noteImg')"> <img src="../../../img/apps/keep/image.png" alt="addImg"> </button>
-            <button class="button-keep" @click="addNote('noteTxt')"> <img src="../../../img/apps/keep/text.png" alt="addTxt"> </button>
-            <button class="button-keep" @click="addNote('noteTodos')"> <img src="../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
-            
-        </label>
-    </div>
-    
+	
     <ul class="notesList">
             <li v-for="note in notes" :key="note.id" class="note-container"> 
 			<!-- add variable note object to make each note's style change? -->
@@ -24,8 +18,11 @@ export default {
 				<button class="button-keep" @click="changeBcg('yellow')"> <span class="circle circle-yellow"> </span> </button>
 				<button class="button-keep" @click="changeBcg('gray')"> <span  class="circle circle-gray"></span> </button>
 				<button class="button-keep" @click="changeBcg('lightblue')"> <span  class="circle circle-lightblue"></span> </button>
-                <button @click="onDelNote(note)"> Remove </button>
-                <button> Edit  </button>
+                <img class="pin" @click="onPin(note)"  src="../../../../img/apps/keep/pin.png" > 
+			
+				<button class="button-keep" @click="onDelNote(note)"> Remove </button>
+                <button class="button-keep" @click="onEditNote(note)"> Edit </button>
+                <button class="button-keep" @click="email(note)"> Email </button>
                 <!-- <notePreview :note="note" /> -->
             </li>
         </ul>
@@ -48,6 +45,16 @@ export default {
 	},
 
 	methods: {
+		email(note) {},
+
+		onPin(note) {
+			console.log('pinned');
+			// console.log(note);
+			note.isPinned = !note.isPinned;
+
+			eventBus.$emit('pinned', note);
+		},
+
 		addInput() {
 			console.log('sanity');
 		},
@@ -56,28 +63,18 @@ export default {
 			this.bcg = color;
 		},
 
-		addNote(type) {
-			console.log('sanity adding');
-			switch (type) {
-				case 'noteImg':
-					console.log('img');
-					break;
-				case 'noteTxt':
-					console.log('txt');
-					break;
-				case 'noteTodos':
-					console.log('todos');
-					break;
-
-				default:
-					break;
-			}
-		},
-
 		onDelNote(note) {
 			console.log('removing sanity');
 			console.log(note.id);
 			this.$emit('deleted', note.id);
+		},
+
+		// TODO FIGURE OUT WHY ONLY BUS WORKS ON EDITNOTE (DIRECT EMIT DID NOT WORK)
+		onEditNote(note) {
+			console.log('editing note');
+			eventBus.$emit('editedNote', note);
+			// this.$emit('editing', note);
+			// this.$emit('editedNote', note.id);
 		},
 	},
 

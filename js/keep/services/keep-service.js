@@ -20,13 +20,14 @@ function query() {
 }
 
 function addNote(type, info) {
+	console.log(type, info);
 	let newNote = {
-		id: storageService.makeId(),
+		id: null,
 		type: type,
 		isPinned: false,
 		info: info,
 	};
-	return storageService.post(keepService, newNote);
+	return storageService.post(KEEP_KEY, newNote);
 }
 
 function getById(noteId) {
@@ -52,19 +53,30 @@ function _createNotes() {
 			type: 'noteTxt',
 			isPinned: true,
 			info: { txt: 'Fullstack Me  Baby!' },
+			style: { backgroundColor: 'lightblue' },
 		},
 		{
 			id: storageService.makeId(),
+			style: { backgroundColor: 'lightblue' },
 			type: 'noteImg',
 			info: {
 				url: 'https://img.vcomments.com/en/funny/47.jpg',
-				title: 'Me   playing Mi',
+				title: 'Smile ;)',
 			},
-			style: { backgroundColor: '#00d' },
+		},
+		{
+			id: storageService.makeId(),
+			style: { backgroundColor: 'lightblue' },
+			type: 'noteImg',
+			info: {
+				url: 'https://www.icegif.com/wp-content/uploads/funny.gif',
+				title: 'Do NOT PANIC',
+			},
 		},
 		{
 			id: storageService.makeId(),
 			type: 'noteTodos',
+			style: { backgroundColor: '#00d' },
 			info: {
 				label: 'How    was   it:',
 				todos: [
@@ -72,11 +84,13 @@ function _createNotes() {
 						id: storageService.makeId(),
 						txt: 'Do   that',
 						doneAt: null,
+						isMarked: false,
 					},
 					{
 						id: storageService.makeId(),
 						txt: 'Do   this',
-						doneAt: 187111111,
+						doneAt: null,
+						isMarked: false,
 					},
 				],
 			},
@@ -84,27 +98,35 @@ function _createNotes() {
 		{
 			id: storageService.makeId(),
 			type: 'noteTxt',
+			style: { backgroundColor: '#00d' },
 			isPinned: true,
 			info: { txt: 'Fullstack Me  Baby!' },
 		},
 		{
 			id: storageService.makeId(),
+			style: { backgroundColor: '#00d' },
 			type: 'noteTxt',
 			isPinned: true,
 			info: { txt: 'Fullstack Me  Baby!' },
 		},
 		{
 			id: storageService.makeId(),
+			style: { backgroundColor: '#00d' },
 			type: 'noteTxt',
 			isPinned: true,
 			info: { txt: 'Fullstack Me  Baby!' },
 		},
+
 		{
 			id: storageService.makeId(),
-			type: 'noteTxt',
-			isPinned: true,
-			info: { txt: 'Fullstack Me  Baby!' },
+			style: { backgroundColor: 'lightblue' },
+			type: 'noteVideo',
+			info: {
+				url: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
+				title: 'Me   playing Mi',
+			},
 		},
 	];
 	return notes;
 }
+//
