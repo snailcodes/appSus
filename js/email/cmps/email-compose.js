@@ -36,7 +36,6 @@ export default {
     },
     mounted() {
         this.$refs.subject.focus();
-        console.log(this.parentEmail)
         if (this.parentEmail) {
             this.email.to = this.parentEmail.from;
             this.email.subject = `Re: ${this.parentEmail.subject}`;
@@ -70,7 +69,7 @@ export default {
         'this.$route.params': {
             immediate: true,
             handler() {
-                console.log(JSON.parse(this.$route.params.note))
+                console.log(this.$route.params)
                     // const { emailId } = this.$route.params;
                     // emailService.getById(emailId)
                     //     .then(email => this.paramEmail = email);
