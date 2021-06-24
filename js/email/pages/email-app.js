@@ -41,7 +41,6 @@ export default {
             return emailService.query()
                 .then(emails => {
                     if (this.sortBy === 'date') this.emails = emails.sort((a, b) => {
-                        console.log(a.sentAt, b.sentAt)
                         return a.sentAt - b.sentAt
                     });
                     else if (this.sortBy === 'subject') this.emails = emails.sort((a, b) => {
