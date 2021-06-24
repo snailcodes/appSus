@@ -27,7 +27,7 @@
 }
 
 .email-preview-star-state.white {
-    background-image: url('/img/apps/email/starwhite.png');
+    background-image: url('../../../img/apps/email/starwhite.png');
     opacity: 0.16;
 }
 
