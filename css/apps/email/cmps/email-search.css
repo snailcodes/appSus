@@ -44,33 +44,25 @@ label.email-unread-state {
 
 input[type="checkbox"].input-email-search:checked+label.email-read-state::before,
 input[type="checkbox"].input-email-search:checked+label.email-unread-state::before {
-<<<<<<< HEAD
-    /* background-image: url('/img/apps/email/checkbox-checked.png'); */
-=======
     background-image: url('../../../../img/apps/email/checkbox-checked.png');
->>>>>>> cf9193d4c9665871a4ea120e6515d1c6463f1466
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
 }
 
 input[type="checkbox"].input-email-search:checked+label.email-read-state::before {
-    background-image: url('/img/apps/email/read.png');
+    background-image: url('../../../../img/apps/email/read.png');
     opacity: 0.8;
 }
 
 input[type="checkbox"].input-email-search:checked+label.email-unread-state::before {
-    background-image: url('/img/apps/email/unread.png');
+    background-image: url('../../../../img/apps/email/unread.png');
     opacity: 0.8;
 }
 
 label.email-read-state::before,
 label.email-unread-state::before {
-<<<<<<< HEAD
-    /* background-image: url('/img/apps/email/checkbox.png'); */
-=======
     background-image: url('../../../../img/apps/email/checkbox.png');
->>>>>>> cf9193d4c9665871a4ea120e6515d1c6463f1466
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -82,21 +74,9 @@ label.email-unread-state::before {
     width: 20px;
 }
 
-<<<<<<< HEAD
-label.email-read-state::before {
-    background-image: url('/img/apps/email/read.png');
-    opacity: 0.3;
-}
-
-label.email-unread-state::before {
-    background-image: url('/img/apps/email/unread.png');
-    opacity: 0.3;
-}
-=======
 .form-email-search {
     width: 95%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
->>>>>>> cf9193d4c9665871a4ea120e6515d1c6463f1466
