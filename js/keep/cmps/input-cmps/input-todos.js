@@ -1,5 +1,4 @@
 // TODO: figure how to correctly display todo fields in edit -->
-// TODO: figure out how to submit enter -->
 // TODO: DELETE CHECKBOXES
 export default {
 	props: ['editedNote'],
@@ -12,7 +11,7 @@ export default {
             <!-- <input class="input-keep" type="text" placeholder="Add Task">
             <input class="input-keep" type="text" placeholder="Add Task"> -->
             </section>
-            <button class="button-keep" @keyup.prevent="addLine" @click.stop="addLine">➕</button>
+            <button class="button-keep" @click.stop="addLine">➕</button>
             <button class="button-keep" @click="submit">Submit </button>
     </form>`,
 
