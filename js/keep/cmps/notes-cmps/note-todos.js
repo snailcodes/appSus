@@ -30,7 +30,7 @@ export default {
 
 	methods: {
 		formatTime(time) {
-			console.log(time);
+			// console.log(time);
 			return new Date(time).toLocaleTimeString('en-il');
 		},
 

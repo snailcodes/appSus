@@ -1,5 +1,6 @@
-// TODO: SUPPORT UPLOAD FROM FILE
+// TODO: SUPPORT EMBED
 export default {
+	props: ['editedNote'],
 	template: `  
     
         <form v-on:keyup.enter="submit">
@@ -38,7 +39,10 @@ export default {
 		},
 	},
 	created() {
-		// console.log(this.info);
+		if (this.editedNote) {
+			this.info.title = this.editedNote.info.title;
+			this.info.url = this.editedNote.info.url;
+		}
 	},
 };
 

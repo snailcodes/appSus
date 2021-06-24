@@ -1,7 +1,9 @@
-// <!-- TODO: make number of fields reactive to button -->
+// <!-- TODO: figure how to correctly display todo fields in edit -->
+// <!-- TODO: figure out how to submit enter -->
 export default {
+	props: ['editedNote'],
 	template: `  
-    <form v-on:keyup.enter="submit">
+    <form v-on:keyup.enter.stop="submit" >
         <input v-model="info.label" class="input-keep" type="text" placeholder="Todo Title">
         <section v-for="todo in info.todos"> 
             <input v-model="todo.txt" @change="makeIdx(todo)" class="input-keep" type="text" placeholder="Add Task">
@@ -33,6 +35,10 @@ export default {
 			// console.log('submitting txt');
 			const newInfo = { ...this.info };
 			this.$emit('submitting', newInfo, 'noteTodos');
+			this.info.label = '';
+			this.info.todos.forEach((todo) => {
+				todo.txt = '';
+			});
 		},
 
 		makeIdx(todo) {
@@ -51,8 +57,13 @@ export default {
 			this.info.todos.push(newTodo);
 		},
 	},
+	mounted() {},
 
 	created() {
-		console.log(this.info);
+		if (this.editedNote) {
+			this.info.label = this.editedNote.info.label;
+			this.info.todos = [...this.editedNote.info.todos];
+		}
+		// console.log(this.info);
 	},
 };
