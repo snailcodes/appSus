@@ -10,7 +10,7 @@ export default {
         </div>
         <ul v-if="emails.length>0" class="email-previews">
             <li v-for="email in emails" :key="email.id">
-            <email-preview :email="email" @starred="onToggleStarred" @click.native="onSelectEmail(email.id)"/>
+            <email-preview :email="email" @starred="onToggleStarred" @toggleread="onToggleRead" @click.native="onSelectEmail(email.id)"/>
             </li>
         </ul>
         <div v-else class="email-empty-list">Yay! You have no emails...</div>
@@ -19,6 +19,9 @@ export default {
     methods: {
         onToggleStarred(email) {
             this.$emit('starred', email)
+        },
+        onToggleRead(email) {
+            this.$emit('toggleread', email)
         },
         onSelectEmail(emailId) {
             this.$emit('selected', emailId);

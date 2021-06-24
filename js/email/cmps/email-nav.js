@@ -5,7 +5,7 @@ export default {
     template: `
     <ul class="email-nav">
         <li>
-            <button @click="onComposeEmail" class="btn-email-compose">Compose</button>
+            <button @click="onComposeEmail" class="btn-email-compose">➕ Compose</button>
         </li>
         <li>
             <div class="nav-inbox" @click="handleClick('inbox')">
@@ -47,7 +47,10 @@ export default {
             this.$emit('compose');
         },
         handleClick(route) {
-            this.$emit('navigate', route);
+            const searchBy = {
+                route
+            }
+            this.$emit('navigate', searchBy);
             for (const li of this.$el.children) {
                 if (li.children[0].className.includes(route))
                     li.children[0].classList.add('active')

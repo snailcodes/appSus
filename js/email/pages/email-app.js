@@ -8,11 +8,10 @@ import emailCompose from '../cmps/email-compose.js';
 
 export default {
     template: `
-        <section class="email-app">
-            <email-nav @compose="isComposingEmail = true" :emails="emails"/>
-            <email-list v-if="emailsToShow" :emails="emailsToShow" @searched="setSearch" @selected="showEmail" @starred="toggleStarred"/>
-            <!-- <div v-else class="email-empty-list">Yay! You have no emails...</div> -->
-            <email-details :email="selectedEmail" @deleted="deleteEmail"/>
+        <section v-if="emails" class="email-app">
+            <email-nav @compose="isComposingEmail = true" :emails="emails" @navigate="setSearch"/>
+            <email-list v-if="emailsToShow" :emails="emailsToShow" @searched="setSearch" @selected="showEmail" @starred="toggleStarred" @toggleread="toggleRead"/>
+            <email-details :email="selectedEmail" @emailDeleted="deleteEmail" @emailReplied="loadEmails()" @replyDeleted="deleteReply"/>
             <div v-if="isComposingEmail" class="modal-container" @click.self="isComposingEmail = false">
                 <email-compose class="modal-content" @emailComposed="composeEmail"/></email-compose>
             </div>
@@ -22,7 +21,9 @@ export default {
         return {
             emails: null,
             selectedEmail: null,
-            searchBy: null,
+            searchBy: {
+                route: 'inbox'
+            },
             isComposingEmail: false
         };
     },
@@ -60,6 +61,24 @@ export default {
                 })
             this.isComposingEmail = false;
         },
+        deleteReply(replyId) {
+            emailService.getById(this.selectedEmail.id)
+                .then(email => {
+                    const idx = email.replies.findIndex(reply => {
+                        return reply.id === replyId
+                    })
+                    email.replies.splice(idx, 1)
+                    emailService.save(email)
+                        .then(email => {
+                            this.selectedEmail = email;
+                        })
+                    const msg = {
+                        txt: 'Reply has been deleted successfully',
+                        type: 'success'
+                    };
+                    eventBus.$emit('show-msg', msg);
+                })
+        },
         deleteEmail(emailId) {
             let prevEmail = emailService.getAdjcntEmails(emailId)
                 .then(adjcntEmails => {
@@ -69,10 +88,20 @@ export default {
                 .then(emails => {
                     this.emails = emails;
                     this.selectedEmail = prevEmail;
+                    const msg = {
+                        txt: 'Email has been deleted successfully',
+                        type: 'success'
+                    };
+                    eventBus.$emit('show-msg', msg);
                 })
         },
         markRead(email) {
             email.isRead = true;
+            emailService.save(email)
+                .then(() => this.loadEmails())
+        },
+        toggleRead(email) {
+            email.isRead = !email.isRead;
             emailService.save(email)
                 .then(() => this.loadEmails())
         },
@@ -86,33 +115,51 @@ export default {
     },
     computed: {
         emailsToShow() {
-            if (!this.searchBy ||
-                (!this.searchBy.txt &&
-                    ((!this.searchBy.isRead && !this.searchBy.isUnread) ||
-                        (this.searchBy.isRead && this.searchBy.isUnread)))) return this.emails;
+            if (!this.searchBy.route || this.searchBy.route === 'inbox') {
+                if (!this.searchBy ||
+                    (!this.searchBy.txt &&
+                        ((!this.searchBy.isRead && !this.searchBy.isUnread) ||
+                            (this.searchBy.isRead && this.searchBy.isUnread))))
+                    return this.emails.filter(email => {
+                        return !email.isDeleted
+                    })
 
-            if (this.searchBy.txt) {
-                const searchStr = this.searchBy.txt.toLowerCase();
-                return this.emails.filter(email => {
-                    if (email.subject.toLowerCase().includes(searchStr) ||
-                        email.body.toLowerCase().includes(searchStr)) {
-                        if (this.searchBy.isRead) {
-                            return email.isRead
-                        } else if (this.searchBy.isUnread) {
-                            return !email.isRead
-                        } else {
-                            return email
+                if (this.searchBy.txt) {
+                    const searchStr = this.searchBy.txt.toLowerCase();
+                    return this.emails.filter(email => {
+                        if (email.subject.toLowerCase().includes(searchStr) ||
+                            email.body.toLowerCase().includes(searchStr)) {
+                            if (this.searchBy.isRead) {
+                                return email.isRead
+                            } else if (this.searchBy.isUnread) {
+                                return !email.isRead
+                            } else {
+                                return email
+                            }
                         }
-                    }
-                })
-            } else if (this.searchBy.isRead) {
-                return this.emails.filter(email => {
-                    return email.isRead
-                })
-            } else {
-                return this.emails.filter(email => {
-                    return !email.isRead
-                })
+                    })
+                } else if (this.searchBy.isRead) {
+                    return this.emails.filter(email => {
+                        return email.isRead
+                    })
+                } else {
+                    return this.emails.filter(email => {
+                        return !email.isRead
+                    })
+                }
+            } else switch (this.searchBy.route) {
+                case 'starred':
+                    return this.emails.filter(email => {
+                        return email.isStarred
+                    });
+                case 'sent':
+                    return this.emails.filter(email => {
+                        return email.isSent || email.replies
+                    });
+                case 'deleted':
+                    return this.emails.filter(email => {
+                        return email.isDeleted
+                    });
             }
         }
     },

@@ -1,8 +1,9 @@
 export default {
     template: `
         <form @submit.prevent="onSearch" class="form-email-search">
-            <img src="/img/apps/email/search.svg"><input v-model="searchBy.txt" @search="onSearch" type="search" placeholder="Enter text..." class="input-email-search">
+            <img src="/img/apps/email/search.svg"><input v-model="searchBy.txt" @search="onSearch" type="search" placeholder="Search..." class="input-email-search">
             <span class="tooltip">
+                <span class="email-preview-read-state"></span>
                 <input v-model="searchBy.isRead" type="checkbox" id="email-read-state" class="input-email-search">
                 <label class="email-read-state" for="email-read-state"></label>
                 <span class="email-read-state-tip">
@@ -10,6 +11,7 @@ export default {
                 </span>
             </span>
             <span class="tooltip">
+            <span class="email-preview-read-state unread"></span>
                 <input v-model="searchBy.isUnread" type="checkbox" id="email-unread-state" class="input-email-search">
                 <label class="email-unread-state" for="email-unread-state"></label>
                 <span class="email-read-state-tip">

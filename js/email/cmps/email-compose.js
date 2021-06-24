@@ -1,12 +1,16 @@
 import { eventBus } from '../../services/event-bus-service.js';
+import { utilService } from '../../services/util-service.js'
 
 export default {
+    props: ['parentEmail'],
     template: `
-        <section>
             <form @submit.prevent="composeEmail" class="email-compose">
+                <div class="email-compose-header">
+                    <span>New Email</span>
+                </div>
                 <div class="email-compose-from">
                     To
-                    <input class="input-email" v-model="email.to" type="email">
+                    <input class="input-email" v-model="email.to" type="email" required>
                 </div>
                 <div class="email-compose-subject">
                     Subject
@@ -15,21 +19,28 @@ export default {
                 <textarea v-model="email.body"></textarea>
                 <button class="btn-email-compose">Send</button>
             </form>
-        </section>
     `,
     data() {
         return {
             email: {
+                id: utilService.makeId(),
                 to: '',
                 subject: '',
                 body: '',
                 sentAt: null,
+                isStarred: false,
+                isSent: false,
                 isRead: false
             }
         }
     },
     mounted() {
         this.$refs.subject.focus();
+        console.log(this.parentEmail)
+        if (this.parentEmail) {
+            this.email.to = this.parentEmail.from;
+            this.email.subject = `Re: ${this.parentEmail.subject}`;
+        }
     },
     methods: {
         composeEmail() {
@@ -41,7 +52,18 @@ export default {
                 eventBus.$emit('show-msg', msg);
                 return
             }
-            this.$emit('emailComposed', this.email)
+
+            if (this.parentEmail) {
+                if (!this.parentEmail.replies) this.parentEmail.replies = []
+                this.email.sentAt = Date.now();
+                this.email.isSent = true;
+                this.parentEmail.replies.push(this.email);
+                this.$emit('emailReplied', this.parentEmail)
+            } else {
+                this.email.isSent = true;
+                this.$emit('emailComposed', this.email)
+            }
         }
-    }
+    },
+    computed: {}
 }

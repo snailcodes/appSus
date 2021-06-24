@@ -2,20 +2,76 @@
     display: flex;
     flex-direction: column;
     flex-basis: 50%;
-    padding-inline: 20px;
-    padding-block: 61px;
+    padding-inline-start: 20px;
+    padding-inline-end: 10px;
+    margin-block-start: 61px;
+    overflow-y: auto;
+    height: -webkit-fill-available;
+}
+
+.email-details>span {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .email-subject {
     display: flex;
-    justify-content: space-between;
-    flex-basis: 10%;
+    justify-content: flex-end;
+    padding-block-end: 30px;
+    width: 100%;
+}
+
+.email-subject>div {
+    min-width: 65px;
+}
+
+.email-subject div span {
+    vertical-align: text-top;
+}
+
+.email-body {
+    padding-block-end: 20px;
 }
 
 .email-body.no-content {
     padding-block-start: 20px;
 }
 
-.email-delete {
+.email-delete,
+.email-reply {
+    padding-inline: 5px;
     cursor: pointer;
+}
+
+.email-delete:hover,
+.email-reply:hover {
+    filter: drop-shadow(2px 4px 7px black);
+}
+
+.email-replies {
+    height: 200px;
+}
+
+.email-replies li {
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.164);
+}
+
+.email-details::-webkit-scrollbar {
+    width: 9px;
+    height: 16px;
+}
+
+.email-details::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.email-details::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+.email-details::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
 }

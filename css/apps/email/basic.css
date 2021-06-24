@@ -15,14 +15,15 @@
     border: none;
     background: transparent;
     width: 100%;
+    line-height: 1.8;
 }
 
-textarea {
+textarea,
+textarea:focus {
     border: 1px solid #9999997c;
-    width: 100%;
+    width: 91%;
     height: 100%;
-    margin: 5px 0;
-    padding: 3px;
+    outline: none;
 }
 
 [class*=btn-email] {
@@ -42,6 +43,7 @@ textarea {
     font-weight: 500;
     height: 36px;
     min-width: 80px;
+    width: max-content;
     outline: none;
     padding: 0 16px;
     background-color: #1a73e8;
@@ -78,7 +80,7 @@ textarea {
     top: 0;
     right: 10px;
     width: 20px;
-    height: 20px;
+    height: 15px;
     border-radius: 50%;
     cursor: pointer;
     color: white;
@@ -129,7 +131,8 @@ textarea {
 
 .tooltip {
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
 }
 
 .tooltip [class*=tip] {

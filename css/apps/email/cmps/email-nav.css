@@ -11,7 +11,7 @@
     padding-block-start: 5px;
 }
 
-.email-nav li {
+.email-nav li:not(:last-of-type) {
     padding-block-end: 20px;
     cursor: pointer;
 }

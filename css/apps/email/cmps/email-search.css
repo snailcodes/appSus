@@ -7,6 +7,10 @@
     margin-bottom: 15px;
 }
 
+.email-search img {
+    opacity: 0.5;
+}
+
 input.input-email-search,
 input.input-email-search:focus {
     width: 50%
@@ -20,7 +24,8 @@ input[type="checkbox"].input-email-search {
     width: 1px;
 }
 
-label.email-read-state {
+label.email-read-state,
+label.email-unread-state {
     cursor: pointer;
 }
 
