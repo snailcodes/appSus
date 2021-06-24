@@ -25,14 +25,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding-block-start: 10px;
-    padding-block-end: 10px;
-    padding-inline: 25px;
     height: 600px;
     width: 700px;
     background-color: #fff;
-    border-radius: 15px;
-    border: 5.5px solid #9c9c9c;
 }
 
 .btn-email-compose {

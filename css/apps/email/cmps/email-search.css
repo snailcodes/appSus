@@ -20,7 +20,8 @@ input[type="checkbox"].input-email-search {
     width: 1px;
 }
 
-label.email-read-state {
+label.email-read-state,
+label.email-unread-state {
     cursor: pointer;
 }
 

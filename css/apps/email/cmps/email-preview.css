@@ -7,7 +7,7 @@
     cursor: pointer;
     background-color: #f2f5f5cc;
     color: #202124;
-    /* border-bottom: 0.5px solid rgba(128, 128, 128, 0.164); */
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.164);
 }
 
 .email-preview:hover {
@@ -28,18 +28,21 @@
 
 .email-preview-star-state.white {
     background-image: url('/img/apps/email/starwhite.png');
+    opacity: 0.16;
+}
+
+.email-preview-star-state.white:hover {
+    background-image: url('/img/apps/email/staryellow.png');
+    opacity: 1;
 }
 
 .email-preview-star-state.yellow {
     background-image: url('/img/apps/email/staryellow.png');
 }
 
-.email-preview-star-state.white:hover {
-    background-image: url('/img/apps/email/staryellow.png');
-}
-
 .email-preview-star-state.yellow:hover {
     background-image: url('/img/apps/email/starwhite.png');
+    opacity: 0.16;
 }
 
 .email-preview-subject {

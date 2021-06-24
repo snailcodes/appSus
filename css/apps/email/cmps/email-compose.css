@@ -2,12 +2,28 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
-    border-radius: 5px;
+    padding-block-end: 20px;
+    border-radius: 9px;
     text-align: center;
     height: 100%;
-    width: 100%;
     justify-content: space-between;
+    align-items: center;
+    border: 0.5px solid gray
+}
+
+.email-compose-header {
+    background: #404040;
+    width: 100%;
+    color: whitesmoke;
+    text-align: left;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.email-compose-header>span {
+    padding-inline-start: 20px;
+    height: 41px;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -19,4 +35,6 @@
     width: 90%;
     border-bottom: 1px solid #9999997c;
     padding: 5px;
+    background: white;
+    border-radius: 8px 8px 0px 0px;
 }

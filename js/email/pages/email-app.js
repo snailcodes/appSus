@@ -11,8 +11,7 @@ export default {
         <section class="email-app">
             <email-nav @compose="isComposingEmail = true" :emails="emails"/>
             <email-list v-if="emailsToShow" :emails="emailsToShow" @searched="setSearch" @selected="showEmail" @starred="toggleStarred"/>
-            <!-- <div v-else class="email-empty-list">Yay! You have no emails...</div> -->
-            <email-details :email="selectedEmail" @deleted="deleteEmail"/>
+            <email-details :email="selectedEmail" @emailDeleted="deleteEmail" @emailReplied="loadEmails()" @replyDeleted="deleteReply"/>
             <div v-if="isComposingEmail" class="modal-container" @click.self="isComposingEmail = false">
                 <email-compose class="modal-content" @emailComposed="composeEmail"/></email-compose>
             </div>
@@ -60,6 +59,24 @@ export default {
                 })
             this.isComposingEmail = false;
         },
+        deleteReply(replyId) {
+            emailService.getById(this.selectedEmail.id)
+                .then(email => {
+                    const idx = email.replies.findIndex(reply => {
+                        return reply.id === replyId
+                    })
+                    email.replies.splice(idx, 1)
+                    emailService.save(email)
+                        .then(email => {
+                            this.selectedEmail = email;
+                        })
+                    const msg = {
+                        txt: 'Reply has been deleted successfully',
+                        type: 'success'
+                    };
+                    eventBus.$emit('show-msg', msg);
+                })
+        },
         deleteEmail(emailId) {
             let prevEmail = emailService.getAdjcntEmails(emailId)
                 .then(adjcntEmails => {
@@ -69,6 +86,11 @@ export default {
                 .then(emails => {
                     this.emails = emails;
                     this.selectedEmail = prevEmail;
+                    const msg = {
+                        txt: 'Email has been deleted successfully',
+                        type: 'success'
+                    };
+                    eventBus.$emit('show-msg', msg);
                 })
         },
         markRead(email) {

@@ -1,4 +1,5 @@
 import { storageService } from '../../services/async-storage-service.js';
+import { utilService } from '../../services/util-service.js'
 
 const EMAILS_KEY = 'emailsDB';
 
@@ -15,7 +16,9 @@ function query() {
         return Promise.resolve(JSON.parse(localStorage.getItem(EMAILS_KEY)))
     } else {
         const emails = [{
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'Wassap? Lorem, ipsum dolor sit amet consectetur',
             body: 'Pick up! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -24,7 +27,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'Hey there!!! Lorem, ipsum dolor',
             body: 'How are you doing?! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -33,7 +38,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'You won $1,000,000 dollars!!! Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
             body: 'OMG can you believe it??? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -42,7 +49,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -51,7 +60,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -60,7 +71,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -69,7 +82,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -78,7 +93,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -87,7 +104,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -96,7 +115,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -105,7 +126,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -114,7 +137,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -123,7 +148,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -132,7 +159,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -141,7 +170,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -150,7 +181,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -159,7 +192,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -168,7 +203,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -177,7 +214,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -186,7 +225,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -195,7 +236,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -204,7 +247,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -213,7 +258,9 @@ function query() {
             isDeleted: false,
             sentAt: Date.now()
         }, {
-            id: makeId(),
+            id: utilService.makeId(),
+            from: 'omribaram@gmail.com',
+            to: 'omribaram@gmail.com',
             subject: 'We\'re glad to inform you!!!',
             body: 'You have been accepeted! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia magnam beatae dolor voluptate ex voluptates ea illo. Eveniet, aspernatur assumenda?',
             isRead: false,
@@ -231,15 +278,6 @@ function query() {
 //     createEmails();
 //     return storageService.query(EMAILS_KEY);
 // }
-
-function makeId(length = 7) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-}
 
 function getById(emailID) {
     return storageService.get(EMAILS_KEY, emailID);
