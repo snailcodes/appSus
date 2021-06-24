@@ -1,6 +1,7 @@
 .email-app {
     display: flex;
-    height: 100vh;
+    height: 90vh;
+    padding-block-start: 10px;
 }
 
 .email-empty-list {

@@ -1,30 +1,28 @@
 import { emailService } from '../services/email-service.js';
 import { eventBus } from '../../services/event-bus-service.js';
 import emailList from '../cmps/email-list.js';
-import emailStatus from '../cmps/email-status.js';
+import emailNav from '../cmps/email-nav.js';
 import emailDetails from './email-details.js';
-import emailFilter from '../cmps/email-filter.js';
+import emailSearch from '../cmps/email-search.js';
 import emailCompose from '../cmps/email-compose.js';
 
 export default {
     template: `
         <section class="email-app">
-            <email-list v-if="emails && emails.length>0" :emails="emailsToShow" @selected="showEmail"/>
-            <div v-else class="email-empty-list">Yay! You have no emails...</div>
+            <email-nav @compose="isComposingEmail = true" :emails="emails"/>
+            <email-list v-if="emailsToShow" :emails="emailsToShow" @searched="setSearch" @selected="showEmail" @starred="toggleStarred"/>
+            <!-- <div v-else class="email-empty-list">Yay! You have no emails...</div> -->
             <email-details :email="selectedEmail" @deleted="deleteEmail"/>
-            <email-status :emails="emails"></email-status>
-            <email-filter @filtered="setFilter"></email-filter>
             <div v-if="isComposingEmail" class="modal-container" @click.self="isComposingEmail = false">
                 <email-compose class="modal-content" @emailComposed="composeEmail"/></email-compose>
             </div>
-            <button @click="isComposingEmail = true" class="btn-email-compose">Compose a new email</button>
         </section>
     `,
     data() {
         return {
             emails: null,
             selectedEmail: null,
-            filterBy: null,
+            searchBy: null,
             isComposingEmail: false
         };
     },
@@ -78,32 +76,36 @@ export default {
             emailService.save(email)
                 .then(() => this.loadEmails())
         },
-        setFilter(filterBy) {
-            this.filterBy = {...filterBy }
+        toggleStarred(email) {
+            email.isStarred = !email.isStarred;
+            emailService.save(email);
+        },
+        setSearch(searchBy) {
+            this.searchBy = {...searchBy }
         }
     },
     computed: {
         emailsToShow() {
-            if (!this.filterBy ||
-                (!this.filterBy.txt &&
-                    ((!this.filterBy.isRead && !this.filterBy.isUnread) ||
-                        (this.filterBy.isRead && this.filterBy.isUnread)))) return this.emails;
+            if (!this.searchBy ||
+                (!this.searchBy.txt &&
+                    ((!this.searchBy.isRead && !this.searchBy.isUnread) ||
+                        (this.searchBy.isRead && this.searchBy.isUnread)))) return this.emails;
 
-            if (this.filterBy.txt) {
-                const filterStr = this.filterBy.txt.toLowerCase();
+            if (this.searchBy.txt) {
+                const searchStr = this.searchBy.txt.toLowerCase();
                 return this.emails.filter(email => {
-                    if (email.subject.toLowerCase().includes(filterStr) ||
-                        email.body.toLowerCase().includes(filterStr)) {
-                        if (this.filterBy.isRead) {
+                    if (email.subject.toLowerCase().includes(searchStr) ||
+                        email.body.toLowerCase().includes(searchStr)) {
+                        if (this.searchBy.isRead) {
                             return email.isRead
-                        } else if (this.filterBy.isUnread) {
+                        } else if (this.searchBy.isUnread) {
                             return !email.isRead
                         } else {
                             return email
                         }
                     }
                 })
-            } else if (this.filterBy.isRead) {
+            } else if (this.searchBy.isRead) {
                 return this.emails.filter(email => {
                     return email.isRead
                 })
@@ -115,10 +117,10 @@ export default {
         }
     },
     components: {
-        emailFilter,
+        emailNav,
+        emailSearch,
         emailList,
         emailDetails,
-        emailStatus,
         emailCompose
     }
 }

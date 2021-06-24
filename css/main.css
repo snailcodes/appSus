@@ -41,12 +41,6 @@ a:hover {
     color: #5da2bf;
 }
 
-img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
 textarea {
     resize: none;
 }

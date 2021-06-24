@@ -1,4 +1,30 @@
 .email-list {
-    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 34%;
+    overflow: hidden;
+}
+
+.email-previews {
     overflow-y: auto;
+}
+
+.email-previews::-webkit-scrollbar {
+    width: 9px;
+    height: 16px;
+}
+
+.email-previews::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.email-previews::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+.email-previews::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
 }

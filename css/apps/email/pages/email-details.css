@@ -3,13 +3,17 @@
     flex-direction: column;
     flex-basis: 50%;
     padding-inline: 20px;
-    padding-block: 20px;
+    padding-block: 61px;
 }
 
 .email-subject {
     display: flex;
     justify-content: space-between;
     flex-basis: 10%;
+}
+
+.email-body.no-content {
+    padding-block-start: 20px;
 }
 
 .email-delete {

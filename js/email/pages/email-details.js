@@ -7,12 +7,14 @@ export default {
         <section v-if="email" class="email-details">
             <div class="email-subject">
                 <span>{{email.subject}}</span>
-                <span @click="onDeleteEmail" class="email-delete">🗑️</span>
+                <span @click="onDeleteEmail" class="email-delete">
+                    <img src="img/apps/email/delete.png">
+                </span>
             </div>
             <div class="email-body">{{email.body}}</div>
         </section>
         <section v-else class="email-details">
-            <div class="email-body">No selected email</div>
+            <div class="email-body no-content"><span>No selected email</span></div>
         </section>
     `,
     data() {

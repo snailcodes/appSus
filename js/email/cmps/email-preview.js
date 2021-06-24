@@ -8,19 +8,28 @@ export default {
     },
     template: `
         <div class="email-preview">
-            <long-text class="email-preview-subject" :txt="email.subject" :length="40"></long-text>
-            <long-text class="email-preview-body" :txt="email.body" :length="30"></long-text>
-            <div class="email-preview-send-date">{{showSentTime}}</div>
-            <div class="email-preview-read-state" :class="showReadState">✉️</div>
+            <div class="email-preview-top">
+                <span v-bind:class="classStarredState" @click="onToggleStarred"></span>
+                <long-text class="email-preview-subject" :txt="email.subject" :length="50" :class="showReadState"></long-text>
+                <div class="email-preview-send-date" :class="showReadState">{{showFormattedTime}}</div>
+            </div>
+            <long-text class="email-preview-body" :txt="email.body" :length="60" :class="showReadState"></long-text>
         </div>
     `,
-    methods: {},
+    methods: {
+        onToggleStarred() {
+            this.$emit('starred', this.email)
+        }
+    },
     computed: {
-        showSentTime() {
+        showFormattedTime() {
             return new Date(this.email.sentAt).toLocaleDateString('en-il');
         },
         showReadState() {
             return !this.email.isRead ? 'unread' : ''
+        },
+        classStarredState() {
+            return this.email.isStarred ? 'email-preview-star-state yellow' : 'email-preview-star-state white'
         }
     }
 };
