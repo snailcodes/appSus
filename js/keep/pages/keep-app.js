@@ -9,12 +9,10 @@ import noteFilter from '../cmps/note-filter.js';
 
 export default {
 	template: `
-    <section v-if="notes.length" class="keepApp" >
-		
-		<section class="keepApp-header">
-			<div class="header-control">
+    <section v-if="notes.length" class="keepApp-header" >
+		<section class="header-control">
 		<note-filter class="note-search-bar" @filtered="setFilter"    />
-		<div class="add-section">
+		<!-- <div class="add-section"> -->
 			<!-- //TODO: BUG PHOTO WONT APPEAR ON GIT - CHECK -->
 			<label>
 				<component @submitting="renderNote" :is="inputType" :info="newInfo" :editedNote="editedNote" > </component>
@@ -22,9 +20,9 @@ export default {
 				<button class="button-keep" @click="setType('noteImg')"> <img src="'/../../../img/apps/keep/image.png" alt="addImg"> </button>
 				<button class="button-keep" @click="setType('noteTodos')"> <img src="/../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
 				<button class="button-keep" @click="setType('noteVideo')"> <img src="/../../../img/apps/keep/video.png" alt="addChkBox"> </button>          
+				
 			</label>
-			</div>
-		</div>
+		<!-- </div> -->
 		</section>
         <note-list  :notes="notesToShow" @deleted="deleteNote" /> 
     </section>
@@ -47,7 +45,7 @@ export default {
 			inputType: 'inputTxt',
 			newInfo: {},
 			isEdit: false,
-			editedNote: {},
+			editedNote: null,
 			filterBy: null,
 		};
 	},
@@ -106,9 +104,10 @@ export default {
 		},
 
 		editNote(note) {
-			console.log('got here to edit', note);
+			// console.log('got here to edit', note);
 			this.setType(note.type);
 			this.editedNote = { ...note };
+			console.log(this.editedNote);
 			this.isEdit = true;
 			console.log(this.inputType);
 		},

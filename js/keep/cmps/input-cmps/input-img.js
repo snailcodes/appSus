@@ -4,16 +4,15 @@ export default {
 	template: `  
     
         <form class="keep-form" v-on:keyup.enter="submit">
-			<section>
+			
             <input class="input-keep" v-model="info.title"  type="text" placeholder="Title">
-           
             <input class="input-keep" type="url" v-model="info.url" placeholder="Enter URL" >
             <button class="button-keep" @click.stop="isFromFile"> 
-			</section>
-			<div><img  src="../../../../img/apps/keep/upload.png" alt="uploadFile"> </button></div>
+
+			<img  src="../../../../img/apps/keep/upload.png" alt="uploadFile"> </button>
             <!-- <input v-else type="file"> -->
                 
-    </form> 
+   		 </form> 
     `,
 
 	data() {

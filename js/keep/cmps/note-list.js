@@ -48,7 +48,10 @@ export default {
 	},
 
 	methods: {
-		email(note) {},
+		email(note) {
+			// let emailNote = JSON.stringify(note);
+			this.$router.push(`/email/composeFromNote/${JSON.stringify(note)}`);
+		},
 
 		onPin(note) {
 			console.log('pinned');
