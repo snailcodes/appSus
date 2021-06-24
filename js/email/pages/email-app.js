@@ -27,7 +27,9 @@ export default {
             isComposingEmail: false
         };
     },
-    created() {},
+    created() {
+        this.sendNote();
+    },
     mounted() {
         this.loadEmails()
             .then(() => {
@@ -36,6 +38,16 @@ export default {
             })
     },
     methods: {
+        sendNote() {
+            let note = {
+                info: {
+                    txt: 'kgfjlsdfldsfds'
+                },
+                type: 'noteTxt'
+            }
+            note = JSON.stringify(note);
+            this.$router.push(`/email/composeFromNote/${note}`);
+        },
         loadEmails() {
             return emailService.query()
                 .then(emails => {

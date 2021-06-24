@@ -71,16 +71,6 @@ export default {
             eventBus.$emit('show-msg', msg);
         }
     },
-    watch: {
-        '$route.params.emailId': {
-            immediate: true,
-            handler() {
-                const { emailId } = this.$route.params;
-                emailService.getById(emailId)
-                    .then(email => this.paramEmail = email);
-            }
-        }
-    },
     computed: {
         showFormattedTime() {
             return new Date(this.email.sentAt).toLocaleDateString('en-il', { month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' });

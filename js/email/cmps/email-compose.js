@@ -65,5 +65,16 @@ export default {
             }
         }
     },
-    computed: {}
+    computed: {},
+    watch: {
+        'this.$route.params': {
+            immediate: true,
+            handler() {
+                console.log(JSON.parse(this.$route.params.note))
+                    // const { emailId } = this.$route.params;
+                    // emailService.getById(emailId)
+                    //     .then(email => this.paramEmail = email);
+            }
+        }
+    }
 }
