@@ -5,6 +5,32 @@
     overflow: hidden;
 }
 
+
+/***************************/
+
+.email-list {
+    grid-row: 1/-1;
+    grid-column: 2/3;
+}
+
+@media (max-width: 1300px) {
+    .email-list {
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+}
+
+@media (max-width: 850px) {
+    .email-list {
+        grid-row: 2/3;
+        grid-column: 1/-1;
+        margin-inline-start: 10px;
+    }
+}
+
+
+/***************************/
+
 .email-previews {
     overflow-y: auto;
 }

@@ -31,17 +31,13 @@ export default {
     created() {},
     mounted() {
         this.loadEmails()
-            .then(() => {
-                this.markRead(this.emails[0]);
-                this.selectedEmail = this.emails[0]
-            })
     },
     methods: {
         loadEmails() {
             return emailService.query()
                 .then(emails => {
                     if (this.sortBy === 'date') this.emails = emails.sort((a, b) => {
-                        return a.sentAt - b.sentAt
+                        return b.sentAt - a.sentAt
                     });
                     else if (this.sortBy === 'subject') this.emails = emails.sort((a, b) => {
                         return a.subject > b.subject ? 1 : a.subject < b.subject ? -1 : 0

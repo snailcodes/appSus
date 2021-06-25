@@ -24,7 +24,6 @@ export default {
     data() {
         return {
             email: {
-                id: utilService.makeId(),
                 to: '',
                 subject: '',
                 body: '',
@@ -39,7 +38,8 @@ export default {
         this.$refs.subject.focus();
         if (this.parentEmail) {
             this.email.to = this.parentEmail.from;
-            this.email.subject = `Re: ${this.parentEmail.subject}`;
+            if (this.parentEmail.replies) this.email.subject = `Re: ${this.parentEmail.replies[this.parentEmail.replies.length-1].subject}`;
+            else this.email.subject = `Re: ${this.parentEmail.subject}`;
         }
     },
     methods: {
@@ -55,12 +55,15 @@ export default {
 
             if (this.parentEmail) {
                 if (!this.parentEmail.replies) this.parentEmail.replies = []
+                this.email.id = utilService.makeId()
                 this.email.sentAt = Date.now();
                 this.email.isSent = true;
                 this.parentEmail.replies.push(this.email);
                 this.$emit('emailReplied', this.parentEmail)
             } else {
+                this.email.sentAt = Date.now();
                 this.email.isSent = true;
+                this.email.from = "omribaram@gmail.com";
                 this.$emit('emailComposed', this.email)
             }
         }
@@ -70,10 +73,10 @@ export default {
         'this.$route.params': {
             immediate: true,
             handler() {
-                console.log(this.$route.params)
-                    // const { emailId } = this.$route.params;
-                    // emailService.getById(emailId)
-                    //     .then(email => this.paramEmail = email);
+                // console.log(this.$route.params)
+                // const { emailId } = this.$route.params;
+                // emailService.getById(emailId)
+                //     .then(email => this.paramEmail = email);
             }
         }
     }

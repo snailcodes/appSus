@@ -9,6 +9,27 @@
     min-width: 380px;
 }
 
+
+/****************************/
+
+.email-search {
+    align-self: center;
+}
+
+@media (max-width: 850px) {
+    .email-search {
+        min-width: 250px;
+        align-self: flex-end;
+    }
+    .ham-menu-block {
+        width: 50px;
+        background-color: black;
+    }
+}
+
+
+/****************************/
+
 .form-email-search {
     width: 100%;
     display: flex;

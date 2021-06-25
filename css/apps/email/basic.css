@@ -23,6 +23,7 @@ textarea:focus {
     border: 1px solid #9999997c;
     width: 91%;
     height: 100%;
+    min-height: 125px;
     outline: none;
 }
 
@@ -151,6 +152,13 @@ textarea:focus {
     right: -15px;
     font-size: 1rem;
     cursor: default;
+}
+
+@media (max-width: 1000px) {
+    .tooltip {
+        height: 100%;
+        align-items: center;
+    }
 }
 
 .tooltip:hover [class*=tip] {
