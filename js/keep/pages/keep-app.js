@@ -20,10 +20,10 @@ export default {
 					<component class="keep-modal-content" @submitting="renderNote" :is="inputType" :info="newInfo" :editedNote="editedNote" > </component>
 				</div> 
 				<div class="add-buttons">
-				<button class="button-keep" @click="setType('noteTxt')">  <img title="Add Text" src="/../../../img/apps/keep/text.png" alt="addTxt"> </button>
-				<button class="button-keep" @click="setType('noteImg')"> <img title="Add Image" src="'/../../../img/apps/keep/image.png" alt="addImg"> </button>
-				<button class="button-keep" @click="setType('noteTodos')"> <img title="Add Todos" src="/../../../img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
-				<button class="button-keep" @click="setType('noteVideo')"> <img title="Add Video" src="/../../../img/apps/keep/video.png" alt="addChkBox"> </button>          
+				<button class="button-keep" @click="setType('noteTxt')">  <img title="Add Text" src="img/apps/keep/text.png" alt="addTxt"> </button>
+				<button class="button-keep" @click="setType('noteImg')"> <img title="Add Image" src="img/apps/keep/image.png" alt="addImg"> </button>
+				<button class="button-keep" @click="setType('noteTodos')"> <img title="Add Todos" src="img/apps/keep/checkbox.png" alt="addChkBox"> </button>          
+				<button class="button-keep" @click="setType('noteVideo')"> <img title="Add Video" src="img/apps/keep/video.png" alt="addChkBox"> </button>          
 				</div>
 			</label>
 		<!-- </div> -->
