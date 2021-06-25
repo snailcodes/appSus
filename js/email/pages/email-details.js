@@ -12,6 +12,9 @@ export default {
                     <span>From {{email.from}}</span>
                     <div>
                         <span>{{showFormattedTime}}</span>
+                        <span @click="onSendNote" class="email-send-note">
+                            <img src="img/apps/email/checkbox.png">
+                        </span>
                         <span @click="onToggleReply" class="email-reply">
                             <img src="img/apps/email/reply.png">
                         </span>
@@ -69,6 +72,12 @@ export default {
                 type: 'success'
             };
             eventBus.$emit('show-msg', msg);
+        },
+        onSendNote() {
+            this.$router.push({
+                name: 'emailToNote',
+                params: { email: this.email }
+            })
         }
     },
     computed: {
