@@ -1,11 +1,11 @@
-@import url('/css/apps/email/cmps/email-list.css');
-@import url('/css/apps/email/cmps/email-nav.css');
-@import url('/css/apps/email/cmps/email-status.css');
-@import url('/css/apps/email/cmps/email-search.css');
-@import url('/css/apps/email/cmps/email-preview.css');
-@import url('/css/apps/email/cmps/email-compose.css');
-@import url('/css/apps/email/pages/email-details.css');
-@import url('/css/apps/email/pages/email-app.css');
+@import url('cmps/email-list.css');
+@import url('cmps/email-nav.css');
+@import url('cmps/email-status.css');
+@import url('cmps/email-search.css');
+@import url('cmps/email-preview.css');
+@import url('cmps/email-compose.css');
+@import url('pages/email-details.css');
+@import url('pages/email-app.css');
 
 /***********************/
 
@@ -23,6 +23,7 @@ textarea:focus {
     border: 1px solid #9999997c;
     width: 91%;
     height: 100%;
+    min-height: 125px;
     outline: none;
 }
 
@@ -147,10 +148,17 @@ textarea:focus {
     border: 1px solid gray;
     position: absolute;
     z-index: 1;
-    top: 20px;
+    top: 25px;
     right: -15px;
     font-size: 1rem;
     cursor: default;
+}
+
+@media (max-width: 1000px) {
+    .tooltip {
+        height: 100%;
+        align-items: center;
+    }
 }
 
 .tooltip:hover [class*=tip] {

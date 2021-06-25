@@ -5,6 +5,7 @@ export default {
     props: ['emails'],
     template: `
     <section class="email-list">
+        <div class="ham-menu-block"></div>
         <div class="email-search">
             <email-search @searched="onSearch"/>
         </div>

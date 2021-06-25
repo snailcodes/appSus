@@ -9,6 +9,7 @@ export default {
             <section v-if="email" class="email-details">
                 <span>{{email.subject}}</span>
                 <div class="email-subject">
+                    <span>From {{email.from}}</span>
                     <div>
                         <span>{{showFormattedTime}}</span>
                         <span @click="onToggleReply" class="email-reply">
@@ -26,7 +27,6 @@ export default {
                         <section class="email-details">
                             <span>{{reply.subject}}</span>
                             <div class="email-subject">
-                                
                                 <div>
                                     <span>{{showFormattedTime}}</span>
                                     <span @click="onDeleteEmail('reply', reply.id)" class="email-delete">

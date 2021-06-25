@@ -38,3 +38,9 @@
     background: white;
     border-radius: 8px 8px 0px 0px;
 }
+
+button.btn-email-send {
+    width: 100px;
+    min-height: 40px;
+    border-radius: 15px;
+}

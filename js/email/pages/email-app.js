@@ -24,32 +24,29 @@ export default {
 			searchBy: {
 				route: 'inbox',
 			},
+			sortBy: 'date',
 			isComposingEmail: false,
 		};
 	},
-	created() {
-		this.sendNote();
-	},
+	created() {},
 	mounted() {
-		this.loadEmails().then(() => {
-			this.markRead(this.emails[0]);
-			this.selectedEmail = this.emails[0];
-		});
+		this.loadEmails();
 	},
 	methods: {
-		sendNote() {
-			let note = {
-				info: {
-					txt: 'kgfjlsdfldsfds',
-				},
-				type: 'noteTxt',
-			};
-			note = JSON.stringify(note);
-			// this.$router.push(`/email/composeFromNote/${note}`);
-		},
 		loadEmails() {
 			return emailService.query().then((emails) => {
-				this.emails = emails;
+				if (this.sortBy === 'date')
+					this.emails = emails.sort((a, b) => {
+						return b.sentAt - a.sentAt;
+					});
+				else if (this.sortBy === 'subject')
+					this.emails = emails.sort((a, b) => {
+						return a.subject > b.subject
+							? 1
+							: a.subject < b.subject
+							? -1
+							: 0;
+					});
 			});
 		},
 		showEmail(emailId) {
@@ -115,6 +112,10 @@ export default {
 		},
 		setSearch(searchBy) {
 			this.searchBy = { ...searchBy };
+		},
+		setSort(sortBy) {
+			this.sortBy = sortBy;
+			this.loadEmails();
 		},
 	},
 	computed: {

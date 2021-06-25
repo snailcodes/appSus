@@ -20,6 +20,7 @@ export default {
                 totalCount++;
             }
             const progress = ((readCount / totalCount) * 100).toFixed(0);
+            this.$emit('unread', totalCount - readCount);
             return !isNaN(progress) ? `${progress}` : '0'
         }
     },

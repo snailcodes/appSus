@@ -7,22 +7,57 @@
     margin-block-start: 61px;
     overflow-y: auto;
     height: -webkit-fill-available;
+    border-left: 6px double #e1e1e1;
+    margin-inline: 4px;
 }
+
+
+/****************************/
+
+.email-details {
+    height: auto;
+    grid-row: 1/-1;
+    grid-column: 3/-1;
+}
+
+@media (max-width: 1300px) {
+    .email-details {
+        grid-row: 2/-1;
+        grid-column: 2/-1;
+    }
+}
+
+@media (max-width: 850px) {
+    .email-details {
+        grid-row: 3/-1;
+        grid-column: 1/-1;
+        border-left: none;
+        margin-inline: none;
+    }
+}
+
+
+/****************************/
 
 .email-details>span {
     font-size: 1.2rem;
     font-weight: bold;
+    padding-block-end: 10px;
 }
 
 .email-subject {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding-block-end: 30px;
     width: 100%;
 }
 
 .email-subject>div {
     min-width: 65px;
+}
+
+.email-subject>div>span {
+    margin-right: auto;
 }
 
 .email-subject div span {

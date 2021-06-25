@@ -6,7 +6,8 @@ export default {
     template: `
             <form @submit.prevent="composeEmail" class="email-compose">
                 <div class="email-compose-header">
-                    <span>New Email</span>
+                    <span v-if="!parentEmail">New Email</span>
+                    <span v-else>Reply</span>
                 </div>
                 <div class="email-compose-from">
                     To
@@ -17,13 +18,12 @@ export default {
                     <input class="input-email" ref="subject" v-model="email.subject" type="text" maxlength="50">
                 </div>
                 <textarea v-model="email.body"></textarea>
-                <button class="btn-email-compose">Send</button>
+                <button class="btn-email-send">Send</button>
             </form>
     `,
     data() {
         return {
             email: {
-                id: utilService.makeId(),
                 to: '',
                 subject: '',
                 body: '',
@@ -36,10 +36,10 @@ export default {
     },
     mounted() {
         this.$refs.subject.focus();
-        console.log(this.parentEmail)
         if (this.parentEmail) {
             this.email.to = this.parentEmail.from;
-            this.email.subject = `Re: ${this.parentEmail.subject}`;
+            if (this.parentEmail.replies) this.email.subject = `Re: ${this.parentEmail.replies[this.parentEmail.replies.length-1].subject}`;
+            else this.email.subject = `Re: ${this.parentEmail.subject}`;
         }
     },
     methods: {
@@ -55,12 +55,15 @@ export default {
 
             if (this.parentEmail) {
                 if (!this.parentEmail.replies) this.parentEmail.replies = []
+                this.email.id = utilService.makeId()
                 this.email.sentAt = Date.now();
                 this.email.isSent = true;
                 this.parentEmail.replies.push(this.email);
                 this.$emit('emailReplied', this.parentEmail)
             } else {
+                this.email.sentAt = Date.now();
                 this.email.isSent = true;
+                this.email.from = "omribaram@gmail.com";
                 this.$emit('emailComposed', this.email)
             }
         }
@@ -70,10 +73,10 @@ export default {
         'this.$route.params': {
             immediate: true,
             handler() {
-                console.log(JSON.parse(this.$route.params.note))
-                    // const { emailId } = this.$route.params;
-                    // emailService.getById(emailId)
-                    //     .then(email => this.paramEmail = email);
+                // console.log(this.$route.params)
+                // const { emailId } = this.$route.params;
+                // emailService.getById(emailId)
+                //     .then(email => this.paramEmail = email);
             }
         }
     }

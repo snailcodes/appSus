@@ -1,4 +1,8 @@
 .email-nav {
+    position: relative;
+}
+
+.email-nav-menu {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -6,9 +10,29 @@
     max-width: 240px;
 }
 
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin: 6px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #828282;
+    box-shadow: 0 0 #00d5ff;
+}
+
 .email-nav li:first-of-type {
     align-self: center;
-    padding-block-start: 5px;
+    padding-block-start: 3px;
+    padding-inline-end: 15px;
+}
+
+button.btn-email-compose {
+    border-radius: 15px;
 }
 
 .email-nav li:not(:last-of-type) {
@@ -34,3 +58,114 @@
     width: 80%;
     background-color: #e8eaed;
 }
+
+.nav-inbox>span {
+    margin-left: auto;
+    font-weight: bold;
+}
+
+
+/***************************/
+
+@media (max-width: 1300px) {
+    .email-nav {
+        grid-row: 1/2;
+        grid-column: 1/-1;
+    }
+    .email-nav-menu {
+        flex-direction: row;
+        min-width: initial;
+        max-width: initial;
+        gap: 10px;
+        justify-content: space-around;
+    }
+    div[class^=nav] {
+        padding-block: 10px;
+        padding-inline: 20px;
+        display: flex;
+    }
+    div[class^=nav]:hover {
+        border-radius: 16px;
+        background-color: #e8eaed;
+    }
+    div[class^=nav].active {
+        border-radius: 16px;
+        background-color: #e8eaed;
+    }
+    .email-nav li:first-of-type {
+        padding-inline-start: 10px;
+        padding-block-start: 0px;
+    }
+    button.btn-email-compose {
+        height: 41px;
+    }
+}
+
+@media (max-width: 850px) {
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        padding-inline-start: 10px;
+        z-index: 2;
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(12px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+    .email-nav-menu {
+        position: absolute;
+        left: -100%;
+        top: 0;
+        flex-direction: column;
+        background-color: #c8c8c8;
+        border: 1px solid gray;
+        opacity: 0.95;
+        border-radius: 0 30px 30px 0;
+        padding-block: 10px;
+        padding-inline: 0px;
+        transition: 0.3s;
+        box-shadow: 0px 0px 27px 3px rgb(158 158 158);
+        z-index: 2;
+    }
+    .email-nav-menu.active {
+        left: 0;
+        width: 250px;
+    }
+    .email-nav li:first-of-type {
+        align-self: flex-end;
+        padding-inline-end: 30px;
+    }
+    .email-nav li:not(:last-of-type) {
+        padding-block-end: 0px;
+        cursor: pointer;
+    }
+    .email-nav li:last-of-type {
+        padding-block-end: 20px;
+    }
+    button.btn-email-compose {
+        border-radius: 15px;
+        width: 140px;
+    }
+    div[class^=nav]:hover {
+        border-radius: 0 16px 16px 0;
+        background-color: #e8eaed;
+        width: 180px;
+    }
+    div[class^=nav].active {
+        border-radius: 0 16px 16px 0;
+        border: 0.5px solid gray;
+        background-color: #e8eaed;
+        width: 180px;
+    }
+}
+
+
+/***************************/
