@@ -197,6 +197,7 @@ export default {
 		console.log('sanity app');
 		eventBus.$on('checked', this.onUpdateNote);
 		eventBus.$on('pinned', this.onUpdateNote);
+		eventBus.$on('loadFile', this.onUpdateNote);
 		eventBus.$on('bcgolored', this.onUpdateNote);
 		eventBus.$on('editedNote', this.editNote);
 		this.loadNotes();

@@ -83,7 +83,5 @@ export default {
 
 	computed: {},
 
-	created() {
-		console.log('sanity list');
-	},
+	created() {},
 };

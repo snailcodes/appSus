@@ -13,7 +13,7 @@ export default {
 				<label > 
 					<!-- //change so only happens when marked complete -->
 					<input v-model="todo.isChecked" @click="complete(todo,idx)" type="checkbox" :name="todo.txt" :id="todo.txt">
-					{{todo.txt}}
+					{{todo.txt}} 
 					<span class="todos-completed" v-if="todo.isChecked" > {{formatDate(todo.doneAt)}} ({{formatTime(todo.doneAt)}})</span>
 				</label>
 			</li>
@@ -41,7 +41,11 @@ export default {
 				completedTodo.doneAt = Date.now();
 				this.note.info.todos[idx] = completedTodo;
 				eventBus.$emit('checked', this.note);
-			} else todo.isChecked = false;
+				// this.note.style.textDecoration = 'line-through';
+			} else {
+				todo.isChecked = false;
+				// this.note.style.textDecoration = 'unset';
+			}
 		},
 	},
 
