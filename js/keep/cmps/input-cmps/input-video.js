@@ -1,11 +1,11 @@
-// TODO: SUPPORT EMBED
 export default {
 	props: ['editedNote'],
 	template: `  
     
         <form class="keep-form" v-on:keyup.enter="submit">
-            <input class="input-keep" v-model="info.title"  type="text" placeholder="Title">
-         
+		<h3 v-if="editedNote"> Edit Video Note  </h3>
+		<h4 class="keep-add-text" v-else> Add Video Note </h4>
+            <input class="input-keep" v-model="info.title"  type="text" placeholder="Write Title">
             <input class="input-keep" type="url" v-model="info.url" placeholder="Enter URL" >
 			
     </form> 
@@ -22,7 +22,6 @@ export default {
 
 	methods: {
 		submit() {
-			// console.log('submitting txt');
 			const newInfo = { ...this.info };
 			console.log(this.info.url);
 			this.$emit('submitting', newInfo, 'noteVideo');
@@ -32,7 +31,6 @@ export default {
 
 		updateUrl(val) {
 			console.log(val);
-			// this.info.url = val;
 		},
 		isFromFile() {
 			this.fromFile = !this.fromFile;

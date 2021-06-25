@@ -26,6 +26,7 @@ function addNote(type, info) {
 		type: type,
 		isPinned: false,
 		info: info,
+		style: { backgroundColor: 'lightblue' },
 	};
 	return storageService.post(KEEP_KEY, newNote);
 }
@@ -86,7 +87,7 @@ function _createNotes() {
 		{
 			id: storageService.makeId(),
 			type: 'noteTodos',
-			style: { backgroundColor: '#00d' },
+			style: { backgroundColor: 'lightblue' },
 			info: {
 				label: 'How    was   it:',
 				todos: [
@@ -108,19 +109,19 @@ function _createNotes() {
 		{
 			id: storageService.makeId(),
 			type: 'noteTxt',
-			style: { backgroundColor: '#00d' },
+			style: { backgroundColor: 'lightblue' },
 			isPinned: true,
 			info: { txt: 'Fullstack Me  Baby!' },
 		},
-		// {
-		// 	id: storageService.makeId(),
-		// 	style: { backgroundColor: '#00d' },
-		// 	type: 'noteTxt',
-		// 	isPinned: true,
-		// 	info: {
-		// 		txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urna duis convallis convallis tellus id interdum velit laoreet id. Tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Aliquet enim tortor at auctor. Ipsum nunc aliquet bibendum enim facilisis. Eget duis at tellus at urna condimentum mattis pellentesque id. Accumsan sit amet nulla facilisi morbi. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Sit amet nulla facilisi morbi tempus. Quisque non tellus orci ac auctor. Pretium fusce id velit ut tortor pretium viverra suspendisse. Neque ornare aenean euismod elementum nisi quis eleifend quam. Risus in hendrerit gravida rutrum quisque.',
-		// 	},
-		// },
+		{
+			id: storageService.makeId(),
+			style: { backgroundColor: 'lightblue' },
+			type: 'noteTxt',
+			isPinned: true,
+			info: {
+				txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urna duis convallis convallis tellus id interdum velit laoreet id. Tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Aliquet enim tortor at auctor. Ipsum nunc aliquet bibendum enim facilisis. Eget duis at tellus at urna condimentum mattis pellentesque id. Accumsan sit amet nulla facilisi morbi. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Sit amet nulla facilisi morbi tempus. Quisque non tellus orci ac auctor. Pretium fusce id velit ut tortor pretium viverra suspendisse. Neque ornare aenean euismod elementum nisi quis eleifend quam. Risus in hendrerit gravida rutrum quisque.',
+			},
+		},
 
 		{
 			id: storageService.makeId(),

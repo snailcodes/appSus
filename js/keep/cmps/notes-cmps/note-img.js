@@ -18,7 +18,5 @@ export default {
 		// },
 	},
 
-	created() {
-		console.log('sanity from imgTxt');
-	},
+	created() {},
 };

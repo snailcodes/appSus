@@ -1,17 +1,17 @@
-// TODO: figure how to correctly display todo fields in edit -->
-// TODO: DELETE CHECKBOXES
+//TODO: PREVENT TAB FROM ADDING LINE ON LABEL INPUT
+
 export default {
 	props: ['editedNote'],
 	template: `  
-    <form class="keep-form" >
-        <input v-model="info.label" class="input-keep" type="text" placeholder="Todo Title">
-        <section v-for="todo in info.todos"> 
-            <input v-model="todo.txt" @change="makeIdx(todo)" class="input-keep" type="text" placeholder="Add Task">
-            
-            <!-- <input class="input-keep" type="text" placeholder="Add Task">
-            <input class="input-keep" type="text" placeholder="Add Task"> -->
-            </section>
-            <button class="button-keep" @click.stop="addLine">➕</button>
+    <form class="keep-form-todos" @keyup.enter="submit"  >
+		<h3 v-if="editedNote"> Edit Todos Note  </h3>
+		<h4 class="keep-add-text" v-else> Add Todos Note </h4>
+        <input  v-model="info.label" class="input-keep" type="text" placeholder="Write Task Title">
+        <section class="todos-input" v-for="todo in info.todos"> 
+	        <input class="input-keep-todo" v-model="todo.txt" @change="makeIdx(todo)"  type="text" placeholder="Add Task"> 
+			<button class="button-keep todos" @click="removeLine(todo)"> <img class="keep-button-img" src='../../../../img/apps/keep/minus.png' alt="Remove Line"></button>
+            <button class="button-keep todos" @click="addLine"> <img class="keep-button-img" src="../../../../img/apps/keep/plus.png" alt="Add Line"></button></button>
+        </section>
             <button class="button-keep" @click="submit">Submit </button>
     </form>`,
 
@@ -33,13 +33,14 @@ export default {
 
 	methods: {
 		submit() {
-			// console.log('submitting txt');
-			const newInfo = { ...this.info };
+			// const newInfo = { ...this.info };
+			const newInfo = JSON.parse(JSON.stringify(this.info));
+			console.log(newInfo);
 			this.$emit('submitting', newInfo, 'noteTodos');
-			// this.info.label = '';
-			// this.info.todos.forEach((todo) => {
-			// 	todo.txt = '';
-			// });
+			this.info.label = '';
+			this.info.todos.forEach((todo) => {
+				todo.txt = '';
+			});
 		},
 
 		makeIdx(todo) {
@@ -49,6 +50,9 @@ export default {
 		},
 
 		addLine() {
+			if (this.editedNote) {
+				this.info.todos = [...this.editedNote.info.todos];
+			}
 			const newTodo = {
 				id: null,
 				txt: null,
@@ -56,6 +60,15 @@ export default {
 				isMarked: false,
 			};
 			this.info.todos.push(newTodo);
+		},
+
+		removeLine(todo) {
+			if (this.editedNote) {
+				this.info.todos = [...this.editedNote.info.todos];
+			}
+			const todoId = todo.id;
+			const idx = this.info.todos.findIndex((todo) => todo.id === todoId);
+			this.info.todos.splice(idx, 1);
 		},
 	},
 	mounted() {},
@@ -65,6 +78,5 @@ export default {
 			this.info.label = this.editedNote.info.label;
 			this.info.todos = [...this.editedNote.info.todos];
 		}
-		// console.log(this.info);
 	},
 };

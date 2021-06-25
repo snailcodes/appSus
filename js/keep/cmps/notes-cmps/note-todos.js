@@ -12,9 +12,9 @@ export default {
 			<li class="todos" v-for="(todo,idx) in note.info.todos"> 
 				<label > 
 					<!-- //change so only happens when marked complete -->
-					<input v-model="todo.isChecked" @change="complete(todo,idx)" type="checkbox" :name="todo.txt" :id="todo.txt">
+					<input v-model="todo.isChecked" @click="complete(todo,idx)" type="checkbox" :name="todo.txt" :id="todo.txt">
 					{{todo.txt}}
-					<span v-if="todo.isChecked" > Completed at: {{formatTime(todo.doneAt)}}</span>
+					<span class="todos-completed" v-if="todo.isChecked" > {{formatDate(todo.doneAt)}} ({{formatTime(todo.doneAt)}})</span>
 				</label>
 			</li>
 		</ul>
@@ -28,26 +28,22 @@ export default {
 		formatTime(time) {
 			return new Date(time).toLocaleTimeString('en-il');
 		},
-
-		// onPin() {
-		// 	console.log('pinned');
-		// 	this.note.isPinned = true;
-		// 	eventBus.$emit('pinned', this.note);
-		// },
+		formatDate(time) {
+			const date = new Date(time);
+			return new Intl.DateTimeFormat().format(date);
+		},
 
 		complete(todo, idx) {
-			const newTodo = { ...todo };
+			const completedTodo = { ...todo };
 			console.log(this.note.info.todos[idx]);
 			if (!todo.isChecked) {
-				newTodo.isChecked = true;
-				newTodo.doneAt = Date.now();
-				this.note.info.todos[idx] = newTodo;
+				completedTodo.isChecked = true;
+				completedTodo.doneAt = Date.now();
+				this.note.info.todos[idx] = completedTodo;
 				eventBus.$emit('checked', this.note);
 			} else todo.isChecked = false;
 		},
 	},
-
-	computed: {},
 
 	mounted() {},
 

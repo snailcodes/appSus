@@ -9,27 +9,25 @@ import { eventBus } from '../../services/event-bus-service.js';
 export default {
 	props: ['notes'],
 	template: `
-    <section>
 	
     <ul class="notesList">
             <li v-for="note in notes" :key="note.id" class="note-container"> 
-			<!-- add variable note object to make each note's style change? -->
-                <component :style="noteBcg" :is="note.type" :note="note" > </component>
+                <component :style="note.style" :is="note.type" :note="note" > </component>
 					<div class="note-control-panel">
-					<button class="button-keep" @click="changeBcg('yellow')"> <span class="circle circle-yellow"> </span> </button>
-					<button class="button-keep" @click="changeBcg('gray')"> <span  class="circle circle-gray"></span> </button>
-					<button class="button-keep" @click="changeBcg('lightblue')"> <span  class="circle circle-lightblue"></span> </button>
-					<img class="keep-button-img" @click="onPin(note)"  src="../../../../img/apps/keep/pin.png" > 
+					<button title="Pink" class="button-keep" @click="changeBcg('lightpink',note)"> <span class="circle circle-pink"> </span> </button>
+					<button  title="Gray"  class="button-keep" @click="changeBcg('gray',note)"> <span  class="circle circle-gray"></span> </button>
+					<button  title="Blue"  class="button-keep" @click="changeBcg('lightblue',note)"> <span  class="circle circle-lightblue"></span> </button>
+					<button  title="Green"  class="button-keep" @click="changeBcg('lightgreen',note)"> <span  class="circle circle-lightgreen"></span> </button>
+					<img title="Click to Pin" class="keep-button-img" @click="onPin(note)"  src="../../../../img/apps/keep/pin.png" > 
 				
-					<button class="button-keep" @click="onDelNote(note)"> <img class="keep-button-img" src="../../../../img/apps/keep/delete.png" alt="Delete"> </button>
-					<button class="button-keep" @click="onEditNote(note)"> <img class="keep-button-img" src="../../../../img/apps/keep/edit.png" alt="Edit"> </button>
-					<button class="button-keep" @click="email(note)"> <img class="keep-button-img" src="../../../../img/apps/keep/email.png" alt="Email"> </button>
+					<button title="Delete Note" class="button-keep" @click="onDelNote(note)"> <img class="keep-button-img" src="../../../../img/apps/keep/delete.png" alt="Delete"> </button>
+					<button title="Edit Note" class="button-keep" @click="onEditNote(note)"> <img class="keep-button-img" src="../../../../img/apps/keep/edit.png" alt="Edit"> </button>
+					<button title="Email Note" class="button-keep" @click="email(note)"> <img class="keep-button-img" src="../../../../img/apps/keep/email.png" alt="Email"> </button>
 					</div>
 					
                 <!-- <notePreview :note="note" /> -->
             </li>
         </ul>
-        </section>
     `,
 
 	components: {
@@ -41,37 +39,36 @@ export default {
 	},
 
 	data() {
-		return {
-			bcg: 'lightblue',
-			// input: {},
-		};
+		return {};
 	},
 
 	methods: {
 		email(note) {
 			// let emailNote = JSON.stringify(note);
-			this.$router.push(`/email/composeFromNote/${JSON.stringify(note)}`);
+			// emailNote = JSON.stringify(emailNote);
+			// console.log(emailNote);
+			// this.$router.push(`/email/composeFromNote/${JSON.stringify(note)}`);
+			// this.$router.push({
+			// 	n: 'email/composeFromNote',
+			// 	params: { note },
+			// });
+			// this.$router.push(`/email/composeFromNote/${note}`);
 		},
 
 		onPin(note) {
 			console.log('pinned');
-			// console.log(note);
 			note.isPinned = !note.isPinned;
-
+			// note.style.grid = ''
 			eventBus.$emit('pinned', note);
 		},
 
-		addInput() {
-			console.log('sanity');
-		},
-		changeBcg(color) {
-			console.log('sanity color');
-			this.bcg = color;
+		changeBcg(color, note) {
+			note.style.backgroundColor = color;
+			eventBus.$emit('bcgolored', note);
 		},
 
 		onDelNote(note) {
 			console.log('removing sanity');
-			console.log(note.id);
 			this.$emit('deleted', note.id);
 		},
 
@@ -84,13 +81,7 @@ export default {
 		},
 	},
 
-	computed: {
-		noteBcg() {
-			return {
-				'background-color': this.bcg,
-			};
-		},
-	},
+	computed: {},
 
 	created() {
 		console.log('sanity list');

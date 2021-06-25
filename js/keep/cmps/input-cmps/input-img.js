@@ -1,18 +1,17 @@
-// TODO: SUPPORT UPLOAD FROM FILE
+// TODO: SUPPORT UPLOAD FROM FILE - research File Reader
 export default {
 	props: ['editedNote'],
 	template: `  
     
         <form class="keep-form" v-on:keyup.enter="submit">
-			
-            <input class="input-keep" v-model="info.title"  type="text" placeholder="Title">
-            <input class="input-keep" type="url" v-model="info.url" placeholder="Enter URL" >
-            <button class="button-keep" @click.stop="isFromFile"> 
-
+			<h3 v-if="editedNote"> Edit Image Note  </h3>
+			<h4 class="keep-add-text" class="keep-add-text" v-else> Add Image Note </h4>
+            <input class="input-keep" v-model="info.title"  type="text" placeholder="Write Title">
+            <input v-if="!fromFile" class="input-keep" type="url" v-model="info.url" placeholder="Enter URL" >
+            <!-- <button class="button-keep" @click="isFromFile"> 
 			<img  src="../../../../img/apps/keep/upload.png" alt="uploadFile"> </button>
-            <!-- <input v-else type="file"> -->
-                
-   		 </form> 
+            <input v-if="fromFile" @change="onFile" type="file"> -->
+        </form> 
     `,
 
 	data() {
@@ -27,7 +26,6 @@ export default {
 
 	methods: {
 		submit() {
-			// console.log('submitting txt');
 			const newInfo = { ...this.info };
 			console.log(this.info.url);
 			this.$emit('submitting', newInfo, 'noteImg');
@@ -35,10 +33,7 @@ export default {
 			this.info.title = '';
 		},
 
-		updateUrl(val) {
-			console.log(val);
-			// this.info.url = val;
-		},
+		onFile(file) {},
 		isFromFile() {
 			this.fromFile = !this.fromFile;
 		},

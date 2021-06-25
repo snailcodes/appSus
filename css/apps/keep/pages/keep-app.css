@@ -1,18 +1,71 @@
-/* ALL INPUTS */
+/* INPUTS */
 input.input-keep {
-	background-color: whitesmoke;
-	border-radius: 8px;
+	/* background-color: whitesmoke; */
+	background-color: #f1f3f4;
+	width: 80%;
+	border: 1px solide #9999997c;
+
+	outline: none;
+	border: none;
+	border-bottom: 1px solid gray;
+}
+
+/* TODOS CMPS - TODOS */
+
+.input-keep-todo {
 	width: 70%;
-	/* outline: none; */
+	/* background-color: whitesmoke; */
+	background-color: #f1f3f4;
+
+	outline: none;
+	border: none;
+	border-bottom: 1px solid gray;
+	margin-bottom: 5px;
+}
+
+.tooltip {
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+/* MODAL */
+.modal-container {
+	inset: 0;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.1);
+	z-index: 1;
+}
+
+.keep-modal-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	min-height: 100px;
+	width: 700px;
+	background-color: #f1f3f4;
+	border: 1px solid gray;
 }
 
 /* ALL FORMS */
 .keep-form {
 	background-color: whitesmoke;
-	max-width: 300px;
+	max-width: 400px;
 	border-radius: 8px;
 	margin: 0 auto;
 	padding: 10px;
+	text-align: center;
+}
+
+.keep-form-todos {
+	max-width: 450px;
+	display: flex;
+	flex-direction: column;
 }
 
 /* ALL IMGS */
@@ -28,16 +81,22 @@ input.input-keep {
 	/* max-width: 900px; */
 	flex-direction: column;
 	align-items: center;
-	/* border: 1px solid red; */
 	margin: 0 auto;
 	padding: 10px;
 }
 
 .header-control {
-	width: 400px;
+	width: 100%;
 	background-color: #f1f3f4;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 	border-radius: 8px;
+	position: relative;
+	border: 1px solid gray;
+}
+.note-add-control-panel {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* SEARCH FILTER */
@@ -52,19 +111,18 @@ input.input-keep {
 }
 
 .note-search-bar input {
+	outline: none;
+	border-radius: unset;
 	border: none;
-}
-
-.img-note-filter {
-	position: absolute;
-	top: 12px;
-	left: 98px;
+	border-bottom: 1px solid gray;
 }
 
 .search-bar-container {
 	width: 200px;
 	margin: 0 auto;
 	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 
 /* ADD NOTE SECTION */
@@ -74,10 +132,4 @@ input.input-keep {
 	margin-bottom: 5px;
 	text-align: center;
 	/* background-color: whitesmoke; */
-}
-
-@media (max-width: 400px) {
-}
-
-@media (max-width: 400px) {
 }
