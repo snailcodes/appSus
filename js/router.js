@@ -12,6 +12,7 @@ const routes = [
 		path: '/email/composeFromNote/:note?',
 		component: emailCompose,
 	},
+
 	{
 		path: '/email/',
 		component: emailApp,

@@ -185,9 +185,12 @@ export default {
 		'$route.params': {
 			immediate: true,
 			handler() {
-				const { emailId } = this.$route.params;
-				console.log(emailId);
-				// TODO: UNDERSTAND WHAT AM GETTING FROM EMAIL?
+				const { email } = this.$route.params;
+				console.log(email);
+				const emailNote = null;
+				emailNote.info = { subject, body };
+				emailNote.type = 'noteTxt';
+				renderNote(email.type, email.info);
 			},
 		},
 	},

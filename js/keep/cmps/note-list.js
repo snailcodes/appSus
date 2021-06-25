@@ -46,15 +46,10 @@ export default {
 
 	methods: {
 		email(note) {
-			// let emailNote = JSON.stringify(note);
-			// emailNote = JSON.stringify(emailNote);
-			// console.log(emailNote);
-			// this.$router.push(`/email/composeFromNote/${JSON.stringify(note)}`);
-			// this.$router.push({
-			// 	n: 'email/composeFromNote',
-			// 	params: { note },
-			// });
-			// this.$router.push(`/email/composeFromNote/${note}`);
+			this.$router.push({
+				name: 'composenote',
+				params: { note: note },
+			});
 		},
 
 		onPin(note) {
