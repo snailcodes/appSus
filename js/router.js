@@ -4,6 +4,14 @@ import emailCompose from './email/cmps/email-compose.js';
 import emailDetails from './email/pages/email-details.js';
 
 const routes = [{
+        path: '/email/',
+        component: emailApp,
+    },
+    {
+        path: '/keep',
+        component: keepApp,
+    },
+    {
         path: '/email/:emailId?',
         component: emailDetails,
     },
@@ -16,15 +24,7 @@ const routes = [{
         name: 'emailToNote',
         path: '/keep/composeFromEmail/:email?',
         component: keepApp,
-    },
-    {
-        path: '/email/',
-        component: emailApp,
-    },
-    {
-        path: '/keep',
-        component: keepApp,
-    },
+    }
 ];
 
 export const router = new VueRouter({ routes });
