@@ -18,7 +18,7 @@ export default {
                     <input class="input-email" ref="subject" v-model="email.subject" type="text" maxlength="50">
                 </div>
                 <textarea v-model="email.body"></textarea>
-                <button class="btn-email-compose">Send</button>
+                <button class="btn-email-send">Send</button>
             </form>
     `,
     data() {

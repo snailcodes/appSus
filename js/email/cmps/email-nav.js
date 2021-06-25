@@ -5,10 +5,10 @@ export default {
     template: `
     <ul class="email-nav">
         <li>
-            <button @click="onComposeEmail" class="btn-email-compose">➕ Compose</button>
+            <button @click="onComposeEmail" class="btn-email-compose">🖊️ Compose</button>
         </li>
         <li>
-            <div class="nav-inbox" @click="handleClick('inbox')">
+            <div class="nav-inbox active" @click="handleClick('inbox')">
                 <img src="img/apps/email/inbox.png"/>
                 Inbox
                 <span>{{showUnreadCount}}</span>

@@ -72,6 +72,7 @@ label.email-unread-state::before {
     margin-right: 16px;
     opacity: .71;
     width: 20px;
+    margin-block-start: 5px;
 }
 
 label.email-read-state::before {
