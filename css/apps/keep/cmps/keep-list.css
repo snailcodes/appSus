@@ -6,17 +6,23 @@
 	grid-auto-flow: dense;
 	grid-gap: 6em;
 	max-width: 100%;
-	/* grid-template-rows: repeat(6, minmax(100px, 1fr)); */
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	/* grid-template-rows: repeat(6, minmax(100px, 1fr));
+	grid-template-rows: repeat(6, minmax(100px, 1fr)); */
+	/* grid-template-areas: 
+	" pin pin pin pin pin pin "
+	" note note note note note note  "
+	" note note note note note note  "
+	" note note note note note note  "
+	" note note note note note note  "
+	" note note note note note note  "
+	 */
 	/* grid-template-rows: repeat(5, 1fr); */
 	/* border: 1px solid black; */
 }
 
 .note-container {
 	position: relative;
-}
-
-.note {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -36,17 +42,44 @@
 	transition: 0.8s ease;
 }
 
-.note:hover {
+.note-container:hover {
 	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
 		0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
 		0 22.3px 17.9px rgba(0, 0, 0, 0.072),
 		0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
+/* .note {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	text-align: justify;
+	text-align: center;
+	align-items: center;
+	margin-bottom: 20px;
+	object-fit: cover;
+
+	width: 200px;
+	min-height: 200px;
+
+	padding: 2px;
+	border-radius: 10px;
+
+	box-shadow: 0 1px 2px 0 #10444073, 0 1px 3px 1px rgba(26, 115, 232, 0.302);
+	transition: 0.8s ease;
+} */
+
+/* .note:hover {
+	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+		0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+		0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+		0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+} */
+
 .note-control-panel {
 	position: absolute;
 	display: flex;
-	bottom: -5px;
+	bottom: -25px;
 	left: 0;
 	right: 0;
 	justify-content: space-between;

@@ -53,12 +53,12 @@ function _createNotes() {
 			id: storageService.makeId(),
 			type: 'noteTxt',
 			isPinned: true,
-			info: { txt: 'Fullstack Me  Baby!' },
-			style: { backgroundColor: 'lightblue' },
+			info: { title: 'What?', txt: 'Fullstack Me  Baby!' },
+			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 		},
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 			type: 'noteImg',
 			info: {
 				url: 'https://img.vcomments.com/en/funny/47.jpg',
@@ -67,7 +67,7 @@ function _createNotes() {
 		},
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 			type: 'noteImg',
 			info: {
 				url: 'https://www.icegif.com/wp-content/uploads/funny.gif',
@@ -76,7 +76,7 @@ function _createNotes() {
 		},
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 			type: 'noteImg',
 			info: {
 				url: 'https://www.sbs.com.au/guide/sites/sbs.com.au.guide/files/styles/full/public/horsin.jpg?itok=AovIZOaD&mtime=1504767165',
@@ -87,7 +87,7 @@ function _createNotes() {
 		{
 			id: storageService.makeId(),
 			type: 'noteTodos',
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 			info: {
 				label: 'How    was   it:',
 				todos: [
@@ -109,13 +109,13 @@ function _createNotes() {
 		{
 			id: storageService.makeId(),
 			type: 'noteTxt',
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 			isPinned: true,
-			info: { txt: 'Fullstack Me  Baby!' },
+			info: { title: 'What?', txt: 'Fullstack Me  Baby!' },
 		},
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 			type: 'noteTxt',
 			isPinned: true,
 			info: {
@@ -125,7 +125,7 @@ function _createNotes() {
 
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 			type: 'noteVideo',
 			info: {
 				url: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',

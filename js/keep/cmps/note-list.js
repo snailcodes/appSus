@@ -11,7 +11,7 @@ export default {
 	template: `
 	
     <ul class="notesList">
-            <li v-for="note in notes" :key="note.id" class="note-container"> 
+            <li v-for="note in notes" :key="note.id"  class="note-container" :style="note.style"> 
                 <component :style="note.style" :is="note.type" :note="note" > </component>
 					<div class="note-control-panel">
 					<button title="Pink" class="button-keep" @click="changeBcg('lightpink',note)"> <span class="circle circle-pink"> </span> </button>
@@ -39,7 +39,9 @@ export default {
 	},
 
 	data() {
-		return {};
+		return {
+			currNote: null,
+		};
 	},
 
 	methods: {
@@ -56,9 +58,15 @@ export default {
 		},
 
 		onPin(note) {
-			console.log('pinned');
-			note.isPinned = !note.isPinned;
-			// note.style.grid = ''
+			if (!note.isPinned) {
+				console.log('pinned');
+				note.isPinned = !note.isPinned;
+				note.style.gridRow = '1/2';
+			} else {
+				note.isPinned = !note.isPinned;
+				note.style.gridRow = '2/3';
+			}
+
 			eventBus.$emit('pinned', note);
 		},
 
