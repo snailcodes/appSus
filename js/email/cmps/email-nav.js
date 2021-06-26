@@ -16,25 +16,28 @@ export default {
                     Inbox
                     <span class="sort-date" title="Sort by Date" @click="onSetSort('date')"><span>&nbsp;</span></span>
                     <span class="sort-title" title="Sort by Subject" @click="onSetSort('subject')"><span></span></span>
-                    <span>{{showUnreadCount}}</span>
+                    <span>{{showUnreadCount('inbox')}}</span>
                 </div>  
             </li>
             <li>
                 <div class="nav-starred" @click="handleClick('starred',$event)">
                     <img src="img/apps/email/starwhite.png"/>
                     Starred
+                    <span>{{showUnreadCount('isStarred')}}</span>
                 </div>
             </li>
             <li>
                 <div class="nav-sent" @click="handleClick('sent',$event)">
                     <img src="img/apps/email/sent.png"/>
                     Sent
+                    <span>{{showUnreadCount('isSent')}}</span>
                 </div>
             </li>
             <li>
                 <div class="nav-deleted" @click="handleClick('deleted',$event)">
                     <img src="img/apps/email/delete.png"/>
                     Deleted
+                    <span>{{showUnreadCount('isDeleted')}}</span>
                 </div>
             </li>
             <li>
@@ -85,11 +88,16 @@ export default {
         },
         onSetSort(value) {
             this.$emit('sorted', value);
+        },
+        showUnreadCount(route) {
+            const unreadCount = this.emails.filter(email => {
+                if (route === 'inbox') return !email.isRead;
+                else if (route === 'isStarred') return email.isStarred && !email.isRead;
+                else if (route === 'isSent') return email.isSent && !email.isRead;
+                else if (route === 'isDeleted') return email.isDeleted && !email.isRead
+            }).length;
+            return unreadCount ? unreadCount : ''
         }
     },
-    computed: {
-        showUnreadCount() {
-            return this.unreadCount || ''
-        }
-    }
+    computed: {}
 };

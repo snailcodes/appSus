@@ -76,7 +76,7 @@ button.btn-email-compose:hover:after {
     background-color: #e8eaed;
 }
 
-.nav-inbox>span {
+[class^=nav] span {
     margin-left: auto;
     font-weight: bold;
 }
