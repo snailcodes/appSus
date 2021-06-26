@@ -150,5 +150,6 @@ export default {
     },
     destroyed() {
         this.$emit('destroyed');
+        if (this.note) this.$router.push('/email');
     }
 }
