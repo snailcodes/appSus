@@ -1,6 +1,8 @@
 import emailApp from './email/pages/email-app.js';
 import keepApp from './keep/pages/keep-app.js';
+import bookApp from './book/pages/book-app.js';
 import emailDetails from './email/pages/email-details.js';
+import bookDetails from './book/pages/book-details.js';
 import homePage from './pages/home-page.js'
 
 const routes = [{
@@ -14,6 +16,14 @@ const routes = [{
     {
         path: '/keep',
         component: keepApp,
+    },
+    {
+        path: '/book',
+        component: bookApp,
+    },
+    {
+        path: '/book/:bookId',
+        component: bookDetails
     },
     {
         name: 'emailDisplay',

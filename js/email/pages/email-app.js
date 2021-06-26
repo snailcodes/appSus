@@ -124,7 +124,6 @@ export default {
 
         },
         restoreEmail(emailId) {
-            console.log('erere')
             const idx = this.emailsToShow.findIndex(email => email.id === emailId)
             const nextEmailId = idx === 0 && this.emailsToShow[idx + 1] ? this.emailsToShow[1].id :
                 idx === 0 && !this.emailsToShow[idx + 1] ? null : this.emailsToShow[idx - 1].id;
@@ -167,7 +166,6 @@ export default {
     },
     computed: {
         emailsToShow() {
-            console.log(this.searchBy);
             if (this.searchBy.route === 'inbox') {
                 if ((!this.searchBy.txt && ((!this.searchBy.isRead && !this.searchBy.isUnread) ||
                         (this.searchBy.isRead && this.searchBy.isUnread))))
