@@ -4,7 +4,7 @@ export default {
 	template: `
     <section class="note-filter ">
 		<div class="search-bar-container">
-		<img class="img-note-filter" src="../../../img/apps/keep/search.svg" alt="search">
+		<img class="img-note-filter" src="img/apps/keep/search.svg" alt="search">
 		
         <input class="input-keep" v-model="filterBy.txt" @change="filter" type="text" placeholder="    Search Notes...">
 		</div>

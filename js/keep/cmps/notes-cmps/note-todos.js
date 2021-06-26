@@ -5,9 +5,7 @@ export default {
 	props: ['note'],
 	template: `
 	<section class="note note-todos ">
-		<!-- <img @click="onPin" class="pin" src="../../../../img/apps/keep/pin.png" > -->
 		<p class="boldTxt">{{note.info.label}}</p>
-		<!-- <note-preview-todos @updated="updateTodo" :todos="note.info.todos" />  -->
 		<ul>
 			<li class="todos" v-for="(todo,idx) in note.info.todos"> 
 				<label > 
