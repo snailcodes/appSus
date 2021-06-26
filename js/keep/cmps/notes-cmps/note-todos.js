@@ -29,7 +29,7 @@ export default {
 		},
 		formatDate(time) {
 			const date = new Date(time);
-			return new Intl.DateTimeFormat().format(date);
+			return new Intl.DateTimeFormat('en-il').format(date);
 		},
 
 		complete(todo, idx) {
@@ -49,8 +49,5 @@ export default {
 
 	mounted() {},
 
-	created() {
-		// this.note.style.textAlign = 'left';
-		// this.note.style.display = 'inline-block';
-	},
+	created() {},
 };
