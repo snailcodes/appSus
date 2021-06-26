@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
 :root {
     --color: #1ff4f4;
 }
@@ -14,12 +15,28 @@
 
 .content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    padding-inline-start: 50px;
     padding-block-start: 100px;
     z-index: 1;
     width: 100%;
-    height: 70%;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9)), url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23cccccc' fill-opacity='0.7' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.content>p {
+    color: black;
+    font-size: 3rem;
+    width: 80%;
+    padding-block-start: 30px;
+}
+
+.content>p:nth-of-type(2) {
+    direction: rtl;
+    font-size: 1.5rem;
+    font-style: oblique;
+    padding-block-start: 10px;
+    color: rgb(90, 90, 90);
 }
 
 .stripe-text {
@@ -27,7 +44,7 @@
     font-size: 10rem;
     text-transform: uppercase;
     font-weight: 900;
-    font-family: 'Catamaran', sans-serif;
+    font-family: 'Paytone One';
     font-style: italic;
     pointer-events: none;
 }
@@ -37,8 +54,8 @@
     left: 0;
     content: 'AppSus';
     padding-inline-end: 17px;
-    /* background: -webkit-repeating-linear-gradient(135deg, #f41fbf, #f41fbf 20px, #ffed28 20px, #ffed28 40px, #b028ff 40px, #b028ff 60px, #39dbc2 60px, #39dbc2 80px); */
-    background: -webkit-repeating-linear-gradient(135deg, #1eb5ff, #1ff4f4 20px);
+    background: -webkit-repeating-linear-gradient(135deg, #f41fbf, #f41fbf 20px, #ffed28 20px, #ffed28 40px, #b028ff 40px, #b028ff 60px, #39dbc2 60px, #39dbc2 80px);
+    /* background: -webkit-repeating-linear-gradient(135deg, #1eb5ff, #1ff4f4 20px); */
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -68,6 +85,12 @@
         font-style: italic;
         pointer-events: none;
     }
+    .content>p {
+        font-size: 1.5rem;
+    }
+    .content>p:nth-of-type(2) {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 350px) {
@@ -90,7 +113,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 200px;
+    height: 250px;
     background-color: var(--color);
     box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
     transition: 500ms;
@@ -109,7 +132,7 @@
 
 .waves::before {
     border-radius: 44%;
-    background: #1f97f4;
+    background: #f41fbf;
     animation: waves 8s linear infinite;
 }
 
