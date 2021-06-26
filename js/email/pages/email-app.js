@@ -206,10 +206,12 @@ export default {
                             email.isStarred;
                     });
                 case 'sent':
+                    console.log('fddf');
+                    console.log(this.searchBy);
                     return this.emails.filter(email => {
                         return this.searchBy.isRead && !this.searchBy.isUnread ? email.isSent && email.isRead || email.replies && email.isRead :
                             this.searchBy.isUnread && !this.searchBy.isRead ? email.isSent && !email.isRead || email.replies && !email.isRead :
-                            email.isSent & email.replies
+                            email.isSent || email.replies
                     });
                 case 'deleted':
                     return this.emails.filter(email => {
