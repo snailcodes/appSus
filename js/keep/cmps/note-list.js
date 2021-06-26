@@ -50,8 +50,8 @@ export default {
 	methods: {
 		email(note) {
 			this.$router.push({
-				name: 'composenote',
-				params: { note: note },
+				name: 'noteToEmail',
+				params: { note: note.info },
 			});
 		},
 

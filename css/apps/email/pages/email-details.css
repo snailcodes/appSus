@@ -33,6 +33,8 @@
         grid-column: 1/-1;
         border-left: none;
         margin-inline: none;
+        border-left: 6px double #e1e1e1;
+        margin-block-start: 20px;
     }
 }
 
@@ -48,12 +50,14 @@
 .email-subject {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding-block-end: 30px;
     width: 100%;
 }
 
 .email-subject>div {
     min-width: 65px;
+    margin-left: auto;
 }
 
 .email-subject>div>span {
@@ -73,7 +77,9 @@
 }
 
 .email-delete,
-.email-reply {
+.email-reply,
+.email-restore,
+.email-send-note {
     padding-inline: 5px;
     cursor: pointer;
 }
@@ -89,6 +95,7 @@
 
 .email-replies li {
     border-bottom: 0.5px solid rgba(128, 128, 128, 0.164);
+    padding-block-end: 15px;
 }
 
 .email-details::-webkit-scrollbar {

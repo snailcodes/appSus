@@ -6,7 +6,9 @@ export default {
     <nav class="email-nav">
         <ul class="email-nav-menu">
             <li>
-                <button @click="onComposeEmail" class="btn-email-compose">🖊️ Compose</button>
+                <button @click="onComposeEmail" class="btn-email-compose">
+                    <img src="img/apps/email/compose.png"/>
+                </button>
             </li>
             <li>
                 <div class="nav-inbox active" @click="handleClick('inbox')">
@@ -61,6 +63,7 @@ export default {
         },
         onComposeEmail() {
             this.$emit('compose');
+            this.onToggleHamMenu()
         },
         onToggleHamMenu() {
             document.querySelector('.hamburger').classList.toggle("active");
@@ -76,6 +79,7 @@ export default {
                     li.children[0].classList.add('active')
                 else li.children[0].classList.remove('active')
             }
+            this.onToggleHamMenu()
         },
     },
     computed: {

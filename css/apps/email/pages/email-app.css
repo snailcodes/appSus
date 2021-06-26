@@ -4,32 +4,6 @@
     padding-block-start: 10px;
 }
 
-
-/****************************/
-
-.email-app {
-    display: grid;
-    grid-template-columns: 240px 1fr 1fr;
-}
-
-@media (max-width: 1300px) {
-    .email-app {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 60px 1fr;
-    }
-}
-
-@media (max-width: 850px) {
-    .email-app {
-        grid-template-columns: 1fr;
-        grid-template-rows: 10px 1fr 1fr;
-        width: 95%;
-    }
-}
-
-
-/****************************/
-
 .email-empty-list {
     flex-basis: 50%;
     padding-inline: 20px;
@@ -62,3 +36,33 @@
     width: 100px;
     height: 100px;
 }
+
+
+/****************************/
+
+.email-app {
+    display: grid;
+    grid-template-columns: 240px 1fr 1fr;
+}
+
+@media (max-width: 1300px) {
+    .email-app {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 60px 1fr;
+    }
+}
+
+@media (max-width: 850px) {
+    .email-app {
+        grid-template-columns: 1fr;
+        grid-template-rows: 10px 1fr 1fr;
+        width: 95%;
+    }
+    .modal-content {
+        height: 400px;
+        width: 90%;
+    }
+}
+
+
+/****************************/

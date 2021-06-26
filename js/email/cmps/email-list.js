@@ -5,9 +5,11 @@ export default {
     props: ['emails'],
     template: `
     <section class="email-list">
-        <div class="ham-menu-block"></div>
-        <div class="email-search">
-            <email-search @searched="onSearch"/>
+        <div>
+            <div class="ham-menu-block"></div>
+            <div class="email-search">
+                <email-search @searched="onSearch"/>
+            </div>
         </div>
         <ul v-if="emails.length>0" class="email-previews">
             <li v-for="email in emails" :key="email.id">

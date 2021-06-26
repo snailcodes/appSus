@@ -25,7 +25,7 @@ export default {
             searchBy: {
                 txt: null,
                 isRead: false,
-                isUnread: false
+                isUnread: false,
             }
         };
     },

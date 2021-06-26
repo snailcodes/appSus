@@ -18,6 +18,27 @@
     line-height: 1.8;
 }
 
+select.email-compose-font-familty {
+    cursor: pointer;
+    background-image: linear-gradient(to right, #1a73e8 0%, #1a73e8 51%, #1FA2FF 100%);
+    padding: 5px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+}
+
+select.email-compose-font-familty option {
+    color: #fff;
+    border-radius: 5px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    background: #1a73e8;
+}
+
 textarea,
 textarea:focus {
     border: 1px solid #9999997c;

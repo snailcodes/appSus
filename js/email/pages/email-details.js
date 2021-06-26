@@ -15,15 +15,18 @@ export default {
                         <span @click="onSendNote" class="email-send-note">
                             <img src="img/apps/email/checkbox.png">
                         </span>
-                        <span @click="onToggleReply" class="email-reply">
+                        <span v-if="!email.isDeleted" @click="onToggleReply" class="email-reply">
                             <img src="img/apps/email/reply.png">
+                        </span>
+                        <span v-if="email.isDeleted" @click="onDeleteEmail('restore')" class="email-restore">
+                            <img src="img/apps/email/restore.png">
                         </span>
                         <span @click="onDeleteEmail" class="email-delete">
                             <img src="img/apps/email/delete.png">
                         </span>
                     </div>
                 </div>
-                <div class="email-body">{{email.body}}</div>
+                <div class="email-body" v-bind:style="email.styleObject">{{email.body}}</div>
                 <email-compose v-if="isReplying" :parentEmail="email" @emailReplied="reply"/>
                 <ul v-if="email.replies" class="email-replies">
                     <li v-for="reply in email.replies.slice().reverse()" :key="reply.id">
@@ -37,7 +40,7 @@ export default {
                                     </span>
                                 </div>
                             </div>    
-                            <div class="email-body">{{reply.body}}</div>
+                            <div class="email-body" v-bind:style="reply.styleObject">{{reply.body}}</div>
                         </section>
                     </li>
                 </ul>
@@ -56,9 +59,9 @@ export default {
     mounted() {},
     methods: {
         onDeleteEmail(type, replyId) {
-            if (type === 'reply') {
-                this.$emit('replyDeleted', replyId);
-            } else this.$emit('emailDeleted', this.email.id);
+            if (type === 'reply') this.$emit('replyDeleted', replyId);
+            else if (type === 'restore') this.$emit('emailRestored', this.email.id);
+            else this.$emit('emailDeleted', this.email.id);
         },
         onToggleReply() {
             this.isReplying = !this.isReplying;

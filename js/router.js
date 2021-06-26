@@ -1,10 +1,14 @@
 import emailApp from './email/pages/email-app.js';
 import keepApp from './keep/pages/keep-app.js';
-import emailCompose from './email/cmps/email-compose.js';
 import emailDetails from './email/pages/email-details.js';
 
-const routes = [{
-        path: '/email/',
+const routes = [
+    // {
+    //     path: '/',
+    //     component: homePage,
+    // },
+    {
+        path: '/email',
         component: emailApp,
     },
     {
@@ -12,13 +16,14 @@ const routes = [{
         component: keepApp,
     },
     {
+        name: 'emailDisplay',
         path: '/email/:emailId?',
         component: emailDetails,
     },
     {
         name: 'noteToEmail',
         path: '/email/composeFromNote/:note?',
-        component: emailCompose,
+        component: emailApp,
     },
     {
         name: 'emailToNote',
