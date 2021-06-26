@@ -1,3 +1,6 @@
+@import url('./note-txt.css');
+@import url('./note-img.css');
+@import url('./note-video.css');
 @import url('./note-todos.css');
 
 /* LIST */
@@ -7,26 +10,13 @@
 	grid-gap: 6em;
 	max-width: 100%;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	/* grid-template-rows: repeat(auto-fit, minmax(200px, 200px)); */
-
-	/* grid-template-rows: repeat(6, minmax(100px, 1fr));
-	grid-template-rows: repeat(6, minmax(100px, 1fr)); */
-	/* grid-template-areas: 
-	" pin pin pin pin pin pin "
-	" note note note note note note  "
-	" note note note note note note  "
-	" note note note note note note  "
-	" note note note note note note  "
-	" note note note note note note  "
-	 */
-	/* border: 1px solid black; */
 }
 
 li.note-container {
 	position: relative;
 	border-radius: 8px;
-	/* display: flex; */
-	/* flex-direction: column; */
+	display: flex;
+	flex-direction: column;
 
 	margin-bottom: 20px;
 	object-fit: cover;
@@ -37,10 +27,21 @@ li.note-container {
 	padding: 2px;
 	border-radius: 10px;
 
-	box-shadow: 0 1px 2px 0 #10444073, 0 1px 3px 1px rgba(26, 115, 232, 0.302);
+	box-shadow: 0 1px 2px 0 #abad9a73, 0 1px 3px 1px rgba(218, 221, 226, 0.787);
 	transition: 0.8s ease;
 
 	align-self: start;
+}
+
+.note {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: 0.8s ease;
+	position: relative;
+	/* max-height: 100%; */
+	/* max-width: 100%; */
+	flex: 1;
 }
 
 .note-container:hover {
@@ -69,7 +70,6 @@ button.button-keep {
 
 img.keep-button-img {
 	width: 15px;
-	height: 15px;
 	position: relative;
 	left: 0;
 	cursor: pointer;
@@ -101,18 +101,11 @@ img.keep-button-img {
 	background-color: lightgreen;
 }
 
-.note {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
 /* PARTICULAR NOTE DEFS */
-.note-img {
+/* .note-img {
 	text-align: center;
 	justify-content: space-around;
-	height: 100%;
-}
+} */
 
 .note-todos {
 	text-align: left;
@@ -125,34 +118,33 @@ img.keep-button-img {
 	padding: 5px;
 }
 
-.note-video {
+/* .note-video {
 	text-align: center;
 	justify-content: space-around;
-	height: 100%;
-}
+} */
 
-/* TODO: align button to bottom left */
-button .button-keep.long-txt {
-	left: 0;
+/* .button-keep.long-txt {
+	position: absolute;
+	right: 0;
+	bottom: 0;
 	border: 1px solid black;
-}
+	border: none;
+} */
 
-.keep-video {
-	/* padding-top: 10px; */
-	/* object-fit: fill; */
+/* .keep-video {
 	object-fit: contain;
 	max-width: 95%;
 	border-radius: 8px;
-}
+} */
 
-.todos-completed {
+/* .todos-completed {
 	font-size: small;
 	font-style: italic;
-}
+} */
 
-.completed {
+/* .completed {
 	text-decoration: line-through;
-}
+} */
 
 /* MEDIA QUERIES */
 

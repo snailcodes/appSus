@@ -9,6 +9,7 @@ export default {
 		<long-text  v-if="toggleDis" :txt="note.info.txt" :length="60">  </long-text>
 	 
 		<p v-if="!toggleDis" >{{note.info.txt}}  </p>
+		<!-- <button class="button-keep long-txt" v-if="isLong" id="more-less" @click="isExpand"> {{button.text}} </button> -->
 		<button class="button-keep long-txt" v-if="isLong" id="more-less" @click="isExpand"> {{button.text}} </button>
 
 
@@ -26,7 +27,7 @@ export default {
 			isLong: false,
 
 			button: {
-				text: '˅',
+				text: 'Read More ˅',
 			},
 		};
 	},
@@ -34,7 +35,8 @@ export default {
 	methods: {
 		isExpand() {
 			this.toggleDis = !this.toggleDis;
-			this.button.text = this.toggleDis ? '˅' : '˄';
+			// this.button.text = this.toggleDis ? '˅' : '˄';
+			this.button.text = this.toggleDis ? 'Read More ˅' : 'Read Less ˄';
 		},
 	},
 

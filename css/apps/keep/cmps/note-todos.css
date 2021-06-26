@@ -1,0 +1,13 @@
+.note-todos {
+	text-align: left;
+	display: inline-block;
+}
+
+.todos-completed {
+	font-size: small;
+	font-style: italic;
+}
+
+.completed {
+	text-decoration: line-through;
+}
