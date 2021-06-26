@@ -10,8 +10,8 @@ export default {
         <input  v-model="info.label" class="input-keep" type="text" placeholder="Write Task Title">
         <section class="todos-input" v-for="todo in info.todos"> 
 	        <input class="input-keep-todo" v-model="todo.txt" @change="makeIdx(todo)"  type="text" placeholder="Add Task"> 
-			<button class="button-keep todos" @click="removeLine(todo)"> <img class="keep-button-img" src='../../../../img/apps/keep/minus.png' alt="Remove Line"></button>
-            <button class="button-keep todos" @click="addLine"> <img class="keep-button-img" src="../../../../img/apps/keep/plus.png" alt="Add Line"></button></button>
+			<button class="button-keep todos" @click="removeLine(todo)"> <img class="keep-button-img" src='img/apps/keep/minus.png' alt="Remove Line"></button>
+            <button class="button-keep todos" @click="addLine"> <img class="keep-button-img" src="img/apps/keep/plus.png" alt="Add Line"></button></button>
         </section>
             <button class="button-keep" @click="submit">Submit </button>
     </form>`,
