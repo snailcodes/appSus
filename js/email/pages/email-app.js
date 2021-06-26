@@ -160,6 +160,7 @@ export default {
             this.searchBy.route = searchObj.route
         },
         setSort(sortBy) {
+            console.log('fdfd')
             this.sortBy = sortBy;
             this.loadEmails();
         },
