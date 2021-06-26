@@ -171,7 +171,7 @@ export default {
                 if ((!this.searchBy.txt && ((!this.searchBy.isRead && !this.searchBy.isUnread) ||
                         (this.searchBy.isRead && this.searchBy.isUnread))))
                     return this.emails.filter((email) => {
-                        return !email.isDeleted;
+                        return !email.isDeleted && email.to === 'omribaram@gmail.com';
                     });
 
                 if (this.searchBy.txt) {
@@ -182,21 +182,21 @@ export default {
                             email.body.toLowerCase().includes(searchStr)
                         ) {
                             if (this.searchBy.isRead) {
-                                return email.isRead;
+                                return email.isRead && email.to === 'omribaram@gmail.com';
                             } else if (this.searchBy.isUnread) {
-                                return !email.isRead;
+                                return !email.isRead && email.to === 'omribaram@gmail.com';
                             } else {
-                                return email;
+                                return email && email.to === 'omribaram@gmail.com';
                             }
                         }
                     });
                 } else if (this.searchBy.isRead) {
                     return this.emails.filter((email) => {
-                        return email.isRead;
+                        return email.isRead && email.to === 'omribaram@gmail.com';
                     });
                 } else {
                     return this.emails.filter((email) => {
-                        return !email.isRead;
+                        return !email.isRead && email.to === 'omribaram@gmail.com';
                     });
                 }
             } else switch (this.searchBy.route) {

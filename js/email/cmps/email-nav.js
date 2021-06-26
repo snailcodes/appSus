@@ -91,9 +91,9 @@ export default {
         },
         showUnreadCount(route) {
             const unreadCount = this.emails.filter(email => {
-                if (route === 'inbox') return !email.isRead;
-                else if (route === 'isStarred') return email.isStarred && !email.isRead;
-                else if (route === 'isSent') return email.isSent && !email.isRead;
+                if (route === 'inbox') return !email.isRead && email.to === 'omribaram@gmail.com';
+                else if (route === 'isStarred') return email.isStarred && !email.isRead && !email.isDeleted;
+                else if (route === 'isSent') return email.isSent && !email.isRead && !email.isDeleted;
                 else if (route === 'isDeleted') return email.isDeleted && !email.isRead
             }).length;
             return unreadCount ? unreadCount : ''
