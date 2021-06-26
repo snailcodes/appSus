@@ -274,11 +274,6 @@ function query() {
     }
 }
 
-// function query() {
-//     createEmails();
-//     return storageService.query(EMAILS_KEY);
-// }
-
 function getById(emailID) {
     return storageService.get(EMAILS_KEY, emailID);
 }
