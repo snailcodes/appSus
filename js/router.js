@@ -1,12 +1,12 @@
 import emailApp from './email/pages/email-app.js';
 import keepApp from './keep/pages/keep-app.js';
 import emailDetails from './email/pages/email-details.js';
+import homePage from './pages/home-page.js'
 
-const routes = [
-    // {
-    //     path: '/',
-    //     component: homePage,
-    // },
+const routes = [{
+        path: '/',
+        component: homePage,
+    },
     {
         path: '/email',
         component: emailApp,
