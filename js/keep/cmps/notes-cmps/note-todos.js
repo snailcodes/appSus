@@ -6,12 +6,11 @@ export default {
 	template: `
 	<section class="note note-todos ">
 		<!-- <img @click="onPin" class="pin" src="../../../../img/apps/keep/pin.png" > -->
-		<label >{{note.info.label}}</label>
+		<p class="boldTxt">{{note.info.label}}</p>
 		<!-- <note-preview-todos @updated="updateTodo" :todos="note.info.todos" />  -->
 		<ul>
 			<li class="todos" v-for="(todo,idx) in note.info.todos"> 
 				<label > 
-					<!-- //change so only happens when marked complete -->
 					<input v-model="todo.isChecked" @click="complete(todo,idx)" type="checkbox" :name="todo.txt" :id="todo.txt">
 					{{todo.txt}} 
 					<span class="todos-completed" v-if="todo.isChecked" > {{formatDate(todo.doneAt)}} ({{formatTime(todo.doneAt)}})</span>
@@ -41,10 +40,9 @@ export default {
 				completedTodo.doneAt = Date.now();
 				this.note.info.todos[idx] = completedTodo;
 				eventBus.$emit('checked', this.note);
-				// this.note.style.textDecoration = 'line-through';
 			} else {
 				todo.isChecked = false;
-				// this.note.style.textDecoration = 'unset';
+				eventBus.$emit('checked', this.note);
 			}
 		},
 	},
@@ -52,15 +50,7 @@ export default {
 	mounted() {},
 
 	created() {
-		this.note.style.textAlign = 'left';
-		this.note.style.display = 'inline-block';
+		// this.note.style.textAlign = 'left';
+		// this.note.style.display = 'inline-block';
 	},
 };
-
-// {        type: "NoteTodos",
-//          info:
-// 		 { label: "How    was   it:",
-// 		  todos:
-// 		   [ { txt:    "Do   that", doneAt: null    },
-// 		   { txt:    "Do   this", doneAt: 187111111 } ]
-// }

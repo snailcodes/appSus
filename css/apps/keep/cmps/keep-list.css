@@ -1,42 +1,46 @@
+@import url('./note-txt.css');
+@import url('./note-img.css');
+@import url('./note-video.css');
 @import url('./note-todos.css');
 
 /* LIST */
 .notesList {
 	display: grid;
 	grid-auto-flow: dense;
-	grid-gap: 6em;
+	grid-gap: 2em;
 	max-width: 100%;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	/* grid-template-rows: repeat(6, minmax(100px, 1fr));
-	grid-template-rows: repeat(6, minmax(100px, 1fr)); */
-	/* grid-template-areas: 
-	" pin pin pin pin pin pin "
-	" note note note note note note  "
-	" note note note note note note  "
-	" note note note note note note  "
-	" note note note note note note  "
-	" note note note note note note  "
-	 */
-	/* grid-template-rows: repeat(5, 1fr); */
-	/* border: 1px solid black; */
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.note-container {
+li.note-container {
 	position: relative;
+	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
 
 	margin-bottom: 20px;
 	object-fit: cover;
 
-	width: 200px;
-	min-height: 200px;
+	width: 250px;
+	min-height: 250px;
 
 	padding: 2px;
 	border-radius: 10px;
 
-	box-shadow: 0 1px 2px 0 #10444073, 0 1px 3px 1px rgba(26, 115, 232, 0.302);
+	box-shadow: 0 1px 2px 0 #abad9a73, 0 1px 3px 1px rgba(218, 221, 226, 0.787);
 	transition: 0.8s ease;
+
+	align-self: start;
+}
+
+.note {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: 0.8s ease;
+	position: relative;
+	flex: 1;
+	border-radius: 8px;
 }
 
 .note-container:hover {
@@ -49,7 +53,7 @@
 .note-control-panel {
 	position: absolute;
 	display: flex;
-	bottom: -25px;
+	bottom: -30px;
 	left: 0;
 	right: 0;
 	justify-content: space-between;
@@ -64,8 +68,7 @@ button.button-keep {
 }
 
 img.keep-button-img {
-	width: 15px;
-	height: 15px;
+	width: 20px;
 	position: relative;
 	left: 0;
 	cursor: pointer;
@@ -98,36 +101,49 @@ img.keep-button-img {
 }
 
 /* PARTICULAR NOTE DEFS */
-.note-img {
-	grid-column: span 2;
+/* .note-img {
+	text-align: center;
+	justify-content: space-around;
+} */
+
+.note-todos {
+	text-align: left;
+	display: inline-block;
 }
 
 .note-txt {
 	display: inline-block;
+	text-align: justify;
+	padding: 5px;
 }
 
-/* TODO: align button to bottom left */
-button .button-keep.long-txt {
-	left: 0;
+/* .note-video {
+	text-align: center;
+	justify-content: space-around;
+} */
+
+/* .button-keep.long-txt {
+	position: absolute;
+	right: 0;
+	bottom: 0;
 	border: 1px solid black;
-}
+	border: none;
+} */
 
-.keep-video {
-	/* padding-top: 10px; */
-	/* object-fit: fill; */
+/* .keep-video {
 	object-fit: contain;
 	max-width: 95%;
 	border-radius: 8px;
-}
+} */
 
-.todos-completed {
+/* .todos-completed {
 	font-size: small;
 	font-style: italic;
-}
+} */
 
-.completed {
+/* .completed {
 	text-decoration: line-through;
-}
+} */
 
 /* MEDIA QUERIES */
 

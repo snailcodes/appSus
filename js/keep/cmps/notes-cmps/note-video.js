@@ -1,8 +1,8 @@
 export default {
 	props: ['note'],
 	template: `
-    <section class="note">
-		{{note.info.title}}
+    <section class="note note-video">
+		<p class="boldTxt"> {{note.info.title}} </p>
 		<video v-if="!isYT" class="keep-video" controls>
 			<source :src="note.info.url" type="video/mp4">
 			<source :src="note.info.url" type="video/webm">
@@ -34,7 +34,7 @@ export default {
 		},
 	},
 	created() {
-		this.note.style.textAlign = 'center';
-		this.note.style.justifyContent = 'space-around';
+		// this.note.style.textAlign = 'center';
+		// this.note.style.justifyContent = 'space-around';
 	},
 };

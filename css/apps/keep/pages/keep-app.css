@@ -29,6 +29,10 @@ input.input-keep {
 	justify-content: center;
 }
 
+.boldTxt {
+	font-weight: bold;
+}
+
 /* MODAL */
 .modal-container {
 	inset: 0;
@@ -54,19 +58,19 @@ input.input-keep {
 
 /* ALL FORMS */
 .keep-form {
-	background-color: whitesmoke;
-	max-width: 400px;
+	/* background-color: whitesmoke; */
+	max-width: 300px;
 	border-radius: 8px;
 	margin: 0 auto;
 	padding: 10px;
-	text-align: center;
+	/* text-align: center; */
 }
 
-.keep-form-todos {
+/* .keep-form-todos {
 	max-width: 450px;
 	display: flex;
 	flex-direction: column;
-}
+} */
 
 /* ALL IMGS */
 .keep-img {
@@ -82,16 +86,16 @@ input.input-keep {
 	flex-direction: column;
 	align-items: center;
 	margin: 0 auto;
-	padding: 10px;
+	padding-block-start: 60px;
 }
 
 .header-control {
 	width: 100%;
 	background-color: #f1f3f4;
 	margin-bottom: 20px;
-	border-radius: 8px;
 	position: relative;
-	border: 1px solid gray;
+	border-bottom: 1px solid gray;
+	border-top: 1px solid gray;
 }
 .note-add-control-panel {
 	display: flex;

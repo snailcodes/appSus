@@ -11,9 +11,9 @@ export default {
 			<h4 class="keep-add-text" v-else> Add Image Note </h4>
             <input class="input-keep" v-model="info.title"  type="text" placeholder="Write Title">
             <input v-if="!fromFile" class="input-keep" type="url" v-model="info.url" placeholder="Enter URL" >
-            <button class="button-keep" @click="isFromFile"> 
-			<img  src="../../../../img/apps/keep/upload.png" alt="uploadFile"> </button>
-            <input v-if="fromFile" @change="loadTxtFromFile " type="file">
+            <button type="button" class="button-keep" @click.prevent="isFromFile"> 
+			<img  class="keep-button-img" src="img/apps/keep/upload.png" alt="uploadFile"> </button>
+            <input v-if="fromFile" @change="loadTxtFromFile" type="file">
         </form> 
     `,
 
