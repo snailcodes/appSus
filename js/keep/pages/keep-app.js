@@ -182,15 +182,19 @@ export default {
     },
 
     watch: {
-        '$route.params': {
-            immediate: true,
+        'this.$route.params': {
             handler() {
+                console.log('sanity check');
                 const { email } = this.$route.params;
                 console.log(email);
-                const emailNote = null;
-                emailNote.info = { subject, body };
+                const emailNote = {};
+                emailNote.info = {
+                    title: email.subject,
+                    txt: email.body
+                }
                 emailNote.type = 'noteTxt';
-                renderNote(email.type, email.info);
+                console.log(emailNote);
+                this.renderNote(emailNote.info, emailNote.type);
             },
         },
     },

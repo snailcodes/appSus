@@ -44,3 +44,83 @@ button.btn-email-send {
     min-height: 40px;
     border-radius: 15px;
 }
+
+.email-compose-style {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+span[class^="email-compose-style"] {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+span[class^="email-compose-style"]:not(:first-of-type):hover {
+    filter: drop-shadow(0px 0px 12px black);
+}
+
+.email-compose-style-size {
+    gap: 10px;
+}
+
+.email-compose-style-size span {
+    display: flex;
+}
+
+.email-compose-style-size span:hover {
+    filter: drop-shadow(0px 0px 12px black);
+}
+
+.email-compose-style-weight {}
+
+.email-compose-style-italic {}
+
+.email-compose-style-underline {}
+
+.email-compose-style-color {}
+
+input.input-email-compose-color {
+    visibility: hidden;
+}
+
+.email-compose-style-dir {}
+
+
+/***************************/
+
+.email-list {
+    grid-row: 1/-1;
+    grid-column: 2/3;
+}
+
+@media (max-width: 1300px) {
+    .email-list {
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+    .email-compose-style {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        padding-inline: 10px;
+    }
+}
+
+@media (max-width: 850px) {
+    .email-compose-style {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding-inline: 10px;
+    }
+    .email-compose {
+        height: auto;
+    }
+}
+
+
+/***************************/

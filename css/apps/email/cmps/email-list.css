@@ -26,6 +26,14 @@
         grid-column: 1/-1;
         margin-inline-start: 10px;
     }
+    .email-list>div {
+        display: flex;
+        justify-content: space-between;
+    }
+    .ham-menu-block {
+        min-width: 50px;
+        max-width: 50px;
+    }
 }
 
 

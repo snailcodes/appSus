@@ -9,8 +9,9 @@ export default {
     template: `
         <div class="email-preview">
             <div class="email-preview-top">
-                <span v-bind:class="classStarredState" @click="onToggleStarred"></span>
+                <span v-bind:class="classStarredState" @click.stop="onToggleStarred"></span>
                 <long-text class="email-preview-subject" :txt="email.subject" :length="50" :class="showReadState"></long-text>
+                {{email.id}}
                 <div class="email-preview-read-state" v-bind:class="showReadState" @click.stop="onToggleRead"></div>
                 <div class="email-preview-send-date" :class="showReadState">{{showFormattedTime}}</div>
             </div>
