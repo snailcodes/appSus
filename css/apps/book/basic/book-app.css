@@ -1,13 +1,3 @@
-@font-face {
-    font-family: fontawesome;
-    src: url('../../../../font/apps/book/fontawesome.woff');
-}
-
-@font-face {
-    font-family: fontawesomer;
-    src: url('../../../../font/apps/book/fontawesome.woff');
-}
-
 .book-app *,
 .book-app *:before,
 .book-app *:after {
@@ -135,10 +125,12 @@
 }
 
 .app-footer {
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 3vh;
+    width: 100%;
 }
 
 .book-list,

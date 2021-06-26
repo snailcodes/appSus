@@ -9,6 +9,19 @@
 
 /***********************/
 
+@font-face {
+    font-family: fontawesome;
+    src: url('../../../../font/apps/book/fontawesome.woff');
+}
+
+@font-face {
+    font-family: fontawesomer;
+    src: url('../../../../font/apps/book/fontawesomer.tff');
+}
+
+
+/***********************/
+
 [class*=input-email],
 [class*=input-email]:focus {
     outline: none;
