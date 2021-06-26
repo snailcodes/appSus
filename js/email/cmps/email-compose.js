@@ -24,30 +24,30 @@ export default {
                         </select>
                     <span class="email-compose-style-size">
                         <span>
-                            <img src="/img/apps/email/size.png" @click="setStyle('size',-1)"/>
+                            <img src="img/apps/email/size.png" @click="setStyle('size',-1)"/>
                             <sup>-</sup>
                         </span>
                         <span>
-                            <img src="/img/apps/email/size.png" @click="setStyle('size',1)"/>
+                            <img src="img/apps/email/size.png" @click="setStyle('size',1)"/>
                             <sup>+</sup>
                         </span>
                     </span>
                     <span class="email-compose-style-weight">
-                        <img src="/img/apps/email/weight.png" @click="setStyle('weight')"/>
+                        <img src="img/apps/email/weight.png" @click="setStyle('weight')"/>
                     </span>
                     <span class="email-compose-style-italic">
-                        <img src="/img/apps/email/italic.png" @click="setStyle('italic')"/>
+                        <img src="img/apps/email/italic.png" @click="setStyle('italic')"/>
                     </span>
                     <span class="email-compose-style-underline">
-                        <img src="/img/apps/email/underline.png" @click="setStyle('underline')"/>
+                        <img src="img/apps/email/underline.png" @click="setStyle('underline')"/>
                     </span>
                     <span class="email-compose-style-color" @click="setStyle('color')">
                         <input type="color" v-model="email.styleObject.color" class="input-email-compose-color">
-                        <img src="/img/apps/email/color.png"/>
-                        <img src="/img/apps/email/arrow.png"/>
+                        <img src="img/apps/email/color.png"/>
+                        <img src="img/apps/email/arrow.png"/>
                     </span>
                     <span class="email-compose-style-dir">
-                        <img src="/img/apps/email/dir.png" @click="setStyle('dir')"/>
+                        <img src="img/apps/email/dir.png" @click="setStyle('dir')"/>
                     </span>
                 </div>
                 <textarea v-model="email.body" v-bind:style="email.styleObject"></textarea>
