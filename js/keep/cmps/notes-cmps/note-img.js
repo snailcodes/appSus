@@ -2,7 +2,8 @@ export default {
 	props: ['note'],
 	template: `
     <section class="note note-img">
-		{{note.info.title}}
+		
+		<p>{{note.info.title}} </p>
 		<img class="keep-img" :src="note.info.url" >
 		
 	</section>
@@ -16,8 +17,5 @@ export default {
 		// },
 	},
 
-	created() {
-		this.note.style.textAlign = 'center';
-		this.note.style.justifyContent = 'space-around';
-	},
+	created() {},
 };

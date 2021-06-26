@@ -52,15 +52,7 @@ export default {
 	mounted() {},
 
 	created() {
-		this.note.style.textAlign = 'left';
-		this.note.style.display = 'inline-block';
+		// this.note.style.textAlign = 'left';
+		// this.note.style.display = 'inline-block';
 	},
 };
-
-// {        type: "NoteTodos",
-//          info:
-// 		 { label: "How    was   it:",
-// 		  todos:
-// 		   [ { txt:    "Do   that", doneAt: null    },
-// 		   { txt:    "Do   this", doneAt: 187111111 } ]
-// }

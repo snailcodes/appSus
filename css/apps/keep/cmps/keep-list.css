@@ -7,6 +7,8 @@
 	grid-gap: 6em;
 	max-width: 100%;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	/* grid-template-rows: repeat(auto-fit, minmax(200px, 200px)); */
+
 	/* grid-template-rows: repeat(6, minmax(100px, 1fr));
 	grid-template-rows: repeat(6, minmax(100px, 1fr)); */
 	/* grid-template-areas: 
@@ -17,14 +19,14 @@
 	" note note note note note note  "
 	" note note note note note note  "
 	 */
-	/* grid-template-rows: repeat(5, 1fr); */
 	/* border: 1px solid black; */
 }
 
-.note-container {
+li.note-container {
 	position: relative;
-	display: flex;
-	flex-direction: column;
+	border-radius: 8px;
+	/* display: flex; */
+	/* flex-direction: column; */
 
 	margin-bottom: 20px;
 	object-fit: cover;
@@ -37,6 +39,8 @@
 
 	box-shadow: 0 1px 2px 0 #10444073, 0 1px 3px 1px rgba(26, 115, 232, 0.302);
 	transition: 0.8s ease;
+
+	align-self: start;
 }
 
 .note-container:hover {
@@ -97,13 +101,34 @@ img.keep-button-img {
 	background-color: lightgreen;
 }
 
+.note {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 /* PARTICULAR NOTE DEFS */
 .note-img {
-	grid-column: span 2;
+	text-align: center;
+	justify-content: space-around;
+	height: 100%;
+}
+
+.note-todos {
+	text-align: left;
+	display: inline-block;
 }
 
 .note-txt {
 	display: inline-block;
+	text-align: justify;
+	padding: 5px;
+}
+
+.note-video {
+	text-align: center;
+	justify-content: space-around;
+	height: 100%;
 }
 
 /* TODO: align button to bottom left */

@@ -182,9 +182,10 @@ export default {
 	},
 
 	watch: {
-		'this.$route.params': {
+		'this.$route.params.email': {
 			immediate: true,
 			handler() {
+				if (!this.$route.params.email) return;
 				console.log('sanity test');
 				const { email } = this.$route.params;
 				const emailNote = {};

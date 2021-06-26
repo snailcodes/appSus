@@ -3,7 +3,7 @@ import longText from '../../../cmps/long-text.js';
 export default {
 	props: ['note'],
 	template: `
-    <section class="note-txt">
+    <section class="note note-txt">
 		<p> {{note.info.title}}</p>
 		
 		<long-text  v-if="toggleDis" :txt="note.info.txt" :length="60">  </long-text>
@@ -41,9 +41,9 @@ export default {
 	mounted() {},
 
 	created() {
-		this.note.style.textAlign = 'justify';
-		this.note.style.display = 'inline-block';
-		this.note.style.padding = '5px';
+		// this.note.style.textAlign = 'justify';
+		// this.note.style.display = 'inline-block';
+		// this.note.style.padding = '5px';
 		const length = this.note.info.txt.length;
 		if (length > 60) {
 			this.toggleDis = true;
