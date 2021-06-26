@@ -2,7 +2,7 @@ export default {
 	props: ['note'],
 	template: `
     <section class="note note-video">
-		{{note.info.title}}
+		<p class="boldTxt"> {{note.info.title}} </p>
 		<video v-if="!isYT" class="keep-video" controls>
 			<source :src="note.info.url" type="video/mp4">
 			<source :src="note.info.url" type="video/webm">

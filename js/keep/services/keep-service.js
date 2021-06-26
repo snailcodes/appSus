@@ -56,18 +56,20 @@ function _createNotes() {
 			type: 'noteTxt',
 			isPinned: false,
 			pinSrc: 'img/apps/keep/pin.png',
-			info: { title: 'What?', txt: 'Fullstack Me  Baby!' },
+			info: {
+				title: 'The Talking Horse',
+				txt: 'A talking horse walks into a bar and approaches the manager. “Excuse me, good sir,” the horse says, “are you hiring?” The manager looks the horse up and down and says, “Sorry, pal. Why don’t you try the circus? The horse nickers. “Why would the circus need a bartender?” ',
+			},
 			style: { backgroundColor: 'lightblue' },
-			// style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 		},
 		{
 			id: storageService.makeId(),
 			isPinned: false,
 			pinSrc: 'img/apps/keep/pin.png',
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightgreen' },
 			type: 'noteImg',
 			info: {
-				url: 'https://img.vcomments.com/en/funny/47.jpg',
+				url: 'https://theawesomedaily.com/wp-content/uploads/2017/09/smiling-horse-4-1.jpg',
 				title: 'Smile ;)',
 			},
 		},
@@ -75,7 +77,7 @@ function _createNotes() {
 			id: storageService.makeId(),
 			isPinned: false,
 			pinSrc: 'img/apps/keep/pin.png',
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightcoral' },
 			type: 'noteImg',
 			info: {
 				url: 'https://www.icegif.com/wp-content/uploads/funny.gif',
@@ -89,8 +91,8 @@ function _createNotes() {
 			style: { backgroundColor: 'lightblue' },
 			type: 'noteImg',
 			info: {
-				url: 'https://www.sbs.com.au/guide/sites/sbs.com.au.guide/files/styles/full/public/horsin.jpg?itok=AovIZOaD&mtime=1504767165',
-				title: '',
+				url: 'https://static.parade.com/wp-content/uploads/2021/04/Horse-Puns-1.jpg',
+				title: 'Pony up!',
 			},
 		},
 
@@ -99,19 +101,25 @@ function _createNotes() {
 			type: 'noteTodos',
 			isPinned: false,
 			pinSrc: 'img/apps/keep/pin.png',
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'gray' },
 			info: {
-				label: 'How    was   it:',
+				label: 'Things to do today:',
 				todos: [
 					{
 						id: storageService.makeId(),
-						txt: 'Do   that',
+						txt: 'Learn Vue',
 						doneAt: null,
 						isMarked: false,
 					},
 					{
 						id: storageService.makeId(),
-						txt: 'Do   this',
+						txt: 'Learn Yiddish',
+						doneAt: null,
+						isMarked: false,
+					},
+					{
+						id: storageService.makeId(),
+						txt: 'Be victorious',
 						doneAt: null,
 						isMarked: false,
 					},
@@ -125,17 +133,20 @@ function _createNotes() {
 			pinSrc: 'img/apps/keep/pin.png',
 			style: { backgroundColor: 'lightblue' },
 			isPinned: true,
-			info: { title: 'What?', txt: 'Fullstack Me  Baby!' },
+			info: {
+				title: 'Life Lessons',
+				txt: 'Q: You’re riding a horse full speed, there’s a giraffe right beside you, and a lion nipping at your heels. What do you do? A: Get off the carousel and sober up. ',
+			},
 		},
 		{
 			id: storageService.makeId(),
 			isPinned: false,
 			pinSrc: 'img/apps/keep/pin.png',
-			style: { backgroundColor: 'lightblue' },
+			style: { backgroundColor: 'lightgreen' },
 			type: 'noteTxt',
 			isPinned: true,
 			info: {
-				txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urna duis convallis convallis tellus id interdum velit laoreet id. Tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Aliquet enim tortor at auctor. Ipsum nunc aliquet bibendum enim facilisis. Eget duis at tellus at urna condimentum mattis pellentesque id. Accumsan sit amet nulla facilisi morbi. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Sit amet nulla facilisi morbi tempus. Quisque non tellus orci ac auctor. Pretium fusce id velit ut tortor pretium viverra suspendisse. Neque ornare aenean euismod elementum nisi quis eleifend quam. Risus in hendrerit gravida rutrum quisque.',
+				txt: 'A guy is walking through the country when he spots a sign that reads, “Talking Horse for Sale.” Intrigued, he walks up to the stable to check it out. “So what have you done with your life?” he asks the horse. “I’ve led a full life,” the horse answers miraculously. “I was born in The Andes where I herded for an entire village. Years later, I joined the mounted police force in New York and helped keep the city clean. And now, I spend my days giving free rides to underprivileged kids here in the country”. The guy is flabbergasted. He asks the horse’s owner, “Why on earth would you want to get rid of such an incredible animal?" The owner says, “Because he’s a liar! He never did any of that!”',
 			},
 		},
 
@@ -147,7 +158,18 @@ function _createNotes() {
 			type: 'noteVideo',
 			info: {
 				url: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
-				title: 'MovieTime',
+				title: 'I like bunnies too!',
+			},
+		},
+		{
+			id: storageService.makeId(),
+			isPinned: false,
+			pinSrc: 'img/apps/keep/pin.png',
+			style: { backgroundColor: 'lightblue' },
+			type: 'noteVideo',
+			info: {
+				url: 'https://www.youtube.com/watch?v=YDj3JHtIviQ',
+				title: 'So Sus',
 			},
 		},
 	];

@@ -28,6 +28,7 @@ export default {
 	},
 	created() {
 		if (this.editedNote) {
+			this.info.title = this.editedNote.info.title;
 			this.info.txt = this.editedNote.info.txt;
 		}
 	},

@@ -3,7 +3,7 @@ export default {
 	template: `
     <section class="note note-img">
 		
-		<p>{{note.info.title}} </p>
+		<p class="boldTxt">{{note.info.title}} </p>
 		<img class="keep-img" :src="note.info.url" >
 		
 	</section>

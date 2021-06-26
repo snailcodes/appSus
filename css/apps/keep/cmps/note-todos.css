@@ -11,3 +11,13 @@
 .completed {
 	text-decoration: line-through;
 }
+
+.keep-form-todos {
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+}
+
+.button-keep.todos {
+	padding: unset;
+}
