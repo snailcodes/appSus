@@ -18,7 +18,8 @@ export default {
 					<button  title="Gray"  class="button-keep" @click="changeBcg('gray',note)"> <span  class="circle circle-gray"></span> </button>
 					<button  title="Blue"  class="button-keep" @click="changeBcg('lightblue',note)"> <span  class="circle circle-lightblue"></span> </button>
 					<button  title="Green"  class="button-keep" @click="changeBcg('lightgreen',note)"> <span  class="circle circle-lightgreen"></span> </button>
-					
+				
+					<img title="Click to Pin" class="keep-button-img" @click="onPin(note)" :src="note.pinSrc" > 
 				
 					<button title="Delete Note" class="button-keep" @click="onDelNote(note)"> <img class="keep-button-img" src="img/apps/keep/delete.png" alt="Delete"> </button>
 					<button title="Edit Note" class="button-keep" @click="onEditNote(note)"> <img class="keep-button-img" src="img/apps/keep/edit.png" alt="Edit"> </button>
@@ -42,6 +43,7 @@ export default {
 		return {
 			currNote: null,
 			pinSrc: null,
+			bcgColor: null,
 		};
 	},
 
