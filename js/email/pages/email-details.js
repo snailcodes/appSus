@@ -9,7 +9,13 @@ export default {
             <section v-if="email" class="email-details">
                 <span>{{email.subject}}</span>
                 <div class="email-subject">
-                    <span>From {{email.from}}</span>
+                    <div>
+                        <img src="img/apps/email/user.png" class="email-details-user-img">
+                        <div class="email-details-to-from">
+                            <span>{{email.from}}</span>
+                            <span>to {{email.to==='omribaram@gmail.com' ? 'me' : email.to}}</span>
+                        </div>
+                    </div>
                     <div>
                         <span>{{showFormattedTime}}</span>
                         <span @click="onSendNote" class="email-send-note" title="Send to Ms. Keep">
