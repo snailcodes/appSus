@@ -51,7 +51,10 @@ export default {
 
 	mounted() {},
 
-	created() {},
+	created() {
+		this.note.style.textAlign = 'left';
+		this.note.style.display = 'inline-block';
+	},
 };
 
 // {        type: "NoteTodos",

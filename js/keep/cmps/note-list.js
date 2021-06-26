@@ -7,8 +7,8 @@ import noteVideo from './notes-cmps/note-video.js';
 import { eventBus } from '../../services/event-bus-service.js';
 
 export default {
-    props: ['notes'],
-    template: `
+	props: ['notes'],
+	template: `
 	
     <ul class="notesList">
             <li v-for="note in notes" :key="note.id"  class="note-container" :style="note.style"> 
@@ -30,70 +30,68 @@ export default {
         </ul>
     `,
 
-    // src="img/apps/keep/pin.png"
+	// src="img/apps/keep/pin.png"
 
-    components: {
-        // notePreview,
-        noteTxt,
-        noteImg,
-        noteTodos,
-        noteVideo,
-    },
+	components: {
+		// notePreview,
+		noteTxt,
+		noteImg,
+		noteTodos,
+		noteVideo,
+	},
 
-    data() {
-        return {
-            currNote: null,
-            pinSrc: null,
-        };
-    },
+	data() {
+		return {
+			currNote: null,
+			pinSrc: null,
+		};
+	},
 
-    methods: {
-        email(note) {
-            this.$router.push({
-                name: 'noteToEmail',
-                params: { note: note.info },
-            });
-        },
+	methods: {
+		email(note) {
+			this.$router.push({
+				name: 'noteToEmail',
+				params: { note: note.info },
+			});
+		},
 
-        onPin(note) {
-            if (!note.isPinned) {
-                console.log('pinned');
+		onPin(note) {
+			if (!note.isPinned) {
+				console.log('pinned');
 
-                note.isPinned = !note.isPinned;
-                note.style.gridRow = '1/2';
-                note.style.filter = 'brightness(95%)';
-                note.pinSrc = 'img/apps/keep/pinned.png';
-            } else {
-                this.pinSrc = 'img/apps/keep/pin.png';
-                note.isPinned = !note.isPinned;
-                note.style.gridRow = '2/3';
-                note.style.filter = 'unset';
-                note.pinSrc = 'img/apps/keep/pin.png';
-            }
+				note.isPinned = !note.isPinned;
+				note.style.gridRow = '1/2';
+				note.pinSrc = 'img/apps/keep/pinned.png';
+			} else {
+				this.pinSrc = 'img/apps/keep/pin.png';
+				note.isPinned = !note.isPinned;
+				note.style.gridRow = '2/3';
+				note.pinSrc = 'img/apps/keep/pin.png';
+			}
 
-            eventBus.$emit('pinned', note);
-        },
+			eventBus.$emit('pinned', note);
+		},
 
-        changeBcg(color, note) {
-            note.style.backgroundColor = color;
-            eventBus.$emit('bcgolored', note);
-        },
+		changeBcg(color, note) {
+			note.style.backgroundColor = color;
+			eventBus.$emit('bcgolored', note);
+		},
 
-        onDelNote(note) {
-            console.log('removing sanity');
-            this.$emit('deleted', note.id);
-        },
+		onDelNote(note) {
+			console.log('removing sanity');
+			this.$emit('deleted', note.id);
+		},
 
-        // TODO FIGURE OUT WHY ONLY BUS WORKS ON EDITNOTE (DIRECT EMIT DID NOT WORK)
-        onEditNote(note) {
-            console.log('editing note');
-            eventBus.$emit('editedNote', note);
-            // this.$emit('editing', note);
-            // this.$emit('editedNote', note.id);
-        },
-    },
+		// TODO FIGURE OUT WHY ONLY BUS WORKS ON EDITNOTE (DIRECT EMIT DID NOT WORK)
+		onEditNote(note) {
+			console.log('editing note');
+			eventBus.$emit('editedNote', note);
+			// this.$emit('editing', note);
+			// this.$emit('editedNote', note.id);
+		},
+	},
 
-    computed: {},
+	computed: {},
 
-    created() {},
+	created() {},
 };
