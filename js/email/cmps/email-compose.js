@@ -2,7 +2,7 @@ import { eventBus } from '../../services/event-bus-service.js';
 import { utilService } from '../../services/util-service.js'
 
 export default {
-    props: ['parentEmail'],
+    props: ['parentEmail', 'note'],
     template: `
             <form @submit.prevent="composeEmail" class="email-compose">
                 <div class="email-compose-header">
@@ -83,9 +83,18 @@ export default {
             this.email.to = this.parentEmail.from;
             if (this.parentEmail.replies) this.email.subject = `Re: ${this.parentEmail.replies[this.parentEmail.replies.length-1].subject}`;
             else this.email.subject = `Re: ${this.parentEmail.subject}`;
+        } else if (this.note) {
+            this.email.body = this.note.body;
+            this.email.subject = this.note.subject
+            if (this.note.image) this.email.body += this.note.image;
+            else if (this.email.video) this.email.body += this.note.video;
+            else if (this.email.todos) this.email.body += this.note.todos;
         }
     },
     methods: {
+        onInput(e) {
+            this.email.body = e.target.innerText;
+        },
         setStyle(style, value) {
             switch (style) {
                 case 'size':
@@ -111,6 +120,7 @@ export default {
 
         },
         composeEmail() {
+            console.log('hello')
             if (!this.email.body) {
                 const msg = {
                     txt: 'Please enter email message',
@@ -127,12 +137,18 @@ export default {
                 this.email.isSent = true;
                 this.parentEmail.replies.push(this.email);
                 this.$emit('emailReplied', this.parentEmail)
-            } else {
-                this.email.sentAt = Date.now();
-                this.email.isSent = true;
-                this.email.from = "omribaram@gmail.com";
-                this.$emit('emailComposed', this.email)
+            } else if (this.note) {
+                if (this.note.image) this.email.image = this.note.image;
+                if (this.note.video) this.email.video = this.note.video;
+                if (this.note.todos) this.email.todos = this.note.todos;
             }
+            this.email.sentAt = Date.now();
+            this.email.isSent = true;
+            this.email.from = "omribaram@gmail.com";
+            this.$emit('emailComposed', this.email)
         }
+    },
+    destroyed() {
+        this.$emit('destroyed');
     }
 }

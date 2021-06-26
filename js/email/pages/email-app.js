@@ -13,7 +13,7 @@ export default {
             <email-list v-if="emailsToShow" :emails="emailsToShow" @searched="setSearch" @selected="showEmail" @starred="toggleStarred" @toggleread="toggleRead"/>
             <email-details :email="selectedEmail" @emailDeleted="deleteEmail" @emailRestored="restoreEmail" @emailReplied="loadEmails()" @replyDeleted="deleteReply"/>
             <div v-if="isComposingEmail" class="modal-container" @click.self="isComposingEmail = false">
-                <email-compose class="modal-content" @emailComposed="composeEmail"/></email-compose>
+                <email-compose class="modal-content" @emailComposed="composeEmail" @destroyed="note=null" :note="note"/></email-compose>
             </div>
         </section>
     `,
@@ -29,6 +29,7 @@ export default {
             },
             sortBy: 'date',
             isComposingEmail: false,
+            note: null
         };
     },
     created() {},
@@ -261,8 +262,8 @@ export default {
                 email.isSent = true;
                 email.isDeleted = false;
                 email.sentAt = Date.now();
-                this.$router.push('/email');
-                this.composeEmail(email);
+                this.note = email;
+                this.isComposingEmail = true;
             }
         }
     }
