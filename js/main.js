@@ -3,6 +3,7 @@ import emailApp from './email/pages/email-app.js';
 import bookApp from './book/pages/book-app.js';
 import userMsg from './cmps/user-msg.js';
 import appNav from './cmps/app-nav.js';
+import appFooter from './cmps/app-footer.js'
 import { router } from './router.js';
 
 const options = {
@@ -13,6 +14,7 @@ const options = {
         <user-msg />
         <app-nav />
         <router-view />
+        <app-footer/>
     </section>`,
 
     components: {
@@ -20,7 +22,8 @@ const options = {
         keepApp,
         bookApp,
         userMsg,
-        appNav
+        appNav,
+        appFooter
     },
 };
 
