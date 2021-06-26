@@ -70,6 +70,18 @@
     }
 }
 
+@media (max-width: 350px) {
+    .stripe-text {
+        position: relative;
+        font-size: 3.8rem;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-family: 'Catamaran', sans-serif;
+        font-style: italic;
+        pointer-events: none;
+    }
+}
+
 
 /* ========================= */
 

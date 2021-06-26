@@ -9,7 +9,7 @@ import emailCompose from '../cmps/email-compose.js';
 export default {
     template: `
         <section v-if="emails" class="email-app">
-            <email-nav @compose="isComposingEmail = true" :emails="emails" @navigate="setSearch"/>
+            <email-nav @compose="isComposingEmail = true" :emails="emails" @sorted="setSort" @navigate="setSearch"/>
             <email-list v-if="emailsToShow" :emails="emailsToShow" @searched="setSearch" @selected="showEmail" @starred="toggleStarred" @toggleread="toggleRead"/>
             <email-details :email="selectedEmail" @emailDeleted="deleteEmail" @emailRestored="restoreEmail" @emailReplied="loadEmails()" @replyDeleted="deleteReply"/>
             <div v-if="isComposingEmail" class="modal-container" @click.self="isComposingEmail = false">
@@ -233,19 +233,29 @@ export default {
             handler() {
                 if (!this.$route.params.note) return
                 const { note } = this.$route.params;
-                const email = {
-                    from: 'omribaram@gmail.com',
-                    to: 'omribaram@gmail.com',
-                    subject: `Note for myself: ${note.title}`,
-                    body: note.txt,
-                    isRead: false,
-                    isStarred: false,
-                    isSent: true,
-                    isDeleted: false,
-                    sentAt: Date.now()
+                console.log(note);
+                const email = {};
+                switch (note.type) {
+                    case '':
+                        break;
+                    case '':
+                        break;
+                    case '':
+                        break;
+                    case '':
+                        break;
                 }
+                email.from = 'omribaram@gmail.com';
+                email.to = 'omribaram@gmail.com';
+                email.subject = `Note for myself: ${note.title}`;
+                email.body = note.txt;
+                email.isRead = false;
+                email.isStarred = false;
+                email.isSent = true;
+                email.isDeleted = false;
+                email.sentAt = Date.now();
                 this.composeEmail(email);
             }
         }
     }
-};
+}

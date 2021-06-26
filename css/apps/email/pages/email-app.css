@@ -4,12 +4,6 @@
     padding-block-start: 50px;
 }
 
-.email-empty-list {
-    flex-basis: 50%;
-    padding-inline: 20px;
-    padding-block: 20px;
-}
-
 .modal-container {
     inset: 0;
     position: fixed;

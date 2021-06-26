@@ -61,8 +61,8 @@ textarea:focus {
 
 .user-msg {
     position: absolute;
-    top: 15px;
-    right: 30px;
+    top: 50px;
+    right: 15px;
     padding-block: 15px;
     padding-inline-end: 40px;
     padding-inline-start: 10px;

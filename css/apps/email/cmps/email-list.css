@@ -5,6 +5,12 @@
     overflow: hidden;
 }
 
+.email-empty-list {
+    flex-basis: 50%;
+    padding-inline: 20px;
+    padding-block: 0;
+}
+
 
 /***************************/
 

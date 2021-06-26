@@ -17,7 +17,7 @@ nav.top-navs {
     width: 500px;
     height: 40px;
     margin-block-start: -0.2%;
-    gap: 60px;
+    gap: 35px;
     background-color: #fbfbfb;
     border-radius: 0 0 30px 30px;
     border: 0.1px solid gray
@@ -53,14 +53,21 @@ nav.top-navs {
         align-items: center;
         top: 0;
         right: 0;
-        width: 300px;
+        width: 320px;
+        font-size: 0.8rem;
         height: 50px;
         gap: 30px;
         background-color: #fbfbfb;
         border-radius: 0 0 30px 30px;
         border: 0.1px solid gray
     }
+    .app-nav li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .top-nav-button {
+        text-align: center;
         display: block;
         margin-block-start: -1px;
         width: 70px;

@@ -13,7 +13,7 @@ export default {
                     <div>
                         <span>{{showFormattedTime}}</span>
                         <span @click="onSendNote" class="email-send-note">
-                            <img src="img/apps/email/checkbox.png">
+                            <span></span>
                         </span>
                         <span v-if="!email.isDeleted" @click="onToggleReply" class="email-reply">
                             <img src="img/apps/email/reply.png">

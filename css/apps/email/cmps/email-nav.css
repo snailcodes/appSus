@@ -81,6 +81,17 @@ button.btn-email-compose:hover:after {
     font-weight: bold;
 }
 
+[class^="sort"]>span:first-of-type {
+    font-family: fontawesome;
+    color: #5a5a5a;
+    opacity: 0.8;
+}
+
+[class^="sort"]>span:first-of-type:hover {
+    transition: 0.3s;
+    opacity: 1;
+}
+
 
 /***************************/
 
@@ -115,6 +126,20 @@ button.btn-email-compose:hover:after {
     }
     button.btn-email-compose {
         height: 41px;
+        width: 45px;
+        margin-inline-start: 12px;
+    }
+    button.btn-email-compose:hover {
+        padding-inline-end: unset;
+        background-color: #c8c8c8;
+        gap: 5px;
+        width: 45px;
+        box-shadow: unset;
+        margin-inline-end: 0;
+        padding: 0;
+    }
+    button.btn-email-compose:hover:after {
+        content: unset;
     }
 }
 
@@ -170,6 +195,16 @@ button.btn-email-compose:hover:after {
     button.btn-email-compose {
         border-radius: 15px;
         width: 140px;
+        background-color: #297be6;
+    }
+    button.btn-email-compose {
+        padding-inline-end: 100px;
+    }
+    button.btn-email-compose::after {
+        transition: opacity 0.6s;
+        content: 'Compose';
+        position: absolute;
+        left: 45px;
     }
     div[class^=nav]:hover {
         border-radius: 0 16px 16px 0;
