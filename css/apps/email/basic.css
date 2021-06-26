@@ -11,12 +11,12 @@
 
 @font-face {
     font-family: fontawesome;
-    src: url('../../../../font/apps/book/fontawesome.woff');
+    src: url('../../../font/apps/book/fontawesome.woff');
 }
 
 @font-face {
     font-family: fontawesomer;
-    src: url('../../../../font/apps/book/fontawesomer.tff');
+    src: url('../../../font/apps/book/fontawesomer.ttf');
 }
 
 
