@@ -16,5 +16,8 @@ export default {
 		// },
 	},
 
-	created() {},
+	created() {
+		this.note.style.textAlign = 'center';
+		this.note.style.justifyContent = 'space-around';
+	},
 };

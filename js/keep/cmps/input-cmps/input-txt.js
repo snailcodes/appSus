@@ -22,7 +22,7 @@ export default {
 		submit() {
 			const newInfo = { ...this.info };
 			this.$emit('submitting', newInfo, 'noteTxt');
-			this.info.txt = '';
+			this.info.title = '';
 			this.info.txt = '';
 		},
 	},

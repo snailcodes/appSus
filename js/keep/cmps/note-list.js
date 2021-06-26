@@ -61,13 +61,11 @@ export default {
 
 				note.isPinned = !note.isPinned;
 				note.style.gridRow = '1/2';
-				note.style.filter = 'brightness(95%)';
 				note.pinSrc = 'img/apps/keep/pinned.png';
 			} else {
 				this.pinSrc = 'img/apps/keep/pin.png';
 				note.isPinned = !note.isPinned;
 				note.style.gridRow = '2/3';
-				note.style.filter = 'unset';
 				note.pinSrc = 'img/apps/keep/pin.png';
 			}
 
