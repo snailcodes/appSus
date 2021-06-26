@@ -89,6 +89,9 @@ export default {
 					this.editedNote = null;
 				});
 			}
+			document.body.scrollTop = document.body.scrollHeight;
+			document.documentElement.scrollTop =
+				document.documentElement.scrollHeight;
 		},
 
 		setType(type) {
