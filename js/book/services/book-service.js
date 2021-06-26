@@ -16,7 +16,7 @@ export const bookService = {
 function query() {
     if (!JSON.parse(localStorage.getItem(BOOKS_KEY)))
         return Promise.resolve(
-            fetch('./books.json')
+            fetch('/books.json')
             .then(response => response.json())
             .then(data => {
                 storageService.save(BOOKS_KEY, data);
