@@ -236,24 +236,32 @@ export default {
                 console.log(note);
                 const email = {};
                 switch (note.type) {
-                    case '':
+                    case 'noteImg':
+                        email.image = note.info.url;
+                        email.body = `Image received from Ms. Keep!`;
                         break;
-                    case '':
+                    case 'noteTxt':
+                        email.body = note.info.txt;
                         break;
-                    case '':
+                    case 'noteVideo':
+                        email.video = note.info.url;
+                        email.body = `Video received from Ms. Keep!`;
                         break;
-                    case '':
+                    case 'noteTodos':
+                        email.subject = `Note for myself: ${note.info.label}`;
+                        email.todos = note.info.todos;
+                        email.body = `Your To-Dos list:`
                         break;
                 }
                 email.from = 'omribaram@gmail.com';
                 email.to = 'omribaram@gmail.com';
-                email.subject = `Note for myself: ${note.title}`;
-                email.body = note.txt;
+                if (!email.subject) email.subject = `Note for myself: ${note.info.title}`;
                 email.isRead = false;
                 email.isStarred = false;
                 email.isSent = true;
                 email.isDeleted = false;
                 email.sentAt = Date.now();
+                this.$router.push('/email');
                 this.composeEmail(email);
             }
         }

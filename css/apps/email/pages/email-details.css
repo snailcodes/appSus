@@ -70,6 +70,28 @@
 
 .email-body {
     padding-block-end: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.email-body-image {
+    padding-block-start: 20px;
+    max-width: 100%;
+    object-fit: cover;
+    align-self: center;
+}
+
+.email-body-video {
+    margin-block-start: 20px;
+    max-width: 100%;
+    align-self: center;
+}
+
+.email-body-todos {
+    margin-block-start: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .email-body.no-content {

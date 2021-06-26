@@ -26,7 +26,23 @@ export default {
                         </span>
                     </div>
                 </div>
-                <div class="email-body" v-bind:style="email.styleObject">{{email.body}}</div>
+                <div class="email-body" v-bind:style="email.styleObject">
+                    {{email.body}}
+                    <img v-if="email.image" v-bind:src="email.image" class="email-body-image"/>
+                    <div v-if="email.video" class="email-body-video">
+                        <iframe v-if="email.video.includes('youtube')" width="320" height="240" v-bind:src="showYoutubeLink"></iframe>
+                        <video v-if="!email.video.includes('youtube')" width="320" height="240" controls="controls">
+                            <source v-bind:src="email.video">
+                        </video>
+                    </div>
+                    <div v-if="email.todos">
+                        <ul class="email-body-todos">
+                            <li v-for="todo in email.todos" :key="todo.id">
+                                <div>{{todo.txt}}<span v-if="todo.isMarked">Completed</span></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <email-compose v-if="isReplying" :parentEmail="email" @emailReplied="reply"/>
                 <ul v-if="email.replies" class="email-replies">
                     <li v-for="reply in email.replies.slice().reverse()" :key="reply.id">
@@ -86,6 +102,11 @@ export default {
     computed: {
         showFormattedTime() {
             return new Date(this.email.sentAt).toLocaleDateString('en-il', { month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+        },
+        showYoutubeLink() {
+            const ytLink = this.email.video.split('=');
+            const idYT = ytLink[1];
+            return `https://www.youtube.com/embed/${idYT}`;
         }
     },
     components: {
