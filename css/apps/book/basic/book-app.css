@@ -746,18 +746,9 @@
     .app-header .stripe-text {
         font-size: 5rem;
     }
-    .book-filter {
-        flex-direction: column;
-    }
     .book-app {
         padding-inline: 0px;
         height: 100%;
-    }
-    .book-filter form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
     }
     .book-details {
         flex-basis: unset;
@@ -769,7 +760,7 @@
     .book {
         flex-direction: column;
         align-items: center;
-        padding-block-start: unset;
+        padding-block-start: 15px;
     }
     .book-img {
         margin-inline-end: unset;
@@ -794,9 +785,24 @@
     }
 }
 
+@media (max-width:700px) {
+    .book-filter {
+        flex-direction: column;
+    }
+    .book-filter form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
 @media (max-width:500px) {
     .book-img {
         height: 365px;
         width: 300px;
+    }
+    .book-footer {
+        font-size: 0.7rem;
     }
 }
