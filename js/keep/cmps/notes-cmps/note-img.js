@@ -11,7 +11,6 @@ export default {
     `,
 	methods: {
 		// onPin() {
-		// 	console.log('pinned');
 		// 	this.note.isPinned = true;
 		// 	eventBus.$emit('pinned', this.note);
 		// },

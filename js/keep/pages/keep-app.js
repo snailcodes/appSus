@@ -8,8 +8,8 @@ import inputTodos from '../cmps/input-cmps/input-todos.js';
 import noteFilter from '../cmps/note-filter.js';
 
 export default {
-    template: `
-    <section v-if="notes.length" class="keepApp-header" >
+	template: `
+    <section v-if="notes.length" class="keepApp-app" >
 		<section class="header-control">
 		<note-filter class="note-search-bar" @filtered="setFilter"    />
 			<label class="note-add-control-panel" >
@@ -31,199 +31,184 @@ export default {
     </section>
     `,
 
-    components: {
-        noteList,
-        eventBus,
-        keepService,
-        inputImg,
-        inputTxt,
-        inputTodos,
-        inputVideo,
-        noteFilter,
-    },
+	components: {
+		noteList,
+		eventBus,
+		keepService,
+		inputImg,
+		inputTxt,
+		inputTodos,
+		inputVideo,
+		noteFilter,
+	},
 
-    data() {
-        return {
-            notes: [],
-            inputType: 'inputTxt',
-            newInfo: null,
-            isEdit: false,
-            editedNote: null,
-            filterBy: null,
-        };
-    },
+	data() {
+		return {
+			notes: [],
+			inputType: 'inputTxt',
+			newInfo: null,
+			isEdit: false,
+			editedNote: null,
+			filterBy: null,
+		};
+	},
 
-    methods: {
-        setFilter(filterBy) {
-            this.filterBy = filterBy.txt;
-        },
+	methods: {
+		setFilter(filterBy) {
+			this.filterBy = filterBy.txt;
+		},
 
-        renderNote(info, type) {
-            if (!this.isEdit) {
-                console.log('adding');
-                keepService.addNote(type, info).then(() => {
-                    this.loadNotes();
-                    const msg = {
-                        txt: 'Note has been added successfully',
-                        type: 'success',
-                    };
-                    eventBus.$emit('show-msg', msg);
-                    document.body.scrollTop = document.body.scrollHeight;
-                    document.documentElement.scrollTop =
-                        document.documentElement.scrollHeight;
+		renderNote(info, type) {
+			if (!this.isEdit) {
+				keepService.addNote(type, info).then(() => {
+					this.loadNotes();
+					const msg = {
+						txt: 'Note has been added successfully',
+						type: 'success',
+					};
+					eventBus.$emit('show-msg', msg);
+					document.body.scrollTop = document.body.scrollHeight;
+					document.documentElement.scrollTop =
+						document.documentElement.scrollHeight;
 
-                    //
-                });
-            } else {
-                console.log('editing');
-                this.editedNote.info = info;
-                console.log(this.editedNote);
-                this.isEdit = false;
-                keepService.updateNote(this.editedNote).then(() => {
-                    this.loadNotes();
-                    const msg = {
-                        txt: 'Note has been edited successfully',
-                        type: 'success',
-                    };
-                    eventBus.$emit('show-msg', msg);
-                    this.editedNote = null;
-                });
-            }
-            document.body.scrollTop = document.body.scrollHeight;
-            document.documentElement.scrollTop =
-                document.documentElement.scrollHeight;
-        },
+					//
+				});
+			} else {
+				this.editedNote.info = info;
+				this.isEdit = false;
+				keepService.updateNote(this.editedNote).then(() => {
+					this.loadNotes();
+					const msg = {
+						txt: 'Note has been edited successfully',
+						type: 'success',
+					};
+					eventBus.$emit('show-msg', msg);
+					this.editedNote = null;
+				});
+			}
+			document.body.scrollTop = document.body.scrollHeight;
+			document.documentElement.scrollTop =
+				document.documentElement.scrollHeight;
+		},
 
-        setType(type) {
-            switch (type) {
-                case 'noteImg':
-                    this.inputType = 'inputImg';
-                    break;
-                case 'noteTxt':
-                    this.inputType = 'inputTxt';
-                    break;
-                case 'noteTodos':
-                    this.inputType = 'inputTodos';
-                    break;
-                case 'noteVideo':
-                    this.inputType = 'inputVideo';
-                    break;
+		setType(type) {
+			switch (type) {
+				case 'noteImg':
+					this.inputType = 'inputImg';
+					break;
+				case 'noteTxt':
+					this.inputType = 'inputTxt';
+					break;
+				case 'noteTodos':
+					this.inputType = 'inputTodos';
+					break;
+				case 'noteVideo':
+					this.inputType = 'inputVideo';
+					break;
 
-                default:
-                    break;
-            }
-        },
-        loadNotes() {
-            keepService.query().then((notes) => {
-                this.notes = notes;
-                console.log(this.notes);
-            });
-        },
+				default:
+					break;
+			}
+		},
+		loadNotes() {
+			keepService.query().then((notes) => {
+				this.notes = notes;
+			});
+		},
 
-        deleteNote(note) {
-            console.log('delete note', note);
-            keepService.removeNote(note).then(() => {
-                this.loadNotes();
-                const msg = {
-                    txt: 'Note has been deleted successfully',
-                    type: 'success',
-                };
-                eventBus.$emit('show-msg', msg);
-            });
-        },
+		deleteNote(note) {
+			keepService.removeNote(note).then(() => {
+				this.loadNotes();
+				const msg = {
+					txt: 'Note has been deleted successfully',
+					type: 'success',
+				};
+				eventBus.$emit('show-msg', msg);
+			});
+		},
 
-        editNote(note) {
-            console.log('sanity editing');
-            this.setType(note.type);
-            this.editedNote = {...note };
-            // this.editedNote = JSON.parse(JSON.stringify(this.note));
-            this.isEdit = true;
-        },
+		editNote(note) {
+			this.setType(note.type);
+			this.editedNote = { ...note };
+			// this.editedNote = JSON.parse(JSON.stringify(this.note));
+			this.isEdit = true;
+		},
 
-        onUpdateNote(note) {
-            keepService
-                .updateNote(note)
-                .then(() => console.log('updating note', note.id))
-                .then(() => {
-                    this.loadNotes();
-                });
-        },
+		onUpdateNote(note) {
+			keepService.updateNote(note).then(() => {
+				this.loadNotes();
+			});
+		},
 
-        pinned(note) {
-            this.onUpdateNote(note);
-        },
-    },
+		pinned(note) {
+			this.onUpdateNote(note);
+		},
+	},
 
-    computed: {
-        notesToShow() {
-            if (!this.filterBy) {
-                return this.notes;
-            }
-            console.log(this.filterBy);
-            const searchStr = this.filterBy.toLowerCase();
-            const notesToShow = this.notes.filter((note) => {
-                console.log(note);
-                if (note.type === 'noteTxt')
-                    return note.info.txt.toLowerCase().includes(searchStr);
-                if (note.type === 'noteImg')
-                    return note.info.title.toLowerCase().includes(searchStr);
-                if (note.type === 'noteVideo')
-                    return note.info.title.toLowerCase().includes(searchStr);
-                // TODO: search fakes??? try 'what'
-                if (note.type === 'noteTodos') {
-                    const foundTodos = note.info.todos.filter((todo) =>
-                        todo.txt.toLowerCase().includes(searchStr)
-                    );
-                    console.log(foundTodos);
-                    return (
-                        note.info.label.toLowerCase().includes(searchStr) ||
-                        foundTodos.length > 0
-                    );
-                }
-            });
-            return notesToShow;
-        },
-    },
+	computed: {
+		notesToShow() {
+			if (!this.filterBy) {
+				return this.notes;
+			}
+			const searchStr = this.filterBy.toLowerCase();
+			const notesToShow = this.notes.filter((note) => {
+				if (note.type === 'noteTxt')
+					return note.info.txt.toLowerCase().includes(searchStr);
+				if (note.type === 'noteImg')
+					return note.info.title.toLowerCase().includes(searchStr);
+				if (note.type === 'noteVideo')
+					return note.info.title.toLowerCase().includes(searchStr);
+				// TODO: search fakes??? try 'what'
+				if (note.type === 'noteTodos') {
+					const foundTodos = note.info.todos.filter((todo) =>
+						todo.txt.toLowerCase().includes(searchStr)
+					);
+					return (
+						note.info.label.toLowerCase().includes(searchStr) ||
+						foundTodos.length > 0
+					);
+				}
+			});
+			return notesToShow;
+		},
+	},
 
-    watch: {
-        'this.$route.params.email': {
-            immediate: true,
-            handler() {
-                if (!this.$route.params.email) return;
-                console.log('sanity test');
-                const { email } = this.$route.params;
-                const emailNote = {};
-                emailNote.info = {
-                    title: email.subject,
-                    txt: email.body,
-                };
-                console.log(emailNote);
-                if (
-                    emailNote.info.title === undefined &&
-                    emailNote.info.txt === undefined
-                )
-                    return;
-                emailNote.type = 'noteTxt';
-                console.log(emailNote);
-                this.renderNote(emailNote.info, emailNote.type);
-            },
-        },
-    },
+	watch: {
+		'this.$route.params.email': {
+			immediate: true,
+			handler() {
+				if (!this.$route.params.email) return;
+				const { email } = this.$route.params;
+				const emailNote = {};
+				emailNote.info = {
+					title: email.subject,
+					txt: email.body,
+				};
+				if (
+					emailNote.info.title === undefined &&
+					emailNote.info.txt === undefined
+				)
+					return;
+				emailNote.type = 'noteTxt';
+				this.renderNote(emailNote.info, emailNote.type);
+			},
+		},
+	},
 
-    // TODO FIGURE OUT WHY ONLY BUS WORKS ON EDITNOTE (DIRECT EMIT DID NOT WORK)
-    created() {
-        eventBus.$on('checked', this.onUpdateNote);
-        eventBus.$on('pinned', this.onUpdateNote);
-        eventBus.$on('loadFile', this.onUpdateNote);
-        eventBus.$on('bcgolored', this.onUpdateNote);
-        eventBus.$on('editedNote', this.editNote);
-        this.loadNotes();
-    },
+	// TODO FIGURE OUT WHY ONLY BUS WORKS ON EDITNOTE (DIRECT EMIT DID NOT WORK)
+	created() {
+		eventBus.$on('checked', this.onUpdateNote);
+		eventBus.$on('pinned', this.onUpdateNote);
+		eventBus.$on('loadFile', this.onUpdateNote);
+		eventBus.$on('bcgolored', this.onUpdateNote);
+		eventBus.$on('editedNote', this.editNote);
+		this.loadNotes();
+	},
 
-    destroyed() {
-        eventBus.$off('checked');
-        eventBus.$off('pinned');
-        eventBus.$off('editedNote');
-        eventBus.$off('bcgolored');
-    },
+	destroyed() {
+		eventBus.$off('checked');
+		eventBus.$off('pinned');
+		eventBus.$off('editedNote');
+		eventBus.$off('bcgolored');
+	},
 };

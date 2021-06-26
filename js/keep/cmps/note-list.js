@@ -58,8 +58,6 @@ export default {
 
 		onPin(note) {
 			if (!note.isPinned) {
-				console.log('pinned');
-
 				note.isPinned = !note.isPinned;
 				note.style.order = '-1';
 				note.pinSrc = 'img/apps/keep/pinned.png';
@@ -80,13 +78,11 @@ export default {
 		},
 
 		onDelNote(note) {
-			console.log('removing sanity');
 			this.$emit('deleted', note.id);
 		},
 
 		// TODO FIGURE OUT WHY ONLY BUS WORKS ON EDITNOTE (DIRECT EMIT DID NOT WORK)
 		onEditNote(note) {
-			console.log('editing note');
 			eventBus.$emit('editedNote', note);
 			// this.$emit('editing', note);
 			// this.$emit('editedNote', note.id);

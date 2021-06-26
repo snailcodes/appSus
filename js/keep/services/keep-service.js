@@ -20,7 +20,6 @@ function query() {
 }
 
 function addNote(type, info) {
-	console.log(type, info);
 	let newNote = {
 		id: null,
 		isPinned: false,
@@ -38,14 +37,12 @@ function getById(noteId) {
 }
 
 function updateNote(newNote) {
-	console.log('updating note');
 	return getById(newNote.id).then(() => {
 		return storageService.put(KEEP_KEY, newNote);
 	});
 }
 
 function removeNote(noteId) {
-	console.log('removing note');
 	return storageService.remove(KEEP_KEY, noteId);
 }
 

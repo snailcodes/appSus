@@ -35,7 +35,6 @@ export default {
 	methods: {
 		submit() {
 			const newInfo = JSON.parse(JSON.stringify(this.info));
-			console.log(newInfo);
 			this.$emit('submitting', newInfo, 'noteTodos');
 			this.info.label = '';
 			this.info.todos.forEach((todo) => {

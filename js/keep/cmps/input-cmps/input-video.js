@@ -23,15 +23,12 @@ export default {
 	methods: {
 		submit() {
 			const newInfo = { ...this.info };
-			console.log(this.info.url);
 			this.$emit('submitting', newInfo, 'noteVideo');
 			this.info.url = '';
 			this.info.title = '';
 		},
 
-		updateUrl(val) {
-			console.log(val);
-		},
+		updateUrl(val) {},
 		isFromFile() {
 			this.fromFile = !this.fromFile;
 		},

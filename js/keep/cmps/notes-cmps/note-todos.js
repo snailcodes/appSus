@@ -32,7 +32,6 @@ export default {
 
 		complete(todo, idx) {
 			const completedTodo = { ...todo };
-			console.log(this.note.info.todos[idx]);
 			if (!todo.isChecked) {
 				completedTodo.isChecked = true;
 				completedTodo.doneAt = Date.now();

@@ -83,13 +83,14 @@ input.input-keep {
 	border-radius: 10px;
 }
 
-.keepApp-header {
+.keepApp-app {
 	display: flex;
 	/* max-width: 900px; */
 	flex-direction: column;
 	align-items: center;
 	margin: 0 auto;
 	padding-block-start: 60px;
+	height: 91vh;
 }
 
 .header-control {
