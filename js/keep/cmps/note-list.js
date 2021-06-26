@@ -30,8 +30,6 @@ export default {
         </ul>
     `,
 
-	// src="img/apps/keep/pin.png"
-
 	components: {
 		// notePreview,
 		noteTxt,

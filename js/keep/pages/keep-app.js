@@ -1,6 +1,6 @@
 import { keepService } from '../services/keep-service.js';
-import noteList from '../cmps/note-list.js';
 import { eventBus } from '../../services/event-bus-service.js';
+import noteList from '../cmps/note-list.js';
 import inputImg from '../cmps/input-cmps/input-img.js';
 import inputVideo from '../cmps/input-cmps/input-video.js';
 import inputTxt from '../cmps/input-cmps/input-txt.js';
@@ -12,7 +12,6 @@ export default {
     <section v-if="notes.length" class="keepApp-header" >
 		<section class="header-control">
 		<note-filter class="note-search-bar" @filtered="setFilter"    />
-			<!-- //TODO: BUG PHOTO WONT APPEAR ON GIT - CHECK -->
 			<label class="note-add-control-panel" >
 				<component v-if="!editedNote" @submitting="renderNote" :is="inputType" :info="newInfo" :editedNote="editedNote" > </component>
 				
@@ -26,7 +25,6 @@ export default {
 				<button class="button-keep" @click="setType('noteVideo')"> <img title="Add Video" src="img/apps/keep/video.png" alt="addChkBox"> </button>          
 				</div>
 			</label>
-		<!-- </div> -->
 		</section>
         <note-list @editing="onUpdateNote(note)" :notes="notesToShow" @deleted="deleteNote" @ /> 
 		
@@ -169,13 +167,16 @@ export default {
 				if (note.type === 'noteVideo')
 					return note.info.title.toLowerCase().includes(searchStr);
 				// TODO: search fakes??? try 'what'
-				if (note.type === 'noteTodos')
+				if (note.type === 'noteTodos') {
+					const foundTodos = note.info.todos.filter((todo) =>
+						todo.txt.toLowerCase().includes(searchStr)
+					);
+					console.log(foundTodos);
 					return (
 						note.info.label.toLowerCase().includes(searchStr) ||
-						note.info.todos.filter((todo) => {
-							todo.txt.toLowerCase().includes(searchStr);
-						})
+						foundTodos.length > 0
 					);
+				}
 			});
 			return notesToShow;
 		},
@@ -208,7 +209,6 @@ export default {
 
 	// TODO FIGURE OUT WHY ONLY BUS WORKS ON EDITNOTE (DIRECT EMIT DID NOT WORK)
 	created() {
-		console.log('sanity app');
 		eventBus.$on('checked', this.onUpdateNote);
 		eventBus.$on('pinned', this.onUpdateNote);
 		eventBus.$on('loadFile', this.onUpdateNote);
