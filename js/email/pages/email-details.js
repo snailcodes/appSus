@@ -12,17 +12,17 @@ export default {
                     <span>From {{email.from}}</span>
                     <div>
                         <span>{{showFormattedTime}}</span>
-                        <span @click="onSendNote" class="email-send-note">
+                        <span @click="onSendNote" class="email-send-note" title="Send to Ms. Keep">
                             <span></span>
                         </span>
-                        <span v-if="!email.isDeleted" @click="onToggleReply" class="email-reply">
+                        <span v-if="!email.isDeleted" @click="onToggleReply" class="email-reply" title="Reply">
                             <img src="img/apps/email/reply.png">
                         </span>
                         <span v-if="email.isDeleted" @click="onDeleteEmail('restore')" class="email-restore">
-                            <img src="img/apps/email/restore.png">
+                            <img src="img/apps/email/restore.png" title="Restore Email">
                         </span>
                         <span @click="onDeleteEmail" class="email-delete">
-                            <img src="img/apps/email/delete.png">
+                            <img src="img/apps/email/delete.png" title="Mark as Deleted">
                         </span>
                     </div>
                 </div>

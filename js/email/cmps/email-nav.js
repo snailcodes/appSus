@@ -14,8 +14,8 @@ export default {
                 <div class="nav-inbox active" @click="handleClick('inbox')">
                     <img src="img/apps/email/inbox.png"/>
                     Inbox
-                    <span class="sort-date" @click="onSetSort('date')"><span>&nbsp;</span></span>
-                    <span class="sort-title" @click="onSetSort('subject')"><span></span></span>
+                    <span class="sort-date" title="Sort by Date" @click="onSetSort('date')"><span>&nbsp;</span></span>
+                    <span class="sort-title" title="Sort by Subject" click="onSetSort('subject')"><span></span></span>
                     <span>{{showUnreadCount}}</span>
                 </div>  
             </li>

@@ -206,8 +206,6 @@ export default {
                             email.isStarred;
                     });
                 case 'sent':
-                    console.log('fddf');
-                    console.log(this.searchBy);
                     return this.emails.filter(email => {
                         return this.searchBy.isRead && !this.searchBy.isUnread ? email.isSent && email.isRead || email.replies && email.isRead :
                             this.searchBy.isUnread && !this.searchBy.isRead ? email.isSent && !email.isRead || email.replies && !email.isRead :
@@ -235,7 +233,6 @@ export default {
             handler() {
                 if (!this.$route.params.note) return
                 const { note } = this.$route.params;
-                console.log(note);
                 const email = {};
                 switch (note.type) {
                     case 'noteImg':
