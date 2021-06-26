@@ -1,11 +1,11 @@
 @font-face {
     font-family: fontawesome;
-    src: url('font/apps/book/fontawesome.woff');
+    src: url('../../../../font/apps/book/fontawesomer.ttf');
 }
 
 @font-face {
     font-family: fontawesomer;
-    src: url('font/apps/book/fontawesomer.ttf');
+    src: url('../../../../font/apps/book/fontawesomer.ttf');
 }
 
 .book-app *,
