@@ -127,12 +127,6 @@ img.keep-button-img {
 	background-color: lightgreen;
 }
 
-/* .note-preview {
-	width: 100px;
-	height: 100px;
-	background-color: green;
-} */
-
 /* PARTICULAR NOTE DEFS */
 .note-img {
 	grid-column: span 2;
@@ -140,6 +134,11 @@ img.keep-button-img {
 
 .note-txt {
 	display: inline-block;
+}
+
+/* TODO: align button to bottom left */
+.button-keep .long-txt {
+	left: 0;
 }
 
 .keep-video {

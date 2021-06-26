@@ -23,6 +23,8 @@ function addNote(type, info) {
 	console.log(type, info);
 	let newNote = {
 		id: null,
+		isPinned: false,
+		pinSrc: 'img/apps/keep/pin.png',
 		type: type,
 		isPinned: false,
 		info: info,
@@ -52,13 +54,17 @@ function _createNotes() {
 		{
 			id: storageService.makeId(),
 			type: 'noteTxt',
-			isPinned: true,
+			isPinned: false,
+			pinSrc: 'img/apps/keep/pin.png',
 			info: { title: 'What?', txt: 'Fullstack Me  Baby!' },
-			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
+			style: { backgroundColor: 'lightblue' },
+			// style: { backgroundColor: 'lightblue', gridRowStart: '2' },
 		},
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
+			isPinned: false,
+			pinSrc: 'img/apps/keep/pin.png',
+			style: { backgroundColor: 'lightblue' },
 			type: 'noteImg',
 			info: {
 				url: 'https://img.vcomments.com/en/funny/47.jpg',
@@ -67,7 +73,9 @@ function _createNotes() {
 		},
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
+			isPinned: false,
+			pinSrc: 'img/apps/keep/pin.png',
+			style: { backgroundColor: 'lightblue' },
 			type: 'noteImg',
 			info: {
 				url: 'https://www.icegif.com/wp-content/uploads/funny.gif',
@@ -76,7 +84,9 @@ function _createNotes() {
 		},
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
+			isPinned: false,
+			pinSrc: 'img/apps/keep/pin.png',
+			style: { backgroundColor: 'lightblue' },
 			type: 'noteImg',
 			info: {
 				url: 'https://www.sbs.com.au/guide/sites/sbs.com.au.guide/files/styles/full/public/horsin.jpg?itok=AovIZOaD&mtime=1504767165',
@@ -87,7 +97,9 @@ function _createNotes() {
 		{
 			id: storageService.makeId(),
 			type: 'noteTodos',
-			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
+			isPinned: false,
+			pinSrc: 'img/apps/keep/pin.png',
+			style: { backgroundColor: 'lightblue' },
 			info: {
 				label: 'How    was   it:',
 				todos: [
@@ -109,13 +121,17 @@ function _createNotes() {
 		{
 			id: storageService.makeId(),
 			type: 'noteTxt',
-			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
+			isPinned: false,
+			pinSrc: 'img/apps/keep/pin.png',
+			style: { backgroundColor: 'lightblue' },
 			isPinned: true,
 			info: { title: 'What?', txt: 'Fullstack Me  Baby!' },
 		},
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
+			isPinned: false,
+			pinSrc: 'img/apps/keep/pin.png',
+			style: { backgroundColor: 'lightblue' },
 			type: 'noteTxt',
 			isPinned: true,
 			info: {
@@ -125,7 +141,9 @@ function _createNotes() {
 
 		{
 			id: storageService.makeId(),
-			style: { backgroundColor: 'lightblue', gridRowStart: '2' },
+			isPinned: false,
+			pinSrc: 'img/apps/keep/pin.png',
+			style: { backgroundColor: 'lightblue' },
 			type: 'noteVideo',
 			info: {
 				url: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',

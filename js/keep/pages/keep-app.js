@@ -181,16 +181,22 @@ export default {
 		},
 	},
 
+	// SOMETHING NOT WORKING - take below from pull
+	// TODO: FIGURE OUT WHY EMPTY OBJECT IS SENT
 	watch: {
 		'this.$route.params': {
 			immediate: true,
 			handler() {
 				const { email } = this.$route.params;
 				console.log(email);
-				const emailNote = null;
-				emailNote.info = { subject, body };
-				emailNote.type = 'noteTxt';
-				renderNote(email.type, email.info);
+
+				if (!email === undefined) {
+					let emailNote = {};
+					// emailNote.info.title = email.subject;
+					// emailNote.info.txt = email.body;
+					// emailNote.type = 'noteTxt';
+					this.renderNote(emailNote.info, emailNote.type);
+				}
 			},
 		},
 	},

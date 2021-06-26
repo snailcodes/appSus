@@ -1,4 +1,5 @@
-//TODO: PREVENT TAB FROM ADDING LINE ON LABEL INPUT
+// TODO: GOT A WEIRD BUG, WAS NOT ABLE TO REPRODUCE
+// TODO: CHECK WHAT HAPPENS IN EDIT - CAN ONLY ADD ONE ROW
 
 export default {
 	props: ['editedNote'],
@@ -33,7 +34,6 @@ export default {
 
 	methods: {
 		submit() {
-			// const newInfo = { ...this.info };
 			const newInfo = JSON.parse(JSON.stringify(this.info));
 			console.log(newInfo);
 			this.$emit('submitting', newInfo, 'noteTodos');
