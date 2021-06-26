@@ -22,8 +22,9 @@ export default {
 
 	data() {
 		return {
-			txtLong: false,
+			toggleDis: false,
 			isLong: false,
+
 			button: {
 				text: '˅',
 			},
