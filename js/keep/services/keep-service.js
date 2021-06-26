@@ -116,7 +116,7 @@ function _createNotes() {
 					},
 					{
 						id: storageService.makeId(),
-						txt: 'Be victorious',
+						txt: 'Be Victorious',
 						doneAt: null,
 						isMarked: false,
 					},
